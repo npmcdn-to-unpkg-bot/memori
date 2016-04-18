@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul>
+    <li>
+      <%= link_to "Memorial Project" %>
+    </li>
+    <li>
+      <%= link_to "Memorials", memorials_path %>
+    </li>
+    <li>
+      <%= link_to "Add a Memorial", new_memorial_path %>
+    </li>
+  </ul>
 
 <%= yield %>
 

@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :memorials, except: [:destroy]
 
-  resources :memorials, except: [:destroy] do
-
-  end
-  
   # Example resource route with options:
   #   resources :products do
   #     member do
