@@ -5,7 +5,9 @@ class MemorialsController < ApplicationController
     @memorials = Memorial.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def new
     @memorial = Memorial.new

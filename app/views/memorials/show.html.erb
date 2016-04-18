@@ -4,3 +4,25 @@
     <%= @memorial.biography %>
   </p>
 </div>
+
+
+<%= form_for [@memorial, @comment] do |f| %>
+  <%= render 'shared/errors', obj: @comment %>
+  <div class="control-group">
+    <%= f.label :body, "leave a comment" %>
+    <%= f.text_area :body, rows: 3 %>
+  </div>
+  <%= f.submit "Leave Entry" %>
+<% end %>
+
+
+<h4>Comments</h4>
+
+<% @memorial.reload.comments.each do |comment| %>
+  <div>
+    <%= comment.body %>
+    by: <%= comment.user.username %>
+    <%= display_datetime(comment.created_at) %>
+  </div>
+  <br>
+<% end %>
