@@ -1,7 +1,16 @@
 <div>
-  <h4><%= link_to memorial.name, memorial_path(memorial) %></h4>
+  <h4><%= memorial.name %></h4>
   <p>
-    <%= memorial.created_at %>
+    Created: <%= display_datetime(memorial.created_at) %>
   </p>
-  <!-- dob / dod -->
+    Passed: <!-- dob / dod -->
+  <p>
+    Guestbook Entries: <%= memorial.comments.size %>
+  </p>
+  <p>
+    <%= link_to "View Memorial", memorial_path(memorial) %>
+  </p>
+  <p>
+    <%= link_to "Edit Memorial", edit_memorial_path(memorial) %>
+  </p>
 </div>

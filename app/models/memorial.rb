@@ -10,6 +10,8 @@
 class Memorial < ActiveRecord::Base
   belongs_to :user, foreign_key: :user_id
 
+  has_many :comments, foreign_key: :memorial_id
+
   validates :name, presence: true
   validates :biography, presence: true
 end

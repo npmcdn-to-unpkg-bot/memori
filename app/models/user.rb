@@ -6,6 +6,7 @@
 
 class User < ActiveRecord::Base
   has_many :memorials, foreign_key: :user_id
+  has_many :comments, foreign_key: :user_id
 
   validates :username, presence: true, uniqueness: true
 end
