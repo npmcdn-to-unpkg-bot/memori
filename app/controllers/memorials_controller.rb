@@ -1,8 +1,13 @@
 class MemorialsController < ApplicationController
   before_action :set_memorial, only: [:show, :edit, :update]
+  before_action :require_user, except: [:home, :show]
+  before_action :require_creator, only: [:edit, :update]
+
+  def home
+  end
 
   def index
-    @memorials = Memorial.all
+    @memorials = current_user.memorials
   end
 
   def show
@@ -15,9 +20,10 @@ class MemorialsController < ApplicationController
 
   def create
     @memorial = Memorial.new(memorial_params)
+    @memorial.user = current_user
 
     if @memorial.save
-      flash[:notice] = "Your memorial was save."
+      flash[:notice] = "Your memorial was saved."
       redirect_to memorials_path
     else
       render :new
@@ -35,13 +41,34 @@ class MemorialsController < ApplicationController
     end
   end
 
+  def check_url
+    @memorial = Memorial.find_by_url(params[:memorial][:url])
+
+    if @memorial
+      @memorial = "false"
+    else
+      @memorial = "true"
+    end
+
+    respond_to do |format|
+      format.json { render json: @memorial }
+    end
+  end
+
+
+
+
   private
 
   def memorial_params
-    params.require(:memorial).permit(:name, :biography)
+    params.require(:memorial).permit(:name, :dod, :url, :biography)
   end
 
   def set_memorial
     @memorial = Memorial.find(params[:id])
+  end
+
+  def require_creator
+    access_denied unless logged_in? and (current_user == @memorial.user || current_user.admin?)
   end
 end

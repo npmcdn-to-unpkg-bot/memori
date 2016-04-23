@@ -1,10 +1,16 @@
+<%= render 'shared/content_title', title: "Memorial Control Panel" %>
+
 <%= render 'shared/errors', obj: @memorial %>
 
 <div>
   <%= form_for @memorial do |f| %>
   <div class="control-group">
-    <%= f.label :name %>
+    <%= f.label :name, "Full Name" %>
     <%= f.text_field :name %>
+  </div>
+  <div class="control-group">
+    <%= f.label :dod, "Passed Away" %>
+    <%= f.date_field :dod %>
   </div>
   <div class="control-group">
     <%= f.label :biography %>

@@ -1,15 +1,26 @@
+<%= render 'shared/content_title', title: (current_user.memorials.empty? ? 'Step 2: Create a Memorial' : 'Add Another Memorial') %>
+
 <%= render 'shared/errors', obj: @memorial %>
 
 <div>
   <%= form_for @memorial do |f| %>
   <div class="control-group">
-    <%= f.label :name %>
+    <%= f.label :name, "Full Name" %>
     <%= f.text_field :name %>
   </div>
   <div class="control-group">
-    <%= f.label :biography %>
-    <%= f.text_area :biography, rows: 5 %>
+    <%= f.label :dod, "Passed Away" %>
+    <%= f.date_field :dod %>
   </div>
-  <%= f.submit "Add Memorial" %>
+  <br>
+  <br>
+  <div class="control-group">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <br>
+  <br>
+  <h4>Template Selector</h4>
+  <%= f.submit "Create Memorial" %>
   <% end %>
 </div>

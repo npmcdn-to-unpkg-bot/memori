@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MemorialApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Memorial Spaces - Remember Your Loved Ones</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <ul>
-    <li><%= link_to "Memorial Project", root_path %></li>
-    <li><%= link_to "Memorials", memorials_path %></li>
-    <li><%= link_to "Add a Memorial", new_memorial_path %></li>
+
     <% if logged_in? %>
+      <li><%= link_to "My Memorials", memorials_path %></li>
+      <li><%= link_to "Add a Memorial", new_memorial_path %></li>
       <li><%= link_to "User Profile", user_path(current_user) %></li>
       <li><%= link_to "Edit Account", edit_user_path(current_user) %></li>
       <li><%= link_to "Logout", logout_path %></li>
     <% else %>
-      <li><%= link_to "Register", register_path %></li>
+      <li><%= link_to "Home Page", root_path %></li>
+      <li><%= link_to "Create a Memorial", register_path %></li>
       <li><%= link_to "Login", login_path %></li>
     <% end %>
   </ul>

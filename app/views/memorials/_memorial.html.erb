@@ -3,7 +3,7 @@
   <p>
     Created: <%= display_datetime(memorial.created_at) %>
   </p>
-    Passed: <!-- dob / dod -->
+    Passed: <%= display_datetime(memorial.dod) %>
   <p>
     Guestbook Entries: <%= memorial.comments.size %>
   </p>
@@ -11,6 +11,6 @@
     <%= link_to "View Memorial", memorial_path(memorial) %>
   </p>
   <p>
-    <%= link_to "Edit Memorial", edit_memorial_path(memorial) %>
+    <%= link_to "Memorial Control Panel", edit_memorial_path(memorial) %>
   </p>
 </div>

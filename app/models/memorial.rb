@@ -13,5 +13,5 @@ class Memorial < ActiveRecord::Base
   has_many :comments, foreign_key: :memorial_id
 
   validates :name, presence: true
-  validates :biography, presence: true
+  validates :dod, presence: true
 end

@@ -1,7 +1,15 @@
-<%= render 'shared/content_title', title: 'Register' %>
+<%= render 'shared/content_title', title: 'Step 1: Create an Account' %>
 
 <div>
   <%= form_for @user do |f| %>
+    <div class="control-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="control-group">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
     <div class="control-group">
       <%= f.label :username %>
       <%= f.text_field :username %>

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
+  root 'memorials#home'
 
   resources :memorials, except: [:destroy] do
     resources :comments, only: [:create]
+    
+    collection do
+      get 'check_url'
+    end
   end
 
   get '/register', to: 'users#new'
