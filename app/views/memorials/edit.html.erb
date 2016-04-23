@@ -2,6 +2,7 @@
 
 <%= render 'shared/errors', obj: @memorial %>
 
+<h2>General Information</h2>
 <div>
   <%= form_for @memorial do |f| %>
   <div class="control-group">
@@ -13,9 +14,79 @@
     <%= f.date_field :dod %>
   </div>
   <div class="control-group">
+    <%= f.label :address, "Cemetery Street Address" %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="control-group">
     <%= f.label :biography %>
     <%= f.text_area :biography, rows: 5 %>
+    <!-- WYSIWYG -->
+  </div>
+  <h4>Current Memorial Image</h4>
+  <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
+  <div class="control-group">
+    <%= f.label :hero, "Memorial Image" %>
+    <%= f.file_field :hero %>
   </div>
   <%= f.submit "Update Memorial" %>
   <% end %>
 </div>
+<br><br>
+
+
+<h2>Timeline</h2>
+<% @memorial.reload.events.each do |event| %>
+  <div>
+    <%= event.title %>: <%= event.description %> ||
+    <%= image_tag event.picture.url(:thumb) if event.picture? %>
+    <%= display_datetime(event.date) %>
+  </div>
+  <br>
+<% end %>
+
+<div>
+  <%= form_for [@memorial, @event] do |f| %>
+  <div class="control-group">
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+  <div class="control-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="control-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 5 %>
+  </div>
+  <div class="control-group">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
+  <%= f.submit "Add Timeline Event" %>
+  <% end %>
+</div>
+<br><br>
+
+<h2>Photos</h2>
+<% @memorial.reload.photos.each do |photo| %>
+  <div>
+    <%= image_tag photo.picture.url(:thumb) if photo.picture? %>
+    <%= photo.caption %>
+  </div>
+  <br>
+<% end %>
+  <!-- gallery upload -->
+  <!-- title and image attachment -->
+  <!-- multiple image and title upload via jquery -->
+  <%= form_for [@memorial, @photo] do |f| %>
+    <div class="control-group">
+      <%= f.label :caption %>
+      <%= f.text_field :caption %>
+    </div>
+    <div class="control-group">
+      <%= f.label :picture %>
+      <%= f.file_field :picture %>
+    </div>
+    <%= f.submit "Submit Photo" %>
+  <% end %>
+<br><br>

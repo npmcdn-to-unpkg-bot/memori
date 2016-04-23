@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   def create
     @memorial = Memorial.find(params[:memorial_id])
-    @comment =  @memorial.comments.build(params.require(:comment).permit(:body))
-    @comment.user = User.first #replace after setup auth
+    # will this work for other forms?
+    
+    @comment = @commentable.comments.new(comment_params)
 
     if @comment.save
       flash[:notice] = "your comment was added."
@@ -12,4 +13,21 @@ class CommentsController < ApplicationController
     end
   end
 
+  private
+
+  def comment_params
+    params.require(:comment).permit(:author, :body)
+  end
 end
+
+  # def create
+  #   @memorial = Memorial.find(params[:memorial_id])
+  #   @comment =  @memorial.comments.build(params.require(:comment).permit(:author, :body))
+  #
+  #   if @comment.save
+  #     flash[:notice] = "your comment was added."
+  #     redirect_to memorial_path(@memorial)
+  #   else
+  #     render 'memorials/show'
+  #   end
+  # end

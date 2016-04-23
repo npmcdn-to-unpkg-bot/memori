@@ -1,13 +1,23 @@
 <div>
   <h2><%= @memorial.name %></h2>
+  <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
   <p>
     <%= @memorial.biography %>
+  </p>
+  <p>
+    Graveyard Location:
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@memorial.latitude}%2C#{@memorial.longitude}" %>
+
   </p>
 </div>
 
 
 <%= form_for [@memorial, @comment] do |f| %>
   <%= render 'shared/errors', obj: @comment %>
+  <div class="control-group">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
   <div class="control-group">
     <%= f.label :body, "leave a comment" %>
     <%= f.text_area :body, rows: 3 %>
@@ -21,7 +31,7 @@
 <% @memorial.reload.comments.each do |comment| %>
   <div>
     <%= comment.body %>
-    by: <%= comment.user.username %>
+    by: <%= comment.author %>
     <%= display_datetime(comment.created_at) %>
   </div>
   <br>

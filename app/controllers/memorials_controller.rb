@@ -4,6 +4,7 @@ class MemorialsController < ApplicationController
   before_action :require_creator, only: [:edit, :update]
 
   def home
+    redirect_to memorials_path if current_user
   end
 
   def index
@@ -30,12 +31,18 @@ class MemorialsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @events = @memorial.events
+    @event = Event.new
+
+    @photos = @memorial.photos
+    @photo = Photo.new
+  end
 
   def update
     if @memorial.update(memorial_params)
       flash[:notice] = "Your memorial was updated."
-      redirect_to memorial_path(@memorial)
+      redirect_to edit_memorial_path(@memorial)
     else
       render :edit
     end
@@ -61,7 +68,7 @@ class MemorialsController < ApplicationController
   private
 
   def memorial_params
-    params.require(:memorial).permit(:name, :dod, :url, :biography)
+    params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address)
   end
 
   def set_memorial

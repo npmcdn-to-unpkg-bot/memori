@@ -3,8 +3,16 @@ Rails.application.routes.draw do
   root 'memorials#home'
 
   resources :memorials, except: [:destroy] do
-    resources :comments, only: [:create]
-    
+    resources :comments, module: :memorials, only: [:create]
+
+    resources :events, except: [:index, :show] do
+      resources :comments, module: :events, only: [:create]
+    end
+
+    resources :photos, except: [:index, :show] do
+      resources :comments, module: :photos, only: [:create]
+    end
+
     collection do
       get 'check_url'
     end

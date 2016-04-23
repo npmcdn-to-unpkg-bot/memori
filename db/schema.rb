@@ -11,14 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423012530) do
+ActiveRecord::Schema.define(version: 20160423172637) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "memorial_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.string   "author"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "memorial_id"
+    t.string   "picture"
   end
 
   create_table "memorials", force: :cascade do |t|
@@ -29,6 +41,18 @@ ActiveRecord::Schema.define(version: 20160423012530) do
     t.datetime "updated_at"
     t.datetime "dod"
     t.string   "url"
+    t.string   "hero"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "caption"
+    t.string   "picture"
+    t.integer  "memorial_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

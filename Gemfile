@@ -22,7 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'carrierwave'
 gem 'rmagick'
-gem 'bcrypt', '~> 3.1.7'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

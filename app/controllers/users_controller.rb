@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to memorials_path if current_user
+
     @user = User.new
   end
 
