@@ -1,4 +1,4 @@
-<%= render 'shared/content_title', title: "Profile #{@user.username}" %>
+<%= render 'shared/content_title', title: "Account Settings" %>
 
 <div class="well">
   <dl class='dl-horizontal'>
@@ -9,4 +9,6 @@
       <%= @user.username %>
     </dd>
   </dl>
+  <br>
+  <%= link_to "Edit Account", edit_user_path(current_user), class: "submit-btn submit md-btn btn" %>
 </div>

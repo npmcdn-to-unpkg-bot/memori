@@ -3,4 +3,8 @@ module ApplicationHelper
     dt.strftime("%B %d, %Y")
     # dt.strftime("%m/%d/%Y %l:%M%P %Z") full time with seconds and UTC
   end
+
+  def display_year(dt)
+    dt.strftime("%Y")
+  end
 end

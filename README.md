@@ -9,6 +9,7 @@ Working on a side project. People can create interactive memorials for loved one
 * Gallery (multiple file upload with jQuery)
 * Comments (RAILS AJAX)
 
+* URL for memorial (validation / options)
 * Password protect option
 *	Lockdown routes
 *	Slugs / Unique IDs

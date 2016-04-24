@@ -13,6 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require validate
+//= require memorials/bootstrap
+//= require memorials/custom
+//= require memorials/gmap3
+//= require memorials/html5shiv
+//= require memorials/modernizr
+//= require memorials/plugins
 //= require turbolinks
 //= require_tree .
 

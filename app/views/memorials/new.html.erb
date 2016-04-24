@@ -1,26 +1,49 @@
-<%= render 'shared/content_title', title: (current_user.memorials.empty? ? 'Step 2: Create a Memorial' : 'Add Another Memorial') %>
+<%= render 'shared/content_title', title: (current_user.memorials.empty? ? 'Step 2: Create a Memorial' : 'Create a Memorial') %>
 
-<%= render 'shared/errors', obj: @memorial %>
+<section id="contact-page" class="page contact-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-12 post-container" role="main">
+				<div class="row">
+					<div class="col-md-8">
+            <%= form_for @memorial do |f| %>
+              <%= render 'shared/errors', obj: @memorial %>
+              <%= f.label :name, "Full Name" %>
+              <%= f.text_field :name, class:"form-control", placeholder: "Full Name of the Deceased" %>
+              <%= f.label :dod, "Date of Passing" %>
+              <%= f.date_field :dod, class:"form-control" %>
+            <br>
+            Acceptable URLs: "tomas-peterson", "tomas.peterson", "tomas_peterson", "tomas-peterson-1974"
+            <br><br>
+              <div class="col-md-4">
+                <br>
+                <%= f.label :url, "www.memorialspaces.com/" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_field :url, class: "form-control" %>
+              </div>
+            <br><br><br><br>
+            <h4>Template Selector</h4>
+            <!-- Put template selection option here -->
+            <br><br><br><br><br><br><br><br>
+            <%= f.submit "Create Memorial", class: "submit-btn submit md-btn btn" %>
+            <% end %>
+					</div>
 
-<div>
-  <%= form_for @memorial do |f| %>
-  <div class="control-group">
-    <%= f.label :name, "Full Name" %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="control-group">
-    <%= f.label :dod, "Passed Away" %>
-    <%= f.date_field :dod %>
-  </div>
-  <br>
-  <br>
-  <div class="control-group">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-  <br>
-  <br>
-  <h4>Template Selector</h4>
-  <%= f.submit "Create Memorial" %>
-  <% end %>
-</div>
+					<div class="col-md-4">
+						<h4 class="contact-title">Initial Setup </h4>
+						<p>
+							This is the first step for creating a memorial. We need some basic information to go forward.
+						</p>
+						<p>
+              Do not worry if you are unsure of the birth date or middle name of the deceased. You can always edit these fields later.
+						</p>
+
+					</div>
+				</div>
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /#contact-page -->

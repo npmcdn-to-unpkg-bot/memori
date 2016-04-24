@@ -1,16 +1,34 @@
-<div>  
-  <h4><%= memorial.name %></h4>
-  <p>
-    Created: <%= display_datetime(memorial.created_at) %>
-  </p>
-    Passed: <%= display_datetime(memorial.dod) %>
-  <p>
-    Guestbook Entries: <%= memorial.comments.size %>
-  </p>
-  <p>
-    <%= link_to "View Memorial", memorial_path(memorial) %>
-  </p>
-  <p>
-    <%= link_to "Memorial Control Panel", edit_memorial_path(memorial) %>
-  </p>
-</div>
+<article class="post-content">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="featured-img">
+        <img class="blog-post-image" src="<%= asset_path 'memorials/why-choose-post/image-1.jpg' %>"  alt="Featured Image">
+      </div><!-- /.featured-img -->
+    </div>
+    <div class="col-sm-6">
+      <div class="post-container">
+        <h3 class="post-title">
+          <a href="obituaries_details.html"><%= memorial.name %></a>
+        </h3><!-- /.post-title -->
+        <div class="post-meta">
+          <span class="time"><time datetime="1943-2015">1943 - <%= display_year(memorial.dod) %></time></span>
+        </div><!-- /.post-meta -->
+        <p class="post-description">
+          Cover Photo:
+          <!-- green check or red X -->
+          <br>
+          Biography:
+          <!-- green check or red X -->
+          <br>
+          Photos Uploaded: <%= memorial.photos.size %>
+          <br>
+          Timeline Events: <%= memorial.events.size %>
+          <br>
+          Guestbook Entries: <%= memorial.comments.size %>
+        </p>
+        <%= link_to "View Memorial", memorial_path(memorial), class: "submit-btn submit md-btn btn" %>
+        <%= link_to "Add Content", edit_memorial_path(memorial), class: "submit-btn submit md-btn btn" %>
+      </div><!-- /.post-container -->
+    </div>
+  </div><!-- /.row -->
+</article><!-- /.post-content -->

@@ -1,23 +1,37 @@
 <%= render 'shared/content_title', title: 'Step 1: Create an Account' %>
 
-<div>
-  <%= form_for @user do |f| %>
-    <div class="control-group">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="control-group">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="control-group">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-    <div class="control-group">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <%= f.submit 'Register' %>
-  <% end %>
-</div>
+<section id="contact-page" class="page contact-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-12 post-container" role="main">
+				<div class="row">
+					<div class="col-md-8">
+            <%= form_for @user do |f| %>
+							<%= f.label :name %>
+              <%= f.text_field :name, class: "form-control", placeholder: "Your Name" %>
+							<%= f.label :email %>
+              <%= f.text_field :email, class: "form-control", placeholder: "Your Email" %>
+							<%= f.label :username %>
+              <%= f.text_field :username, class: "form-control", placeholder: "Your Username" %>
+							<%= f.label :password %>
+              <%= f.password_field :password, class: "form-control", placeholder: "Your Password" %>
+              <%= f.submit 'Register', class: "submit-btn submit md-btn btn" %>
+            <% end %>
+					</div>
+
+					<div class="col-md-4">
+						<h4 class="contact-title">Registration </h4>
+						<p>
+							Creating an account let's you create and edit memorials.
+						</p>
+						<p>You will be able to upload photos and receive messages from visitors.
+						</p>
+
+					</div>
+				</div>
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /#contact-page -->

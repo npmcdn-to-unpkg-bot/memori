@@ -1,16 +1,31 @@
-<%= render 'shared/content_title', title: "Edit Profile" %>
+<%= render 'shared/content_title', title: "Edit Account" %>
 
 <div class="well">
-  <%= form_for @user do |f| %>
-  <%= render 'shared/errors', obj: @user %>
-    <div class="control-group">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Login Settings</h4>
+      <br>
+      <%= form_for @user do |f| %>
+      <%= render 'shared/errors', obj: @user %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+        <%= f.submit 'Update Profile', class: "submit-btn submit btn md-btn" %>
+
+      <% end %>
     </div>
-    <div class="control-group">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+    <div class="col-md-4">
+      <h4 class="contact-title">Account Info </h4>
+      <br>
+      <p>
+        Keep these settings updated so that you can administer the memorials in years to come.
+      </p>
     </div>
-    <%= f.submit 'Update Profile' %>
-  <% end %>
+  </div>
+
 </div>

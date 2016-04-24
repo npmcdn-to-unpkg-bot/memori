@@ -1,0 +1,88 @@
+<header id="header" class="header">
+  <!-- header-top -->
+  <div id="header-top" class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="info col-sm-4">
+        </div><!-- /.info -->
+
+        <div class="col-sm-8 top-right text-right">
+
+        </div><!-- /.top-right -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.header-top -->
+  <!-- Header-top End  -->
+
+
+  <!-- header-middle -->
+  <div id="header-middle" class="header-middle">
+    <div class="container">
+      <div class="logo pull-left">
+        <a class="navbar-brand" href="./">
+          <img src="<%= asset_path 'memorials/logo2.png' %>" alt="Memorial Logo">
+        </a><!-- /.navbar-brand -->
+      </div><!-- /.logo -->
+
+      <div class="middle-quote pull-left">
+        <blockquote class="quote">
+          A ceremony of a dead person held with the burial or cremation in connection.
+        </blockquote>
+      </div><!-- /.middle-quote -->
+
+      <div class="middle-right pull-right">
+        <div class="street media">
+
+
+        </div>
+
+        <div class="cell media">
+
+        </div>
+      </div><!-- /.middle-right -->
+    </div><!-- /.container -->
+  </div><!-- /.header-middle -->
+  <!-- Header-middle End  -->
+
+  <!-- Main Menu -->
+  <div class="main-menu-container navbar-fixed-top-">
+    <div id="main-menu" class="navbar navbar-default" role="navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./">
+            <img src="<%= asset_path 'memorials/logo2.png' %>" alt="Memorial Logo">
+          </a><!-- /.navbar-brand -->
+          <!-- responsive navigation -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars"></i>
+          </button> <!-- /.navbar-toggle -->
+        </div> <!-- /.navbar-header -->
+
+        <nav class="collapse navbar-collapse">
+          <!-- Main navigation -->
+          <ul id="mainNavigation" class="main-mav nav navbar-nav">
+            <% if logged_in? %>
+              <li><%= link_to "My Memorials", memorials_path %></li>
+              <li><%= link_to "Add a Memorial", new_memorial_path %></li>
+              <li><%= link_to "Account Settings", user_path(current_user) %></li>
+              
+              <li><%= link_to "Logout", logout_path %></li>
+            <% else %>
+              <li><%= link_to "Home", root_path %></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="funeral.html">Placeholder</a></li>
+              <li><a href="cremation.html">Placeholder</a></li>
+              <li><%= link_to "Login", login_path %></li>
+              <li><%= link_to "Create a Memorial", register_path, class: "btn donate-btn" %></li>
+            <% end %>
+
+          </ul> <!-- /#mainNavigation -->
+        </nav> <!-- /.navbar-collapse  -->
+      </div> <!-- /.container -->
+    </div><!-- /#main-menu -->
+  </div><!-- /.main-menu-container -->
+  <!-- Main Menu End -->
+
+</header><!-- /header -->
