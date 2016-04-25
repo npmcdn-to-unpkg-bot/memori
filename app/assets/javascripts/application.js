@@ -15,11 +15,16 @@
 //= require validate
 //= require ckeditor/init
 //= require memorials/bootstrap
+//= require memorials/boxer
 //= require memorials/custom
 //= require memorials/gmap3
 //= require memorials/html5shiv
 //= require memorials/modernizr
 //= require memorials/plugins
+//= require memorials/waypoints
+//= require memorials/counterup
+//= require memorials/isotope
+//= require memorials/owl
 //= require turbolinks
 //= require_tree .
 
@@ -31,3 +36,9 @@
 //     }
 //   });
 // });
+
+$(document).ready(function() {
+  $('.counter').counterUp();
+  $('.boxer').boxer();
+
+});	//ready

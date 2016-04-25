@@ -12,7 +12,8 @@
  *
  *= require memorials/bootstrap
  *= require memorials/font-awesome
- *= require memorials/jquery.fs.boxer
+ *= require memorials/boxer
+ *= require memorials/owl
  *= require memorials/responsive
  *= require memorials/style
  *= require_tree .

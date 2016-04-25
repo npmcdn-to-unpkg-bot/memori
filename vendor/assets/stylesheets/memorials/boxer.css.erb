@@ -1,10 +1,10 @@
-/* 
- * Boxer v3.1.0 - 2014-07-08 
- * A jQuery plugin for displaying images, videos or content in a modal overlay. Part of the Formstone Library. 
- * http://formstone.it/boxer/ 
- * 
- * Copyright 2014 Ben Plum; MIT Licensed 
- */ 
+/*
+ * Boxer v3.1.0 - 2014-07-08
+ * A jQuery plugin for displaying images, videos or content in a modal overlay. Part of the Formstone Library.
+ * http://formstone.it/boxer/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
 
  	.boxer-open {  }
  	.boxer-lock { overflow: hidden !important; }
@@ -44,8 +44,7 @@
 
 	.boxer-open #boxer.loading .boxer-content { opacity: 0; }
 
-
-	#boxer .boxer-close { background: #fff url(../images/jquery.fs.boxer-icons.png) no-repeat -70px 10px; border-radius: 100%; cursor: pointer; display: block; height: 30px; position: absolute; padding: 0; right: -8px; top: -8px; width: 30px; text-indent: -99999px; z-index: 106; }
+	#boxer .boxer-close { background: #fff url(<%= asset_path 'memorials/boxer-icons.png' %>) no-repeat -70px 10px; border-radius: 100%; cursor: pointer; display: block; height: 30px; position: absolute; padding: 0; right: -8px; top: -8px; width: 30px; text-indent: -99999px; z-index: 106; }
 
 	#boxer .boxer-container { background: #fff; height: 100%; overflow: hidden; position: relative; width: 100%; z-index: 105; zoom: 1; }
 	#boxer .boxer-content { background: #fff; opacity: 0; overflow: hidden; padding: 0; width: 10000px; }
@@ -54,7 +53,7 @@
 	#boxer .boxer-iframe { border: none; float: left; height: 100%; overflow: auto; width: 100%; }
 	#boxer .boxer-meta { clear: both; }
 
-	#boxer .boxer-control { background: #fff url(../images/jquery.fs.boxer-icons.png) no-repeat 0 0; border-radius: 100%; box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); cursor: pointer; display: block; height: 40px; margin-right: auto; margin-left: auto; position: absolute; text-indent: -99999px; top: 0; width: 40px;
+	#boxer .boxer-control { background: #fff url(<%= asset_path 'memorials/boxer-icons.png' %>) no-repeat 0 0; border-radius: 100%; box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); cursor: pointer; display: block; height: 40px; margin-right: auto; margin-left: auto; position: absolute; text-indent: -99999px; top: 0; width: 40px;
 		-webkit-transition: opacity 0.25s linear;
 		   	 	transition: opacity 0.25s linear;
 	}
@@ -66,7 +65,7 @@
 	#boxer .boxer-caption p { margin: 0; padding: 15px 10px 10px 10px; }
 	#boxer .boxer-caption.gallery p { padding-top: 0; }
 
-	#boxer.loading .boxer-container { background: #fff url(../images/jquery.fs.boxer-loading.gif) no-repeat center; }
+	#boxer.loading .boxer-container { background: #fff url(<%= asset_path 'memorials/boxer-loading.gif' %>) no-repeat center; }
 
 	/* Mobile */
 	#boxer.mobile { background: #000; border-radius: 0; height: 100%; left: 0; padding: 30px 0 0; position: fixed; top: 0; width: 100%; }
@@ -94,7 +93,7 @@
 		        transition: 		transform 0.25s ease-out !important;
 	}
 
-	#boxer.mobile.loading .boxer-container { background: #000 url(../images/jquery.fs.boxer-loading-dark.gif) no-repeat center; }
+	#boxer.mobile.loading .boxer-container { background: #000 url(<%= asset_path 'memorials/boxer-loading-dark.gif' %>) no-repeat center; }
 
 	#boxer.mobile.inline .boxer-content,
 	#boxer.mobile.iframe .boxer-content { overflow-x: hidden; overflow-y: scroll;
