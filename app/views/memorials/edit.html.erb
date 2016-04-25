@@ -1,92 +1,200 @@
 <%= render 'shared/content_title', title: "Add Content" %>
 
-<%= render 'shared/errors', obj: @memorial %>
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+          <h2>General Information</h2>
+          <%= form_for @memorial do |f| %>
+          <%= render 'shared/errors', obj: @memorial %>
+          <div class="control-group">
+            <%= f.label :name, "Full Name" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :dod, "Date of Passing" %>
+            <%= f.date_field :dod, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :address, "Cemetery Street Address" %>
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :biography %>
+            <%= f.cktext_area :biography, ckeditor: { toolbar: 'mini' } %>
+          </div>
+          <br><br>
+          <h4>Current Cover Image</h4>
+          <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
+          <br><br><br>
+          <div class="control-group">
+            <%= f.label :hero, "Cover Image (Use a large image file)" %>
+            <%= f.file_field :hero, class: "form-control" %>
+          </div>
+          <%= f.submit "Update Memorial", class: "submit-btn submit md-btn btn" %>
+          <% end %>
+        <br>
+        <hr>
+        <h2>Timeline</h2>
+        <br>
+        <h4>Event Listing</h4>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @memorial.reload.events.each_with_index do |event, index| %>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= event.title %></td>
+                <td><%= display_short_date(event.date) %></td>
+                <td><%= image_tag event.picture.url(:thumb) if event.picture? %></td>
+                <td><%= truncate(event.description, length: 50, separator: '') %></td>
+                <td><%= link_to "Edit" %></td>
+                <td><%= link_to "Delete" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <h4>Add New Event</h4>
+          <%= form_for [@memorial, @event] do |f| %>
+          <div class="control-group">
+            <%= f.label :date %>
+            <%= f.date_field :date, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, rows: 5, class: "form-control" %>
+          </div>
+          <div class="control-group">
+            <%= f.label :picture %>
+            <%= f.file_field :picture, class: "form-control" %>
+          </div>
+          <%= f.submit "Add Timeline Event", class: "submit-btn submit md-btn btn" %>
+          <% end %>
+        <br>
+        <hr>
+        <h2>Photos</h2>
+        <br>
+        <h4>Current Gallery</h4>
+        <div id="team-page" class="page team-page page-container text-center">
+          <div class="container">
+            <div class="row">
+              <% @memorial.reload.photos.each do |photo| %>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                  <div class="member">
+                    <div class="member-avatar"><%= image_tag photo.picture.url(:thumb) if photo.picture? %></div>
+                    <div class="member-details">
+                      <h4 class="name"><a href="#"><%= photo.caption %></a></h4><!-- /.name -->
+                    </div><!-- /.member-details -->
+                  </div><!-- /.member -->
+                </div>
+              <% end %>
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+        </div><!-- /#about-page -->
 
-<h2>General Information</h2>
-<div>
-  <%= form_for @memorial do |f| %>
-  <div class="control-group">
-    <%= f.label :name, "Full Name" %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="control-group">
-    <%= f.label :dod, "Passed Away" %>
-    <%= f.date_field :dod %>
-  </div>
-  <div class="control-group">
-    <%= f.label :address, "Cemetery Street Address" %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="control-group">
-    <%= f.label :biography %>
-    <%= f.text_area :biography, rows: 5 %>
-    <!-- WYSIWYG -->
-  </div>
-  <h4>Current Memorial Image</h4>
-  <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
-  <div class="control-group">
-    <%= f.label :hero, "Memorial Image" %>
-    <%= f.file_field :hero %>
-  </div>
-  <%= f.submit "Update Memorial" %>
-  <% end %>
-</div>
-<br><br>
+
+        <h4>Add New Photo</h4>
+          <!-- gallery upload -->
+          <!-- title and image attachment -->
+          <!-- multiple image and title upload via jquery -->
+          <%= form_for [@memorial, @photo] do |f| %>
+            <div class="control-group">
+              <%= f.label :caption %>
+              <%= f.text_field :caption, class: "form-control" %>
+            </div>
+            <div class="control-group">
+              <%= f.label :picture %>
+              <%= f.file_field :picture, class: "form-control" %>
+            </div>
+            <%= f.submit "Submit Photo", class: "submit-btn submit md-btn btn" %>
+          <% end %>
+        <br><br>
 
 
-<h2>Timeline</h2>
-<% @memorial.reload.events.each do |event| %>
-  <div>
-    <%= event.title %>: <%= event.description %> ||
-    <%= image_tag event.picture.url(:thumb) if event.picture? %>
-    <%= display_datetime(event.date) %>
-  </div>
-  <br>
-<% end %>
+			</div><!--  /.about-right-box -->
 
-<div>
-  <%= form_for [@memorial, @event] do |f| %>
-  <div class="control-group">
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
-  <div class="control-group">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="control-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 5 %>
-  </div>
-  <div class="control-group">
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-  </div>
-  <%= f.submit "Add Timeline Event" %>
-  <% end %>
-</div>
-<br><br>
 
-<h2>Photos</h2>
-<% @memorial.reload.photos.each do |photo| %>
-  <div>
-    <%= image_tag photo.picture.url(:thumb) if photo.picture? %>
-    <%= photo.caption %>
-  </div>
-  <br>
-<% end %>
-  <!-- gallery upload -->
-  <!-- title and image attachment -->
-  <!-- multiple image and title upload via jquery -->
-  <%= form_for [@memorial, @photo] do |f| %>
-    <div class="control-group">
-      <%= f.label :caption %>
-      <%= f.text_field :caption %>
-    </div>
-    <div class="control-group">
-      <%= f.label :picture %>
-      <%= f.file_field :picture %>
-    </div>
-    <%= f.submit "Submit Photo" %>
-  <% end %>
-<br><br>
+
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+
+
+			<!-- Sidebar -->
+			<div id="sidebar" class="col-md-4 sidebar">
+				<!-- Banner Section -->
+				<div id="banners" class="banners">
+						<div class="banner-item">
+						<div class="banner-icon">
+						</div>
+						<h3 class="banner-title">Visitor Statistics</h3>
+						<p class="banner-txt">
+              Visitors Today:<br>
+              Visitors This Month:<br>
+              Visitors This Year:<br>
+						</p>
+					</div>
+				</div><!-- /.banner -->
+
+        <div class="banner-item">
+          <div class="banner-icon">
+            <i class="fa fa-book"></i>
+          </div>
+          <h3 class="banner-title">Memorials 101</h3>
+          <p class="banner-txt">
+            Articles showing how to create a memorial
+          </p>
+        </div>
+
+        <div class="banner-item">
+          <div class="banner-icon">
+            <i class="fa fa-file-text"></i>
+          </div>
+          <h3 class="banner-title">Video Tutorial</h3>
+          <p class="banner-txt">
+            Video tutorial of creating a memorial
+          </p>
+        </div>
+
+
+        <!-- Rotating blog articles from main site -->
+        <aside class="widget widget_post">
+          <img src="<%= asset_path 'memorials/follow-our-faith/ing-sidebar.jpg' %>" alt="Faith Image">
+          <h4 class="post-title">
+            Rotate Blog Article
+          </h4>
+          <p>
+            We have already learned that we should be active in doing good, when the act will be most helpful.
+          </p>
+          <div class="continue-reading">
+            <a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+          </div><!-- /.continue-reading -->
+
+        </aside><!-- /.widget -->
+
+
+				<aside class="widget widget_slider">
+				</aside>
+			</div><!-- /#sidebar -->
+					<!-- Sidebar End-->
+
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#about-page -->

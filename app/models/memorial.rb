@@ -13,7 +13,7 @@
 class Memorial < ActiveRecord::Base
   belongs_to :user, foreign_key: :user_id
 
-  has_many :events, foreign_key: :memorial_id
+  has_many :events, -> { order "date ASC" }, foreign_key: :memorial_id
   has_many :photos, foreign_key: :memorial_id
   has_many :comments, as: :commentable
 

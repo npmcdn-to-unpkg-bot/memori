@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require validate
+//= require ckeditor/init
 //= require memorials/bootstrap
 //= require memorials/custom
 //= require memorials/gmap3

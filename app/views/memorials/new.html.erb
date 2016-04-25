@@ -9,20 +9,27 @@
 					<div class="col-md-8">
             <%= form_for @memorial do |f| %>
               <%= render 'shared/errors', obj: @memorial %>
-              <%= f.label :name, "Full Name" %>
-              <%= f.text_field :name, class:"form-control", placeholder: "Full Name of the Deceased" %>
-              <%= f.label :dod, "Date of Passing" %>
-              <%= f.date_field :dod, class:"form-control" %>
+							<div class="control-group">
+              	<%= f.label :name, "Full Name" %>
+              	<%= f.text_field :name, class:"form-control", placeholder: "Full Name of the Deceased" %>
+							</div>
+							<div class="control-group">
+	              <%= f.label :dod, "Date of Passing" %>
+	              <%= f.date_field :dod, class:"form-control" %>
+							</div>
             <br>
-            Acceptable URLs: "tomas-peterson", "tomas.peterson", "tomas_peterson", "tomas-peterson-1974"
-            <br><br>
-              <div class="col-md-4">
-                <br>
-                <%= f.label :url, "www.memorialspaces.com/" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :url, class: "form-control" %>
-              </div>
+						<div class="control-group">
+	            Acceptable URLs: "tomas-peterson", "tomas.peterson", "tomas_peterson", "tomas-peterson-1974"
+	            <br><br>
+
+	              <div class="col-md-4">
+	                <br>
+	                <%= f.label :url, "www.memorialspaces.com/" %>
+	              </div>
+	              <div class="col-md-8">
+	                <%= f.text_field :url, class: "form-control" %>
+	              </div>
+						</div>
             <br><br><br><br>
             <h4>Template Selector</h4>
             <!-- Put template selection option here -->
