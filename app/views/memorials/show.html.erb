@@ -2,7 +2,7 @@
   <h2><%= @memorial.name %></h2>
   <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
   <p>
-    <%= @memorial.biography %>
+    <%= @memorial.biography.html_safe %>
   </p>
   <p>
     Graveyard Location:

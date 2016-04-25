@@ -4,9 +4,11 @@ Working on a side project. People can create interactive memorials for loved one
 
 ## bugs / fixes timeline
 
+### Sunday
+* Change to Postgres / Puma
+
 ### Monday
 * Home page content / layout
-* Change to Postgres / Puma
 
 ### Tuesday
 * First Memorial Theme / Setup color-pattern selector (on registration)
@@ -22,7 +24,6 @@ Working on a side project. People can create interactive memorials for loved one
 ### Thursday
 * URL for memorial (validation / options)
 * Password protect option
-*	Lockdown routes
 
 ### Friday
 *	Slugs / Unique IDs
