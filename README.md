@@ -1,5 +1,6 @@
 # Memorial Project
 
+
 A person closed to me passed away and I wanted to create an online memorial for them, so their friends and relatives from around the world could celebrate that person's legacy. I searched around the web, and all the available platforms were severely outdated.
 
 ### Feature Overview
