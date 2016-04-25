@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160423172637) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "memorial_id"
@@ -25,26 +28,27 @@ ActiveRecord::Schema.define(version: 20160423172637) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
+    t.string   "picture"
     t.text     "description"
     t.datetime "date"
+    t.integer  "memorial_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "memorial_id"
-    t.string   "picture"
   end
 
   create_table "memorials", force: :cascade do |t|
     t.string   "name"
-    t.text     "biography"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "dod"
     t.string   "url"
     t.string   "hero"
     t.string   "address"
+    t.text     "biography"
+    t.integer  "user_id"
+    t.datetime "dod"
+    t.datetime "dob"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -57,12 +61,12 @@ ActiveRecord::Schema.define(version: 20160423172637) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
+    t.string   "password_digest"
+    t.string   "name"
+    t.string   "email"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "email"
-    t.string   "name"
-    t.string   "role"
   end
 
 end

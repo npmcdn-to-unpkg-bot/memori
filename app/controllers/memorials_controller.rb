@@ -1,7 +1,7 @@
 class MemorialsController < ApplicationController
   before_action :set_memorial, only: [:show, :edit, :update]
   before_action :require_user, except: [:home, :show]
-  before_action :require_creator, except: [:home, :show]
+  before_action :require_creator, only: [:edit, :update]
 
   def home
     redirect_to memorials_path if current_user

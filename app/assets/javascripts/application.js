@@ -23,11 +23,11 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
-  $("#new_memorial").validate({
-    debug: true,
-    rules: {
-      "memorial[url]": {required: true, remote:"/memorials/check_url" },
-    }
-  });
-});
+// $(document).ready(function () {
+//   $("#new_memorial").validate({
+//     debug: true,
+//     rules: {
+//       "memorial[url]": {required: true, remote:"/memorials/check_url" },
+//     }
+//   });
+// });

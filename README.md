@@ -22,7 +22,7 @@ Working on a side project. People can create interactive memorials for loved one
 * REACT(?)
 
 ### Thursday
-* URL for memorial (validation / options)
+* URL for memorial (validation / options) - right now does not work with underscore or periods
 * Password protect option
 
 ### Friday
