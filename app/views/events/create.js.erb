@@ -1,2 +1,6 @@
-$('#events').html("<%= j (render @events) %>");
-$('#event-form').slideUp(350);
+<% if @event.save %>
+  $('#events').html("<%= j (render @events) %>");
+  $('#event-form').slideUp(350);
+<% else %>
+  alert('You missed one of the required fields.');
+<% end %>
