@@ -1,0 +1,29 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require yes/modernizr
+//= require yes/device
+//= require yes/imagesloaded
+//= require yes/smoothscroll
+//= require yes/isotope
+//= require yes/sloppy-masonry
+//= require yes/parallax
+//= require yes/scrollTo
+//= require yes/waypoints
+//= require yes/YTPlayer
+//= require yes/magnific-popup
+//= require yes/wow
+//= require yes/retina
+//= require yes/soc-share
+//= require yes/custom

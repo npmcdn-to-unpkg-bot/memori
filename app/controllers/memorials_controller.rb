@@ -8,11 +8,14 @@ class MemorialsController < ApplicationController
   end
 
   def index
-    @memorials = current_user.memorials
+    @memorials = current_user.memorials.order("created_at DESC")
   end
 
   def show
     @comment = Comment.new
+    @message = Message.new
+
+    render layout: 'yes'
   end
 
   def new
@@ -64,15 +67,16 @@ class MemorialsController < ApplicationController
 
   private
 
-  def memorial_params
-    params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address)
-  end
+    def memorial_params
+      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address)
+    end
 
-  def set_memorial
-    @memorial = Memorial.find(params[:id])
-  end
+    def set_memorial
+      @memorial = Memorial.find(params[:id])
+    end
 
-  def require_creator
-    access_denied unless logged_in? and (current_user == @memorial.user || current_user.admin?)
-  end
+    def require_creator
+      access_denied unless logged_in? and (current_user == @memorial.user || current_user.admin?)
+    end
+
 end

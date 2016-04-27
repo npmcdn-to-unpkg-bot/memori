@@ -18,8 +18,8 @@
             <%= f.date_field :dod, class: "form-control" %>
           </div>
           <div class="control-group">
-            <%= f.label :address, "Cemetery Street Address" %>
-            <%= f.text_field :address, class: "form-control" %>
+            <%= f.label :address, "Cemetery" %>
+            <%= f.text_field :address, class: "form-control", placeholder: "Street address goes here" %>
           </div>
           <div class="control-group">
             <%= f.label :biography %>
@@ -30,7 +30,7 @@
           <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
           <br><br><br>
           <div class="control-group">
-            <%= f.label :hero, "Cover Image (Use a large image file)" %>
+            <%= f.label :hero, "Cover Image (Use a Large Picture)" %>
             <%= f.file_field :hero, class: "form-control" %>
           </div>
           <%= f.submit "Update Memorial", class: "submit-btn submit md-btn btn" %>
@@ -76,11 +76,11 @@
           </div>
           <div class="control-group">
             <%= f.label :title %>
-            <%= f.text_field :title, class: "form-control" %>
+            <%= f.text_field :title, class: "form-control", placeholder: "What event was it?" %>
           </div>
           <div class="control-group">
             <%= f.label :description %>
-            <%= f.text_area :description, rows: 5, class: "form-control" %>
+            <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What happened and why was it memorable?" %>
           </div>
           <div class="control-group">
             <%= f.label :picture %>
@@ -118,7 +118,7 @@
           <%= form_for [@memorial, @photo] do |f| %>
             <div class="control-group">
               <%= f.label :caption %>
-              <%= f.text_field :caption, class: "form-control" %>
+              <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo" %>
             </div>
             <div class="control-group">
               <%= f.label :picture %>

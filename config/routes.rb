@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :memorials, except: [:destroy] do
     resources :comments, module: :memorials, only: [:create]
+    resources :messages, only: [:create]
 
     resources :events, except: [:index, :show] do
       resources :comments, module: :events, only: [:create]

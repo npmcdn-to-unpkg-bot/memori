@@ -25,7 +25,6 @@
 //= require memorials/counterup
 //= require memorials/isotope
 //= require memorials/owl
-//= require turbolinks
 //= require_tree .
 
 // $(document).ready(function () {

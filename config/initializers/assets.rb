@@ -12,3 +12,6 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "im
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w(vendor/assets/images/*)
 Rails.application.config.assets.precompile += %w( memorials/* )
+Rails.application.config.assets.precompile += %w( yes/* )
+Rails.application.config.assets.precompile += %w( yes.css )
+Rails.application.config.assets.precompile += %w( yes.js )

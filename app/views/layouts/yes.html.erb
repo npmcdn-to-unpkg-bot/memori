@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Memorial Spaces - Remember Your Loved Ones</title>
+  <%= stylesheet_link_tag 'yes', media: 'all' %>
+  <%= javascript_include_tag 'yes' %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <%= yield %>
+
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script>
+      var markers = [
+          ['Name of Place, Paris', 48.8666436, 2.3199989, 'hotel','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8588589, 2.3470599, 'restaurant','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8656488, 2.3709794, 'airport','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8777566, 2.3369444, 'attraction','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8589917, 2.3106827, 'bachelor','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8785204, 2.3201107, 'bachelorette','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8845034, 2.3599466, 'shopping','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8894376, 2.3495625, 'special','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8888826, 2.3477870, 'wedding','Insert Some Demo Text Here'],
+          ['Name of Place, Paris', 48.8922916, 2.3407284, 'weddingParty','Insert Some Demo Text Here']
+      ];
+  </script>
+
+</body>
+</html>
