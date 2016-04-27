@@ -1,0 +1,15 @@
+<h4>Add New Photo</h4>
+  <!-- gallery upload -->
+  <!-- title and image attachment -->
+  <!-- multiple image and title upload via jquery -->
+  <%= form_for [@memorial, @photo] do |f| %>
+    <div class="control-group">
+      <%= f.label :caption %>
+      <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo" %>
+    </div>
+    <div class="control-group">
+      <%= f.label :picture %>
+      <%= f.file_field :picture, class: "form-control" %>
+    </div>
+    <%= f.submit "Submit Photo", class: "submit-btn submit md-btn btn" %>
+  <% end %>

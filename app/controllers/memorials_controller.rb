@@ -43,11 +43,19 @@ class MemorialsController < ApplicationController
   end
 
   def update
-    if @memorial.update(memorial_params)
-      flash[:notice] = "Your memorial was updated."
-      redirect_to edit_memorial_path(@memorial)
-    else
-      render :edit
+    @memorial.update_attributes(memorial_params)
+
+    respond_to do |format|
+      format.html do
+        if @memorial.update(memorial_params)
+          flash[:notice] = "Your memorial was updated."
+          redirect_to edit_memorial_path(@memorial)
+        else
+          render :edit
+        end
+      end
+
+      format.js
     end
   end
 

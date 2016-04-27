@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :set_memorial
   before_action :require_user
   before_action :require_creator
+  respond_to :html, :js
+
+  def new
+    @event = Event.new
+  end
 
   def create
     @event =  @memorial.events.build(params.require(:event).permit(:date, :title, :description, :picture))

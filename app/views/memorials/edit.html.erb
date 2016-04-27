@@ -6,35 +6,7 @@
 			<!-- Post Container -->
 			<div id="post-container" class="col-md-8 post-container" role="main">
 				<div class="about-right-box">
-          <h2>General Information</h2>
-          <%= form_for @memorial do |f| %>
-          <%= render 'shared/errors', obj: @memorial %>
-          <div class="control-group">
-            <%= f.label :name, "Full Name" %>
-            <%= f.text_field :name, class: "form-control" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :dod, "Date of Passing" %>
-            <%= f.date_field :dod, class: "form-control" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :address, "Cemetery" %>
-            <%= f.text_field :address, class: "form-control", placeholder: "Street address goes here" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :biography %>
-            <%= f.cktext_area :biography, ckeditor: { toolbar: 'mini' } %>
-          </div>
-          <br><br>
-          <h4>Current Cover Image</h4>
-          <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
-          <br><br><br>
-          <div class="control-group">
-            <%= f.label :hero, "Cover Image (Use a Large Picture)" %>
-            <%= f.file_field :hero, class: "form-control" %>
-          </div>
-          <%= f.submit "Update Memorial", class: "submit-btn submit md-btn btn" %>
-          <% end %>
+					<%= render 'memorials/client_backend/form' %>
         <br>
         <hr>
         <h2>Timeline</h2>
@@ -68,26 +40,13 @@
           </tbody>
         </table>
         <br>
-        <h4>Add New Event</h4>
-          <%= form_for [@memorial, @event] do |f| %>
-          <div class="control-group">
-            <%= f.label :date %>
-            <%= f.date_field :date, class: "form-control" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "form-control", placeholder: "What event was it?" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "What happened and why was it memorable?" %>
-          </div>
-          <div class="control-group">
-            <%= f.label :picture %>
-            <%= f.file_field :picture, class: "form-control" %>
-          </div>
-          <%= f.submit "Add Timeline Event", class: "submit-btn submit md-btn btn" %>
-          <% end %>
+
+				<%= link_to "New Timeline Event", new_memorial_event_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
+
+				<br>
+
+				<%= render 'events/form' %>
+
         <br>
         <hr>
         <h2>Photos</h2>
@@ -111,21 +70,8 @@
         </div><!-- /#about-page -->
 
 
-        <h4>Add New Photo</h4>
-          <!-- gallery upload -->
-          <!-- title and image attachment -->
-          <!-- multiple image and title upload via jquery -->
-          <%= form_for [@memorial, @photo] do |f| %>
-            <div class="control-group">
-              <%= f.label :caption %>
-              <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo" %>
-            </div>
-            <div class="control-group">
-              <%= f.label :picture %>
-              <%= f.file_field :picture, class: "form-control" %>
-            </div>
-            <%= f.submit "Submit Photo", class: "submit-btn submit md-btn btn" %>
-          <% end %>
+				<%= render 'photos/form' %>
+
         <br><br>
 
 
@@ -138,62 +84,8 @@
 
 
 			<!-- Sidebar -->
-			<div id="sidebar" class="col-md-4 sidebar">
-				<!-- Banner Section -->
-				<div id="banners" class="banners">
-						<div class="banner-item">
-						<div class="banner-icon">
-						</div>
-						<h3 class="banner-title">Visitor Statistics</h3>
-						<p class="banner-txt">
-              Visitors Today:<br>
-              Visitors This Month:<br>
-              Visitors This Year:<br>
-						</p>
-					</div>
-				</div><!-- /.banner -->
-
-        <div class="banner-item">
-          <div class="banner-icon">
-            <i class="fa fa-book"></i>
-          </div>
-          <h3 class="banner-title">Memorials 101</h3>
-          <p class="banner-txt">
-            Articles showing how to create a memorial
-          </p>
-        </div>
-
-        <div class="banner-item">
-          <div class="banner-icon">
-            <i class="fa fa-file-text"></i>
-          </div>
-          <h3 class="banner-title">Video Tutorial</h3>
-          <p class="banner-txt">
-            Video tutorial of creating a memorial
-          </p>
-        </div>
-
-
-        <!-- Rotating blog articles from main site -->
-        <aside class="widget widget_post">
-          <img src="<%= asset_path 'memorials/follow-our-faith/ing-sidebar.jpg' %>" alt="Faith Image">
-          <h4 class="post-title">
-            Rotate Blog Article
-          </h4>
-          <p>
-            We have already learned that we should be active in doing good, when the act will be most helpful.
-          </p>
-          <div class="continue-reading">
-            <a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
-          </div><!-- /.continue-reading -->
-
-        </aside><!-- /.widget -->
-
-
-				<aside class="widget widget_slider">
-				</aside>
-			</div><!-- /#sidebar -->
-					<!-- Sidebar End-->
+			<%= render 'edit_sidebar' %>
+			<!-- Sidebar End-->
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->

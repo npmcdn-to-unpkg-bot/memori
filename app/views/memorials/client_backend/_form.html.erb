@@ -1,0 +1,29 @@
+<h2>General Information</h2>
+<%= form_for(@memorial, remote: true) do |f| %>
+<%= render 'shared/errors', obj: @memorial %>
+<div class="control-group">
+  <%= f.label :name, "Full Name" %>
+  <%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="control-group">
+  <%= f.label :dod, "Date of Passing" %>
+  <%= f.date_field :dod, class: "form-control" %>
+</div>
+<div class="control-group">
+  <%= f.label :address, "Cemetery" %>
+  <%= f.text_field :address, class: "form-control", placeholder: "Street address goes here" %>
+</div>
+<div class="control-group">
+  <%= f.label :biography %>
+  <%= f.cktext_area :biography, ckeditor: { toolbar: 'mini' } %>
+</div>
+<br><br>
+<h4>Current Cover Image</h4>
+<%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
+<br><br><br>
+<div class="control-group">
+  <%= f.label :hero, "Cover Image (Use a Large Picture)" %>
+  <%= f.file_field :hero, class: "form-control" %>
+</div>
+<%= f.submit "Update Memorial", class: "submit-btn submit md-btn btn" %>
+<% end %>
