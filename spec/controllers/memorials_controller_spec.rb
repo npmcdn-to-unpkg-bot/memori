@@ -102,7 +102,31 @@ describe MemorialsController do
   end
 
   describe "GET edit" do
-    it "sets @memorial variable"
+    before do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      memorial1 = Fabricate(:memorial, user: alice)
+    end
+
+    it "sets @memorial variable" do
+      get :edit, id: Memorial.first.id
+      expect(assigns(:memorial)).to eq(Memorial.first)
+    end
   end
-  describe "POST update"
+  describe "POST update" do
+    before do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      memorial1 = Fabricate(:memorial, user: alice)
+    end
+
+    it "updates the memorial" do
+      post :update, id: Memorial.first.id, memorial: {name: "bob", dod: DateTime.now, theme: "purps"}
+      expect(Memorial.first.name).to eq('bob')
+    end
+    it "redirects to the edit memorial path" do
+      post :update, id: Memorial.first.id, memorial: {name: "bob", dod: DateTime.now, theme: "purps"}
+      expect(response).to redirect_to edit_memorial_path
+    end
+  end
 end
