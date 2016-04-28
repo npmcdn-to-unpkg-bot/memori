@@ -53,27 +53,56 @@ describe MemorialsController do
   end
 
   describe "GET new" do
-  #   it "sets the @memorial variable" do
-  #     get :new
-  #     expect(assigns(:memorial)).to be_new_record
-  #     expect(assigns(:memorial)).to be_instance_of(Memorial)
-  #   end
-  #   it "renders the new template" do
-  #     get :new
-  #     expect(response).to render_template :new
-  #   end
+    it "sets the @memorial variable" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+
+      get :new
+      expect(assigns(:memorial)).to be_new_record
+      expect(assigns(:memorial)).to be_instance_of(Memorial)
+    end
+
+    it "renders the new template" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+
+      get :new
+      expect(response).to render_template :new
+    end
   end
 
   describe "POST create" do
-  #   it "create an memorial with valid inputs"
-  #   it "redirects to the memorial path with valid inputs"
-  #   it "does not create a memorial with invalid inputs"
-  #   it "renders the new template when the input is invalid"
+    context "with valid inputs" do
+      before do
+        alice = Fabricate(:user)
+        session[:user_id] = alice.id
+        post :create, memorial: {name: "james", dod: DateTime.now, theme: "baby"}
+      end
+      it "create an memorial with valid inputs" do
+        expect(Memorial.count).to eq(1)
+      end
+
+      it "redirects to the memorial path with valid inputs" do
+        expect(response).to redirect_to memorials_path
+      end
+    end
+    context "with invalid inputs" do
+      before do
+        alice = Fabricate(:user)
+        session[:user_id] = alice.id
+        post :create, memorial: {name: "james", theme: "baby"}
+      end
+      it "does not create a memorial with invalid inputs" do
+        expect(Memorial.count).to eq(0)
+      end
+      it "renders the new memorial template with invalid inputs" do
+        expect(response).to render_template :new
+      end
+    end
   end
 
-  describe "GET edit"
+  describe "GET edit" do
+    it "sets @memorial variable"
+  end
   describe "POST update"
-
-
-
 end

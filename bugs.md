@@ -2,7 +2,7 @@
 
 ### Thursday
 * Backend - Gallery (multiple file upload with jQuery)
-* TDD: Controllers (4/7) - Messages, Memorials, Comments
+* TDD: Controllers (5/7) - Memorials, Comments
 
 ### Friday
 * Create Admin (Blog, Add templates/colors)

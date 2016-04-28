@@ -75,7 +75,6 @@ class EventsController < ApplicationController
         @events = @memorial.events
       end
     end
-
   end
 
   private
