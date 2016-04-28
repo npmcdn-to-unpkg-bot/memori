@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <div id="logo"><%= @memorial.name %> <span>&amp;</span></div>
-<section id="top" class="hero" data-type="parallax" style="background-image: url(<%= @memorial.hero.url if @memorial.hero %>)">
+<section id="top" class="hero" data-type="parallax">
     <header id="main-menu">
         <div class="container">
             <div class="row">
@@ -99,20 +99,8 @@
                             <a href="#" class="more">View Comments</a>
                             <br>
                             <a href="#" class="more">Add Comment</a>
-                            <%= form_for [@memorial, @event, @comment], html: {class: "actionform"} do |f| %>
-                              <%= render 'shared/errors', obj: @comment %>
-                              <div class="control-group">
-                                <%= f.label :author, "Name" %>
-                                <%= f.text_field :author %>
-                              </div>
-                              <div class="control-group">
-                                <%= f.label :body, "Comment" %>
-                                <%= f.text_area :body, rows: 5 %>
-                              </div>
-                              <div class="clearfix"></div>
-                              <%= f.submit "Leave Entry", class: "color" %>
-                              <div class="clearfix"></div>
-                            <% end %>
+
+
                         </div>
 
                     </div>
@@ -221,6 +209,11 @@
                           <div class="box-content">
                               <p><%= event.description %></p>
                               <a href="#" class="more">View Comments</a>
+                              <% event.comments.each do |comment| %>
+                                <div class="well">
+                                  <%= comment.body %>
+                                </div>
+                              <% end %>
                               <br>
                               <a href="#" class="more">Add Comment</a>
                               <%= form_for [@memorial, event, @comment], html: {class: "actionform"} do |f| %>
@@ -518,10 +511,19 @@
             <span class="arrow-down"></span>
             <div class="row">
                 <div class="timeline-year start"><span>2014</span></div>
-                <% @memorial.reload.comments.each_with_index do |comment, index| %>
-                  <%= render 'comments/guestbook', comment: comment, index: index %>
-                <% end %>
+                <!-- display guestbook comments -->
 
+                <% @guestbook.comments.each_with_index do |comment,index| %>
+                  <div class="column six heart <%= (index+1) % 2 == 0 ? 'right' : 'left' %>">
+                    <div class="box pattern">
+                      <span class="date"><%= display_month_day(comment.created_at) %></span>
+                      <div class="guest">
+                        <p><%= comment.body %></p>
+                        <span class="name"><%= comment.author %></span>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
 
                 <div class="clearfix"></div>
                 <div class="timeline-button"><a href="#" class="button">Load more</a></div>
@@ -533,41 +535,27 @@
             </header>
             <div class="container smaller">
               <div class="row">
-                <%= form_for [@memorial, @comment], html: {class: "actionform"} do |f| %>
-                  <%= render 'shared/errors', obj: @comment %>
-                  <div class="control-group">
-                    <%= f.label :author, "Name" %>
-                    <%= f.text_field :author %>
-                  </div>
-                  <div class="control-group">
-                    <%= f.label :body, "Comment" %>
-                    <%= f.text_area :body, rows: 5 %>
-                  </div>
-                  <div class="clearfix"></div>
-                  <%= f.submit "Leave Entry", class: "color" %>
-                  <div class="clearfix"></div>
-                <% end %>
+              <!-- guestbook form / comment code -->
+              <%= form_for [@memorial, @guestbook, @comment], html: {class: "actionform"} do |f| %>
+                <%= render 'shared/errors', obj: @comment %>
+                <div class="control-group">
+                  <%= f.label :author, "Name" %>
+                  <%= f.text_field :author %>
+                </div>
+                <div class="control-group">
+                  <%= f.label :body, "Comment" %>
+                  <%= f.text_area :body, rows: 5 %>
+                </div>
+                <div class="clearfix"></div>
+                <%= f.submit "Leave Entry", class: "color" %>
+                <div class="clearfix"></div>
+              <% end %>
               </div>
             </div>
         </div>
     </section>
     <!-- #Guestbook Section Ends -->
 
-    <h5>Comments:</h5>
-
-
-
-
-    <h4>Comments</h4>
-
-    <% @memorial.reload.comments.each do |comment| %>
-      <div>
-        <%= comment.body %>
-        by: <%= comment.author %>
-        <%= display_datetime(comment.created_at) %>
-      </div>
-      <br>
-    <% end %>
 
     <!-- Contact Section -->
     <section id="contact" class="bgcolor">

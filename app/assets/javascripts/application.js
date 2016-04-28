@@ -25,19 +25,10 @@
 //= require memorials/counterup
 //= require memorials/isotope
 //= require memorials/owl
-//= require_tree .
 
-// $(document).ready(function () {
-//   $("#new_memorial").validate({
-//     debug: true,
-//     rules: {
-//       "memorial[url]": {required: true, remote:"/memorials/check_url" },
-//     }
-//   });
-// });
 
 $(document).ready(function() {
   $('.counter').counterUp();
   $('.boxer').boxer();
 
-});	//ready
+}); 

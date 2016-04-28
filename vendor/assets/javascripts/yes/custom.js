@@ -109,7 +109,7 @@ if (!Array.prototype.indexOf) {
             }
         });
 
-        /* Scroll to Element on Page - 
+        /* Scroll to Element on Page -
         /* USAGE: Add class "scrollTo" and in href add element where you want to scroll page to.
         ==================================================================================== */
         $('a.scrollTo').click(function(event) {
@@ -328,7 +328,7 @@ if (!Array.prototype.indexOf) {
             return false;
         });
 
-        /* Google Map 
+        /* Google Map
         ==================================================================================== */
         google.maps.event.addDomListener(window, 'load', init);
 
@@ -341,10 +341,10 @@ if (!Array.prototype.indexOf) {
                 airport: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344)},
                 hotel: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 58),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344)},
                 restaurant: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 116),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344) },
-                shopping: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 174),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344) },    
+                shopping: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 174),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344) },
                 attraction: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 58),origin: new google.maps.Point(0, 232),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344) },
                 special: { url:'images/map/MapPins-small-red1.png',size: new google.maps.Size(35, 54),origin: new google.maps.Point(0, 290),anchor: new google.maps.Point(17.5, 40),scaledSize: new google.maps.Size(35, 344) },
-        
+
                 bachelor: { url:'images/map/MapPins-big-red1.png',size: new google.maps.Size(53, 93),origin: new google.maps.Point(0, 0),anchor: new google.maps.Point(26.5, 68),scaledSize: new google.maps.Size(53, 372) },
                 bachelorette: { url:'images/map/MapPins-big-red1.png',size: new google.maps.Size(53, 93),origin: new google.maps.Point(0, 93),anchor: new google.maps.Point(26.5, 68),scaledSize: new google.maps.Size(53, 372) },
                 wedding: { url:'images/map/MapPins-big-red1.png',size: new google.maps.Size(53, 93),origin: new google.maps.Point(0, 186),anchor: new google.maps.Point(26.5, 68),scaledSize: new google.maps.Size(53, 372) },
@@ -456,7 +456,7 @@ if (!Array.prototype.indexOf) {
                     infoWindow.setContent('<div class="info_content"><h3>' + this.title + '</h3><p>' + this.infoContent + '</p></div>');
                     infoWindow.open(map, this);
                 });
-                
+
             };
             map.fitBounds(bound);
         }
@@ -565,10 +565,10 @@ if (!Array.prototype.indexOf) {
                     if (this.type != 'image') {
                         return;
                     }
-                    if (this.caption !=null) { 
-                        if(this.caption.text != null) { 
-                            var title = this.caption.text; 
-                        } 
+                    if (this.caption !=null) {
+                        if(this.caption.text != null) {
+                            var title = this.caption.text;
+                        }
                     } else { var title = ""; }
                     img.push(
                         $("<a href='" + this.link + "' target='_blank'></a>").append(

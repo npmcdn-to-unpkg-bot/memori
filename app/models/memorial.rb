@@ -17,7 +17,7 @@ class Memorial < ActiveRecord::Base
 
   has_many :events, -> { order "date ASC" }, foreign_key: :memorial_id
   has_many :photos, foreign_key: :memorial_id
-  has_many :comments, -> { order "created_at ASC" }, as: :commentable
+  has_one :guestbook, foreign_key: :memorial_id
 
   mount_uploader :hero, HeroUploader
 
@@ -27,11 +27,7 @@ class Memorial < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-
-
   def set_default_values
     self.biography = "This is where the biography for the deceased should go. Feel free to make it as short or long as you want. You can always come back and add more information."
   end
-
-
 end

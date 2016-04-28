@@ -14,6 +14,7 @@ class MemorialsController < ApplicationController
   def show
     @comment = Comment.new
     @message = Message.new
+    @guestbook = Guestbook.find_by(memorial: @memorial)
 
     render layout: 'yes'
   end
@@ -25,6 +26,7 @@ class MemorialsController < ApplicationController
   def create
     @memorial = Memorial.new(memorial_params)
     @memorial.user = current_user
+    @guestbook = Guestbook.create(memorial: @memorial)
 
     if @memorial.save
       flash[:notice] = "Your memorial was saved."
