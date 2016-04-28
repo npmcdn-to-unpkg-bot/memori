@@ -96,7 +96,23 @@
                         <h2>The day we met</h2>
                         <div class="box-content">
                             <p>This is some dummy text, while bufi is dumy. Or it might be billy ,but someone is while evnayon is affected by his sutpidiyty whoha</p>
-                            <a href="single-post.html" class="more">Read More</a>
+                            <a href="#" class="more">View Comments</a>
+                            <br>
+                            <a href="#" class="more">Add Comment</a>
+                            <%= form_for [@memorial, @event, @comment], html: {class: "actionform"} do |f| %>
+                              <%= render 'shared/errors', obj: @comment %>
+                              <div class="control-group">
+                                <%= f.label :author, "Name" %>
+                                <%= f.text_field :author %>
+                              </div>
+                              <div class="control-group">
+                                <%= f.label :body, "Comment" %>
+                                <%= f.text_area :body, rows: 5 %>
+                              </div>
+                              <div class="clearfix"></div>
+                              <%= f.submit "Leave Entry", class: "color" %>
+                              <div class="clearfix"></div>
+                            <% end %>
                         </div>
 
                     </div>
@@ -153,6 +169,80 @@
 
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                <div class="timeline-year"><span>2014</span></div>
+                <div class="column six heart right">
+                    <div class="box pattern">
+                        <span class="date">January 1</span>
+                        <h2>New Year's Eve in NY</h2>
+                        <div class="box-content">
+                            <p>This is some dummy text, while bufi is dumy. Or it might be billy ,but someone is while evnayon is affected by his sutpidiyty whoha</p>
+                            <a href="single-post.html" class="more">Read More</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column six heart left movetop">
+                    <div class="box pattern">
+                        <span class="date">January 18</span>
+                        <h2>First Holiday</h2>
+                        <div class="box-content">
+                            <p>This is some dummy text, while bufi is dumy. Or it might be billy ,but someone is while evnayon is affected by his sutpidiyty whoha</p>
+                            <a href="single-post.html" class="more">Read More</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="timeline-button"><a href="#" class="button">Load more</a></div>
+            </div>
+        </div>
+    </section>
+    <!-- #Loveline Section Ends -->
+
+
+    <!-- Loveline Section -->
+    <section id="loveline">
+        <header class="section-header">
+            <h3 class="section-title">OUR LOVELINE</h3>
+            <p class="section-tagline">Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
+        </header>
+        <div class="container timeline">
+            <span class="arrow-up"></span>
+            <span class="arrow-down"></span>
+            <div class="row">
+                <div class="timeline-year start"><span>2013</span></div>
+
+                <% @memorial.events.each_with_index do |event,index| %>
+                  <div class="column six heart <%= (index+1) % 2 == 0 ? 'right' : 'left' %>">
+                      <div class="box pattern">
+                          <span class="date"><%= display_month_day(event.date) %></span>
+                          <h2><%= event.title %></h2>
+                          <div class="box-content">
+                              <p><%= event.description %></p>
+                              <a href="#" class="more">View Comments</a>
+                              <br>
+                              <a href="#" class="more">Add Comment</a>
+                              <%= form_for [@memorial, event, @comment], html: {class: "actionform"} do |f| %>
+                                <%= render 'shared/errors', obj: @comment %>
+                                <div class="control-group">
+                                  <%= f.label :author, "Name" %>
+                                  <%= f.text_field :author %>
+                                </div>
+                                <div class="control-group">
+                                  <%= f.label :body, "Comment" %>
+                                  <%= f.text_area :body, rows: 5 %>
+                                </div>
+                                <div class="clearfix"></div>
+                                <%= f.submit "Leave Entry", class: "color" %>
+                                <div class="clearfix"></div>
+                              <% end %>
+                          </div>
+                      </div>
+                  </div>
+                <% end %>
+
+
                 <div class="clearfix"></div>
                 <div class="timeline-year"><span>2014</span></div>
                 <div class="column six heart right">
@@ -428,51 +518,11 @@
             <span class="arrow-down"></span>
             <div class="row">
                 <div class="timeline-year start"><span>2014</span></div>
-                <div class="column six heart right">
-                    <div class="box pattern">
-                        <span class="date">24 July</span>
-                        <div class="guest">
-                            <p>Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
-                            <span class="name">John Doe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column six heart left movetop">
-                    <div class="box pattern">
-                        <span class="date">24 July</span>
-                        <div class="guest">
-                            <p>Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
-                            <span class="name">John Doe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column six heart right">
-                    <div class="box pattern">
-                        <span class="date">24 July</span>
-                        <div class="guest">
-                            <p>Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.Aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat</p>
-                            <span class="name">John Doe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column six heart left">
-                    <div class="box pattern">
-                        <span class="date">24 July</span>
-                        <div class="guest">
-                            <p>Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat</p>
-                            <span class="name">John Doe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column six heart right">
-                    <div class="box pattern">
-                        <span class="date">24 July</span>
-                        <div class="guest">
-                            <p>Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
-                            <span class="name">John Doe</span>
-                        </div>
-                    </div>
-                </div>
+                <% @memorial.reload.comments.each_with_index do |comment, index| %>
+                  <%= render 'comments/guestbook', comment: comment, index: index %>
+                <% end %>
+
+
                 <div class="clearfix"></div>
                 <div class="timeline-button"><a href="#" class="button">Load more</a></div>
             </div>
@@ -502,6 +552,11 @@
         </div>
     </section>
     <!-- #Guestbook Section Ends -->
+
+    <h5>Comments:</h5>
+
+
+
 
     <h4>Comments</h4>
 

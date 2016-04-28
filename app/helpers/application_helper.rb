@@ -8,6 +8,10 @@ module ApplicationHelper
     dt.strftime("%m/%d/%Y")
   end
 
+  def display_month_day(dt)
+    dt.strftime("%B %d")
+  end
+
   def display_year(dt)
     dt.strftime("%Y")
   end

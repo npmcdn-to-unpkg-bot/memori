@@ -16,5 +16,5 @@
     <%= f.label :picture %>
     <%= f.file_field :picture, class: "form-control" %>
   </div>
-  <%= f.submit "Add Timeline Event", class: "submit-btn submit md-btn btn" %>
+  <%= f.submit (@event.new_record? ? "Add Timeline Event" : "Update Timeline Event"), class: "submit-btn submit md-btn btn" %>
   <% end %>

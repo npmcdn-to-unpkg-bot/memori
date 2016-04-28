@@ -2,7 +2,7 @@
   <!-- gallery upload -->
   <!-- title and image attachment -->
   <!-- multiple image and title upload via jquery -->
-  <%= form_for [@memorial, @photo] do |f| %>
+  <%= form_for([@memorial, @photo], remote: true) do |f| %>
     <div class="control-group">
       <%= f.label :caption %>
       <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo" %>
@@ -11,5 +11,5 @@
       <%= f.label :picture %>
       <%= f.file_field :picture, class: "form-control" %>
     </div>
-    <%= f.submit "Submit Photo", class: "submit-btn submit md-btn btn" %>
+    <%= f.submit (@photo.new_record? ? "Submit Photo" : "Update Photo"), class: "submit-btn submit md-btn btn" %>
   <% end %>

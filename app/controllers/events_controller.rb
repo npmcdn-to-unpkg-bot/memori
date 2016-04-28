@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_memorial
+  before_action :set_event, only: [:edit, :update, :destroy]
   before_action :require_user
   before_action :require_creator
 
@@ -31,9 +32,34 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    @event.update_attributes(event_params)
+
+    respond_to do |format|
+      format.html do
+        if @event.update(event_params)
+          flash[:notice] = "Your event was updated."
+          redirect_to edit_memorial_path(@memorial)
+        else
+          render :edit
+        end
+      end
+
+      format.js do
+        @events = @memorial.events
+      end
+    end
+  end
+
   def destroy
-    event = Event.find(params[:id])
-    event.destroy if @memorial.events.include?(event)
+    @event.destroy if @memorial.events.include?(@event)
 
     respond_to do |format|
       format.html do
@@ -51,6 +77,14 @@ class EventsController < ApplicationController
 
     def set_memorial
       @memorial = Memorial.find(params[:memorial_id])
+    end
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:date, :title, :description, :picture)
     end
 
     def require_creator

@@ -17,7 +17,7 @@ class Memorial < ActiveRecord::Base
 
   has_many :events, -> { order "date ASC" }, foreign_key: :memorial_id
   has_many :photos, foreign_key: :memorial_id
-  has_many :comments, as: :commentable
+  has_many :comments, -> { order "created_at ASC" }, as: :commentable
 
   mount_uploader :hero, HeroUploader
 

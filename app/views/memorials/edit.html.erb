@@ -49,23 +49,17 @@
         <div id="team-page" class="page team-page page-container text-center">
           <div class="container">
             <div class="row">
-              <% @memorial.reload.photos.each do |photo| %>
-                <div class="col-md-3 col-sm-4 col-xs-6">
-                  <div class="member">
-                    <div class="member-avatar"><%= image_tag photo.picture.url(:thumb) if photo.picture? %></div>
-                    <div class="member-details">
-                      <h4 class="name"><a href="#"><%= photo.caption %></a></h4><!-- /.name -->
-                    </div><!-- /.member-details -->
-                  </div><!-- /.member -->
-                </div>
-              <% end %>
+							<%= render @photos %>
+
             </div><!-- /.row -->
           </div><!-- /.container -->
         </div><!-- /#about-page -->
 
+				<%= link_to "New Photo", new_memorial_photo_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
 
-				<%= render 'photos/form' %>
+				<div id="photo-form" style="display:none;">
 
+				</div>
         <br><br>
 
 
