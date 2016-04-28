@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @event = Event.new
 
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -63,7 +64,11 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to :back
+        if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+          redirect_to :back
+        else
+          redirect_to memorials_path
+        end
       end
 
       format.js do

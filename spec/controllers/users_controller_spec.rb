@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 describe UsersController do
   describe 'GET new' do
@@ -45,6 +46,19 @@ describe UsersController do
     end
   end
 
-  describe 'GET edit'
-  describe 'POST update'
+  describe 'GET edit' do
+    it 'sets @user' do
+      user = Fabricate(:user)
+      get :edit, id: user.id
+      expect(assigns(:user)).to eq(user)
+    end
+  end
+
+  describe 'POST update' do
+    it 'sets @user' do
+      alice = Fabricate(:user)
+      post :update, id: alice.id, user: { username: "till", password: "pass", email: 'bob@bob.com', name: "james" }
+      expect(assigns(:user)).to eq(alice)
+    end
+  end
 end
