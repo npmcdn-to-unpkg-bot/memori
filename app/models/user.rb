@@ -3,6 +3,10 @@
 #
 # id              :integer
 # username        :string
+# password_digest :string
+# name            :string
+# email           :string
+# role            :string
 
 class User < ActiveRecord::Base
   has_many :memorials, foreign_key: :user_id
