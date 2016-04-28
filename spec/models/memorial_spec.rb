@@ -5,9 +5,8 @@ describe Memorial do
 
   it { should have_many(:events) }
   it { should have_many(:photos) }
-  it { should have_many(:comments) }
+  it { should have_one(:guestbook) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:dod) }
-
 end

@@ -31,8 +31,10 @@
 	              </div>
 						</div>
             <br><br><br><br>
-            <h4>Template Selector</h4>
-            <!-- Put template selection option here -->
+						<div class="control-group">
+						  <%= f.label :theme, "Template Selector" %>
+						  <%= f.select(:theme, options_for_select(['baby', 'dark_purple', 'dark_red', 'default', 'light_turquoise']), {}, { class: 'form-control' }) %>
+						</div>
             <br><br><br><br><br><br><br><br>
             <%= f.submit "Create Memorial", class: "submit-btn submit md-btn btn" %>
             <% end %>

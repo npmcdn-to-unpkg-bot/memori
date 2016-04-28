@@ -15,4 +15,8 @@ module ApplicationHelper
   def display_year(dt)
     dt.strftime("%Y")
   end
+
+  def theme_stylesheet
+    "vendor/yes/#{@memorial.theme}"
+  end
 end
