@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "welcome to the app"
-      redirect_to root_path
+      redirect_to current_user.admin? ? admin_posts_path : root_path
     else
       flash[:error] = "there was something wrong"
       redirect_to login_path

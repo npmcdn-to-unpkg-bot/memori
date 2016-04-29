@@ -1,0 +1,16 @@
+<% if @template.new_record? %>
+  <h4>Add New Template</h4>
+<% else %>
+  <h4>Update Template</h4>
+<% end %>
+  <%= form_for([:admin, @template], remote: true) do |f| %>
+  <div class="control-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :variant %>
+    <%= f.text_field :variant, class: "form-control" %>
+  </div>
+  <%= f.submit (@template.new_record? ? "Add New Template" : "Update Template"), class: "submit-btn submit md-btn btn" %>
+  <% end %>

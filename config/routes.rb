@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'memorials#home'
 
+  namespace :admin do
+    resources :posts
+    resources :templates
+  end
+
   resources :memorials, except: [:destroy] do
 
     resources :guestbooks, only: [:create] do

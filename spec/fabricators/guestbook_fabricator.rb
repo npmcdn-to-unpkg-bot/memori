@@ -1,0 +1,3 @@
+Fabricator(:guestbook) do
+
+end

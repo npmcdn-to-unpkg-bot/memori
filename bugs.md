@@ -1,13 +1,19 @@
 ## bugs / fixes timeline
 
 ### Thursday
-* Backend - Gallery (multiple file upload with jQuery)
-* TDD: Controllers (5/7) - Memorials, Comments
+* Frontend
+  * Blog List (Obituaries layout)
+  * Individual Blog Article (Cremation layout)
 
-### Friday
-* Create Admin (Blog, Add templates/colors)
+* Template
+  * Remove Theme from Memorial model / views
+  * Add theme creation on backend and theme selection on front-end, with helper
+
 * Password protect option
 
+### Friday
+* TDD: Comments Controller
+* Backend - Gallery (multiple file upload with jQuery)
 * Better alerts and responses to AJAX
 * URL for memorial (validation / options) - right now does not work with underscore or periods
 

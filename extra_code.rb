@@ -61,3 +61,16 @@
       <%= f.submit "Leave Entry", class: "color" %>
       <div class="clearfix"></div>
     <% end %>
+
+
+    # def create
+    #   @memorial = Memorial.find(params[:memorial_id])
+    #   @comment =  @memorial.comments.build(params.require(:comment).permit(:author, :body))
+    #
+    #   if @comment.save
+    #     flash[:notice] = "your comment was added."
+    #     redirect_to memorial_path(@memorial)
+    #   else
+    #     render 'memorials/show'
+    #   end
+    # end

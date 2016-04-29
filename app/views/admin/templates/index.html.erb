@@ -1,0 +1,39 @@
+<%= render 'shared/content_title', title: "All Templates" %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+        <h4>Listing</h4>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Variant</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="templates">
+						<%= render @templates %>
+          </tbody>
+        </table>
+
+        <br>
+				<%= link_to "New Template", new_admin_template_path, remote: true, class: "submit-btn submit md-btn btn" %>
+        <br>
+
+        <div id="template-form" style="display:none;"></div>
+
+			</div><!--  /.about-right-box -->
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+			<!-- Sidebar -->
+			<!-- Sidebar End-->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#about-page -->

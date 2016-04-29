@@ -14,6 +14,7 @@ class Memorial < ActiveRecord::Base
   after_initialize :set_default_values
 
   belongs_to :user, foreign_key: :user_id
+  belongs_to :template, foreign_key: :template_id
 
   has_many :events, -> { order "date ASC" }, foreign_key: :memorial_id
   has_many :photos, foreign_key: :memorial_id

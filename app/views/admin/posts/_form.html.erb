@@ -1,0 +1,20 @@
+<% if @post.new_record? %>
+  <h4>Add New Post</h4>
+<% else %>
+  <h4>Update Post</h4>
+<% end %>
+  <%= form_for([:admin, @post], remote: true) do |f| %>
+  <div class="control-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :body %>
+    <%= f.cktext_area :body, ckeditor: { toolbar: 'mini' } %>
+  </div>
+  <div class="control-group">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, class: "form-control" %>
+  </div>
+  <%= f.submit (@post.new_record? ? "Add Blog Post" : "Update Blog Post"), class: "submit-btn submit md-btn btn" %>
+  <% end %>

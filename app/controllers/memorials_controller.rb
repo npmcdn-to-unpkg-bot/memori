@@ -4,7 +4,11 @@ class MemorialsController < ApplicationController
   before_action :require_creator, only: [:edit, :update]
 
   def home
-    redirect_to memorials_path if current_user
+    if current_user.admin?
+      redirect_to admin_posts_path
+    elsif current_user
+      redirect_to memorials_path
+    end
   end
 
   def index

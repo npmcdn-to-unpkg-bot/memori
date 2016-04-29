@@ -1,0 +1,6 @@
+<% if @post.save %>
+  $('#posts').html("<%= j (render @posts) %>");
+  $('#post-form').slideUp(350);
+<% else %>
+  alert('You missed one of the required fields.');
+<% end %>

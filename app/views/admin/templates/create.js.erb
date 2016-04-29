@@ -1,0 +1,6 @@
+<% if @template.save %>
+  $('#templates').html("<%= j (render @templates) %>");
+  $('#template-form').slideUp(350);
+<% else %>
+  alert('You missed one of the required fields.');
+<% end %>

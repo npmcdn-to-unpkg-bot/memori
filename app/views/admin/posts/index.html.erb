@@ -1,0 +1,40 @@
+<%= render 'shared/content_title', title: "All Posts" %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+        <h4>Listing</h4>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Picture</th>
+              <th>Content</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="posts">
+						<%= render @posts %>
+          </tbody>
+        </table>
+
+        <br>
+				<%= link_to "New Blog Post", new_admin_post_path, remote: true, class: "submit-btn submit md-btn btn" %>
+        <br>
+
+        <div id="post-form" style="display:none;"></div>
+
+			</div><!--  /.about-right-box -->
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+			<!-- Sidebar -->
+			<!-- Sidebar End-->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#about-page -->

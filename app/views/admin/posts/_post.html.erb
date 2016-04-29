@@ -1,0 +1,8 @@
+<tr>
+  <th scope="row"><%= post_counter + 1 %></th>
+  <td><%= post.title %></td>
+  <td><%= image_tag post.picture.url(:thumb) if post.picture? %></td>
+  <td><%= truncate(post.body, length: 50, separator: '') %></td>
+  <td><%= link_to "Edit", edit_admin_post_path(post), remote: true  %></td>
+  <td><%= link_to "Delete", admin_post_path(post), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></td>
+</tr>
