@@ -1,0 +1,116 @@
+<%= render 'shared/content_title', title: "Blog Post" %>
+
+<section id="cremation-page" class="page cremation-page page-container">
+			<div class="container">
+				<div class="row">
+					<!-- Post Container -->
+					<div id="post-container" class="col-md-8 post-container" role="main">
+						<article class="post">
+							<div class="post-thumbnail">
+								<figure>
+                  <%= image_tag @post.picture.url if @post.picture? %>
+									<figcaption>
+										<h1 class="image-caption">
+                      <%= @post.title %>
+										</h1>
+									</figcaption>
+								</figure>
+							</div><!-- /.post-thumbnail -->
+							<div class="post-content">
+								<h2 class="post-title">
+									<a href="#">[Subtitle]</a>
+								</h2>
+								<div class="entry">
+									<p>
+										<%= @post.body.html_safe %>
+									</p>
+								</div><!-- /.entry -->
+							</div><!-- /.post-content -->
+						</article><!-- /.post -->
+					</div><!-- /.post-container -->
+					<!-- Post Container End -->
+
+
+					<!-- Sidebar -->
+					<div id="sidebar" class="col-md-4 sidebar">
+						<!-- Banner Section -->
+						<div id="banners" class="banners">
+							<div class="banner-item">
+								<div class="banner-icon">
+									<i class="fa fa-envelope-square"></i>
+								</div>
+								<h3 class="banner-title">In loveing memory</h3>
+								<p class="banner-txt">
+									There must be great love to God and an earnest desire to know his will.
+								</p>
+							</div>
+
+							<div class="banner-item">
+								<div class="banner-icon">
+									<i class="fa fa-book"></i>
+								</div>
+								<h3 class="banner-title">A loving tribute</h3>
+								<p class="banner-txt">
+									Without strong desire to know God's will you can never learn it.
+								</p>
+							</div>
+
+							<div class="banner-item">
+								<div class="banner-icon">
+									<i class="fa fa-file-text"></i>
+								</div>
+								<h3 class="banner-title">Remembering our beloved</h3>
+								<p class="banner-txt">
+									It is those who desire that obtain answers to their prayers
+								</p>
+							</div>
+						</div><!-- /.banner -->
+
+
+						<aside class="widget widget_post">
+							<img src="images/follow-our-faith/ing-sidebar.jpg" alt="Faith Image">
+							<h4 class="post-title">
+								Following our Faith
+							</h4>
+							<p>
+								That the child may be happy, it is so constituted that it satisfactorily meets all the requirements of the law of development.
+							</p>
+							<div class="continue-reading">
+								<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+							</div><!-- /.continue-reading -->
+
+						</aside><!-- /.widget -->
+
+
+						<aside class="widget widget_slider">
+							<div id="img-slider" class="carousel slide" data-ride="carousel">
+								<ol class="carousel-indicators">
+									<li data-target="#img-slider" data-slide-to="0" class="active"></li>
+									<li data-target="#img-slider" data-slide-to="1"></li>
+									<li data-target="#img-slider" data-slide-to="2"></li>
+								</ol><!-- /.carousel-indicators -->
+								<div class="carousel-inner text-center">
+									<div class="item active">
+										<img src="images/sidebar-slider/01.jpg" alt="Slide Image">
+										<h4 class="image-title">lorem Ipsum</h4>
+									</div><!-- /.item -->
+
+									<div class="item">
+										<img src="images/sidebar-slider/02.jpg" alt="Slide Image">
+										<h4 class="image-title">lorem Ipsum</h4>
+									</div><!-- /.item -->
+
+									<div class="item">
+										<img src="images/sidebar-slider/03.jpg" alt="Slide Image">
+										<h4 class="image-title">lorem Ipsum</h4>
+									</div><!-- /.item -->
+
+								</div><!-- /.carousel-inner -->
+
+							</div><!-- /#aboutImg-carousel  -->
+						</aside>
+					</div><!-- /#sidebar -->
+					<!-- Sidebar End-->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</section><!-- /#cremation-page -->

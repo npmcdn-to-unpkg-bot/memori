@@ -1,14 +1,6 @@
 ## bugs / fixes timeline
 
 ### Thursday
-* Frontend
-  * Blog List (Obituaries layout)
-  * Individual Blog Article (Cremation layout)
-
-* Template
-  * Remove Theme from Memorial model / views
-  * Add theme creation on backend and theme selection on front-end, with helper
-
 * Password protect option
 
 ### Friday

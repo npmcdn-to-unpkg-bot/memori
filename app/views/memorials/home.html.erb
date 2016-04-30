@@ -307,70 +307,26 @@
 	<div class="section-padding">
 		<div class="container">
 			<div class="row">
+			<% @posts.each do |post| %>
 				<div class="col-md-3 col-sm-6">
 					<article class="post-content">
 						<div class="featured-img">
-							<img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-1.jpg' %>" alt="Featured Image">
+							<% if post.picture? %>
+								<%= image_tag post.picture.url(:thumb), class: "blog-post-image" %>
+							<% end %>
 						</div><!-- /.featured-img -->
 						<div class="post-container">
 							<h3 class="post-title">
-								<a href="#">Ready For Pre-Plan on Online</a>
+								<a href="#"><%= post.title %></a>
 							</h3><!-- /.post-title -->
+							<small><%= display_datetime(post.created_at) %></small>
 							<p class="post-description">
-								Through Jesus Christ, Christians are made partakers of the divine nature. They receive the imprint of divine character in their souls. Among the different principles in the character of God is found steadfastness.
+								<%= post.body.html_safe %>
 							</p>
 						</div><!-- /.post-container -->
 					</article><!-- /.post-content -->
 				</div><!-- /.col-md-3 -->
-
-				<div class="col-md-3 col-sm-6">
-					<article class="post-content">
-						<div class="featured-img">
-							<img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-2.jpg' %>" alt="Featured Image">
-						</div><!-- /.featured-img -->
-						<div class="post-container">
-							<h3 class="post-title">
-								<a href="#">When Someone Passed away</a>
-							</h3><!-- /.post-title -->
-							<p class="post-description">
-								When God delivered Daniel from the lions, Darius the king said, To make a decree that in every dominion of my kingdom men tremble and fear before the God of Daniel: for he is the living God, and steadfast forever.
-							</p>
-						</div><!-- /.post-container -->
-					</article><!-- /.post-content -->
-				</div><!-- /.col-md-3 -->
-
-				<div class="col-md-3 col-sm-6">
-					<article class="post-content">
-						<div class="featured-img">
-							<img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-3.jpg' %>" alt="Featured Image">
-						</div><!-- /.featured-img -->
-						<div class="post-container">
-							<h3 class="post-title">
-								<a href="#">FInd an obituary or cemetery</a>
-							</h3><!-- /.post-title -->
-							<p class="post-description">
-								You will find that, if you attend to every Christian duty, you will often have to go contrary to your feelings. How often the enemy of your soul will, if he can, cast indifferent feelings over you concerning prayer.
-							</p>
-						</div><!-- /.post-container -->
-					</article><!-- /.post-content -->
-				</div><!-- /.col-md-3 -->
-
-				<div class="col-md-3 col-sm-6">
-					<article class="post-content">
-						<div class="featured-img">
-							<img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-3.jpg' %>" alt="Featured Image">
-						</div><!-- /.featured-img -->
-						<div class="post-container">
-							<h3 class="post-title">
-								<a href="#">Find an obituary or cemetery</a>
-							</h3><!-- /.post-title -->
-							<p class="post-description">
-								You will find that, if you attend to every Christian duty, you will often have to go contrary to your feelings. How often the enemy of your soul will, if he can, cast indifferent feelings over you concerning prayer.
-							</p>
-						</div><!-- /.post-container -->
-					</article><!-- /.post-content -->
-				</div><!-- /.col-md-3 -->
-
+				<% end %>
 			</div><!-- /.row -->
 		</div><!-- /.container -->
 	</div><!-- /.section-padding -->

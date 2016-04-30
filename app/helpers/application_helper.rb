@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def theme_stylesheet
-    "vendor/yes/#{@memorial.theme}"
+    "vendor/#{@memorial.template.theme}/#{@memorial.template.variant}"
   end
 end

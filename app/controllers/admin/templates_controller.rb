@@ -82,7 +82,7 @@ class Admin::TemplatesController < AdminsController
   private
 
     def template_params
-      params.require(:template).permit(:name, :variant)
+      params.require(:template).permit(:name, :theme, :variant)
     end
 
     def set_template

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :templates
   end
 
+  resources :posts, only: [:index, :show]
+
   resources :memorials, except: [:destroy] do
 
     resources :guestbooks, only: [:create] do

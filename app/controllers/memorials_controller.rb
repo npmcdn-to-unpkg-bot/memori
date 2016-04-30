@@ -4,10 +4,10 @@ class MemorialsController < ApplicationController
   before_action :require_creator, only: [:edit, :update]
 
   def home
-    if current_user.admin?
-      redirect_to admin_posts_path
-    elsif current_user
-      redirect_to memorials_path
+    @posts = Post.last(4)
+
+    if current_user
+      redirect_to current_user.admin? ? admin_posts_path : memorials_path
     end
   end
 
@@ -82,7 +82,7 @@ class MemorialsController < ApplicationController
   private
 
     def memorial_params
-      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address, :theme)
+      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address, :template_id)
     end
 
     def set_memorial
