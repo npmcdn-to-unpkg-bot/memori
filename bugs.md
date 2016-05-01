@@ -1,26 +1,27 @@
-## bugs / fixes timeline
+## bugs / fixes
 
-### Thursday
+### Sunday
 * Password protect option
 
-### Friday
+* Gallery
+  * Backend - Gallery (multiple file upload with jQuery)
+  * Add dates to photos / ability to comment (special view / lightbox)
+
+### Monday
 * TDD: Comments Controller
-* Backend - Gallery (multiple file upload with jQuery)
+
+### Tuesday
 * Better alerts and responses to AJAX
 * URL for memorial (validation / options) - right now does not work with underscore or periods
 
-### Wknd
+### Wednesday
 * UI/UX - Timeline-Guestbook / Photo Gallery (front-end)
 * Theme Bugs
-
-* TDD: Features
-* Social Login / Facebook App Integration for Visitors
-* REACT(?)
-
-## theme issues
-* Navigation - Smooth Scroll / Always show when lower / hero section button
-* Google Maps integration / Graveyard Marker
+  * Navigation - Smooth Scroll / Always show when lower / hero section button
+  * Google Maps integration / Graveyard Marker
 
 ## future features
 * Hero Slider or New Image on Refresh
-* Add dates to photos / ability to comment (FB integration)
+* Social Login / Facebook App Integration for Visitors
+* TDD: Features
+* React(?)
