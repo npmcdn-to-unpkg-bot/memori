@@ -58,8 +58,6 @@ class MemorialsController < ApplicationController
     @memorial.user = current_user
     @guestbook = Guestbook.create(memorial: @memorial)
 
-    binding.pry
-
     if @memorial.save
       flash[:notice] = "Your memorial was saved."
       redirect_to memorials_path

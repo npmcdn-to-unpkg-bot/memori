@@ -23,6 +23,8 @@ gem 'puma'
 gem 'pg'
 gem 'mailgun_rails'
 gem 'responders'
+gem 'jquery-fileupload-rails'
+gem 'best_in_place'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

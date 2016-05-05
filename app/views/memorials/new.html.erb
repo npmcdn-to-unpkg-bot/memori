@@ -11,11 +11,11 @@
               <%= render 'shared/errors', obj: @memorial %>
 							<div class="control-group">
               	<%= f.label :name, "Full Name" %>
-              	<%= f.text_field :name, class:"form-control", placeholder: "Full Name of the Deceased" %>
+              	<%= f.text_field :name, class:"form-control", placeholder: "Full Name of the Deceased", required: true %>
 							</div>
 							<div class="control-group">
 	              <%= f.label :dod, "Date of Passing" %>
-	              <%= f.date_field :dod, class:"form-control" %>
+	              <%= f.date_field :dod, class:"form-control", required: true, type: 'date' %>
 							</div>
             <br>
 						<div class="control-group">
@@ -27,7 +27,7 @@
 	                <%= f.label :url, "www.memorialspaces.com/" %>
 	              </div>
 	              <div class="col-md-8">
-	                <%= f.text_field :url, class: "form-control" %>
+	                <%= f.text_field :url, class: "form-control", required: true %>
 	              </div>
 						</div>
             <br><br><br><br>
@@ -36,29 +36,11 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
-											Template Selector
-										</a>
-									</h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="control-group">
-											<%= f.label :template, "Template Selector" %>
-										  <%= f.collection_select(:template_id, ::Template.all, :id, :name, {}, {class: "form-control"}) %>
-										</div>
-									</div>
-								</div><!-- /#collapseTwo -->
-							</div><!-- /.panel -->
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" >
 											Do you want a private memorial?
 										</a>
 									</h4>
 								</div>
-								<div id="collapseThree" class="panel-collapse collapse in">
+								<div id="collapseTwo" class="panel-collapse collapse">
 									<div class="panel-body">
 										<div class="control-group">
 											<%= f.label :protect, "Make Memorial Private" %>
@@ -68,15 +50,29 @@
 											<%= f.label :code, "Enter a Simple Passphrase" %>
 											<%= f.text_field :code, class: "form-control" %>
 										</div>
+									</div>
+								</div><!-- /#collapseTwo -->
+							</div><!-- /.panel -->
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" >
+											Template Selector
+										</a>
+									</h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<div class="control-group">
+											<%= f.label :template, "Template Selector" %>
+											<%= f.collection_select(:template_id, ::Template.all, :id, :name, {}, {class: "form-control"}) %>
+										</div>
 									</div><!-- /.panel-body -->
 								</div><!-- /#collapseThree -->
 							</div><!-- /.panel -->
-
-
-
-
 						</div><!-- /#accordion -->
-            <br><br><br><br><br><br>
+            <br><br>
             <%= f.submit "Create Memorial", class: "submit-btn submit md-btn btn" %>
             <% end %>
 					</div>

@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require jquery.purr
+//= require best_in_place
+//= require jgrowl
 //= require validate
 //= require ckeditor/init
 //= require memorials/bootstrap
@@ -26,9 +31,12 @@
 //= require memorials/isotope
 //= require memorials/owl
 
-
 $(document).ready(function() {
   $('.counter').counterUp();
   $('.boxer').boxer();
-
-}); 
+  $('#new_photo').fileupload({
+    dataType: "script"
+  });
+  /* Activating Best In Place */
+  $(".best_in_place").best_in_place();
+});

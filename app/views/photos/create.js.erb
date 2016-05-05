@@ -1,2 +1,6 @@
-$('#photo-form').html("<%= j (render 'form') %>");
-$('#photo-form').slideDown(350);
+<% if @photo.save %>
+  $('#photos').html("<%= j (render @photos) %>");
+  $('#photo-form').slideUp(350);
+<% else %>
+  alert('You missed one of the required fields.');
+<% end %>

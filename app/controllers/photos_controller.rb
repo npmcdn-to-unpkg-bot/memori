@@ -19,6 +19,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       format.html do
+        puts "ran html block"
         if @photo.save
           flash[:notice] = "your photo was added"
           redirect_to edit_memorial_path(@memorial)
@@ -29,7 +30,30 @@ class PhotosController < ApplicationController
       end
 
       format.js do
+        @photo.save
         @photos = @memorial.photos
+      end
+    end
+  end
+
+  def update
+    @photo.update_attributes(photo_params)
+
+    respond_to do |format|
+      format.html do
+        if @photo.update(photo_params)
+          redirect_to edit_memorial_path(@memorial)
+        else
+          render :edit
+        end
+      end
+
+      format.js do
+        @photos = @memorial.photos
+      end
+
+      format.json do
+        respond_with_bip(@photo)
       end
     end
   end

@@ -2,9 +2,8 @@
   <div class="member">
     <div class="member-avatar"><%= image_tag photo.picture.url(:thumb) if photo.picture? %></div>
     <div class="member-details">
-      <h4 class="name"><a href="#"><%= photo.caption %></a></h4><!-- /.name -->
+      <h4 class="name"><a><%= best_in_place photo, :caption, url: memorial_photo_path(@memorial, photo) %></a></h4><!-- /.name -->
       <h6><%= link_to "Delete", memorial_photo_path(@memorial, photo), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></h6>
-
     </div><!-- /.member-details -->
   </div><!-- /.member -->
 </div>

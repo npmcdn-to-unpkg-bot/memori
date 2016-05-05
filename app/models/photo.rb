@@ -13,6 +13,12 @@ class Photo < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  validates :caption, presence: true
-  validates :picture, presence: true
+  before_create :default_caption
+
+  def default_caption
+    self.caption ||= File.basename(picture.filename, '.*').titleize if picture
+  end
+
+  # validates :caption, presence: true
+  # validates :picture, presence: true
 end

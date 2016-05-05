@@ -24,7 +24,7 @@
           <br>
           Timeline Events: <%= memorial.events.size %>
           <br>
-          Guestbook Entries: <%= memorial.guestbook.comments.size %>
+          Guestbook Entries: <%= memorial.guestbook.comments.size if memorial.guestbook %>
         </p>
         <%= link_to "View Memorial", memorial_path(memorial), class: "submit-btn submit md-btn btn", target: "_blank" %>
         <%= link_to "Add Content", edit_memorial_path(memorial), class: "submit-btn submit md-btn btn" %>

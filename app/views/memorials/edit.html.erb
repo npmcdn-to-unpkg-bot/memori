@@ -42,18 +42,19 @@
         <br>
         <hr>
         <h2>Photos</h2>
-        <br>
-        <h4>Current Gallery</h4>
         <div id="team-page" class="page team-page page-container text-center">
           <div class="container">
-            <div class="row">
+            <div class="row" id="photos">
 							<%= render @photos %>
 
             </div><!-- /.row -->
           </div><!-- /.container -->
         </div><!-- /#about-page -->
 
-				<%= link_to "New Photo", new_memorial_photo_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
+				<%= form_for [@memorial, @photo] do |f| %>
+					<%= f.label :picture, "Upload Multiple Photos:" %>
+					<%= f.file_field :picture, multiple: true, name: "photo[picture]" %>
+				<% end %>
 
 				<div id="photo-form" style="display:none;"></div>
         <br><br>
