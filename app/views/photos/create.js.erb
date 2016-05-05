@@ -1,5 +1,6 @@
 <% if @photo.save %>
   $('#photos').html("<%= j (render @photos) %>");
+  $.jGrowl("Your photo was added.", { life: 10000 });
   $('#photo-form').slideUp(350);
 <% else %>
   alert('You missed one of the required fields.');

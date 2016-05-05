@@ -1,2 +1,3 @@
 $('#events').html("<%= j (render @events) %>");
+$.jGrowl("Your event was updated.", { life: 10000 });
 $('#event-form').slideUp(350);

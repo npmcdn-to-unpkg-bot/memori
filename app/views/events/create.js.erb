@@ -1,5 +1,6 @@
 <% if @event.save %>
   $('#events').html("<%= j (render @events) %>");
+  $.jGrowl("Your event was added.", { life: 10000 });
   $('#event-form').slideUp(350);
 <% else %>
   alert('You missed one of the required fields.');

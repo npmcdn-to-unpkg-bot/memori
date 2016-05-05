@@ -5,8 +5,6 @@
   * Front-end - Photo Gallery
     Lightbox JS / FB Format (dates and comments)
 
-* jQuery Alerts / Responses to AJAX calls
-
 * URL for memorial (validation / options) - right now does not work with underscore or periods
 
 ### Friday
