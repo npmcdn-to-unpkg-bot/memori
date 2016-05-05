@@ -10,6 +10,6 @@ A person closed to me passed away and I wanted to create an online memorial for 
 * Users will be able to password protect a memorial if needed
 
 ### Tech Stack
-* Backend: Ruby, Rails, Postgres
-* Frontend: ?
+* Back-end: Ruby, Rails, Postgres
+* Front-end: HTML/CSS, jQuery, AJAX
 * Services/Integrations: Mailgun, Facebook(?)

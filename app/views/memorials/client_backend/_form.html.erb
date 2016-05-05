@@ -11,7 +11,15 @@
 </div>
 <div class="control-group">
   <%= f.label :template, "Template Selector" %>
-  <%= f.collection_select(:template_id, ::Template.all, :id, :name) %>
+  <%= f.collection_select(:template_id, ::Template.all, :id, :name, {}, {class: "form-control"}) %>
+</div>
+<div class="control-group">
+  <%= f.label :protect, "Make Memorial Private" %>
+  <%= f.check_box :protect, class: "form-control" %>
+</div>
+<div class="control-group">
+  <%= f.label :code, "Enter a Simple Passphrase" %>
+  <%= f.text_field :code, class: "form-control" %>
 </div>
 <div class="control-group">
   <%= f.label :address, "Cemetery" %>

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 
   resources :memorials, except: [:destroy] do
 
+    member do
+      get 'protect'
+      post 'access'
+    end
+
     resources :guestbooks, only: [:create] do
       resources :comments, module: :guestbooks, only: [:create]
     end

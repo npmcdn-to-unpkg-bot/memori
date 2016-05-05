@@ -1,7 +1,8 @@
 class MemorialsController < ApplicationController
-  before_action :set_memorial, only: [:show, :edit, :update]
-  before_action :require_user, except: [:home, :show]
+  before_action :set_memorial, only: [:show, :edit, :update, :protect, :access]
+  before_action :require_user, except: [:home, :show, :protect, :access]
   before_action :require_creator, only: [:edit, :update]
+  before_action :check_access, only: [:protect, :access]
 
   def home
     @posts = Post.last(4)
@@ -16,11 +17,36 @@ class MemorialsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
-    @message = Message.new
-    @guestbook = Guestbook.find_by(memorial: @memorial)
+    if @memorial.protect
+      if !session[:access_id]
+        redirect_to protect_memorial_path(@memorial)
+      else
+        @comment = Comment.new
+        @message = Message.new
+        @guestbook = Guestbook.find_by(memorial: @memorial)
 
-    render layout: 'yes'
+        render layout: 'yes'
+      end
+    else
+      @comment = Comment.new
+      @message = Message.new
+      @guestbook = Guestbook.find_by(memorial: @memorial)
+
+      render layout: 'yes'
+    end
+  end
+
+  def protect
+  end
+
+  def access
+    if @memorial.code == params[:code]
+      session[:access_id] = @memorial.code
+      redirect_to memorial_path(@memorial)
+    else
+      flash[:error] = "That was not the right password."
+      redirect_to protect_memorial_path(@memorial)
+    end
   end
 
   def new
@@ -31,6 +57,8 @@ class MemorialsController < ApplicationController
     @memorial = Memorial.new(memorial_params)
     @memorial.user = current_user
     @guestbook = Guestbook.create(memorial: @memorial)
+
+    binding.pry
 
     if @memorial.save
       flash[:notice] = "Your memorial was saved."
@@ -82,7 +110,7 @@ class MemorialsController < ApplicationController
   private
 
     def memorial_params
-      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address, :template_id)
+      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address, :template_id, :protect, :code)
     end
 
     def set_memorial
@@ -93,4 +121,9 @@ class MemorialsController < ApplicationController
       access_denied unless logged_in? and (current_user == @memorial.user || current_user.admin?)
     end
 
+    def check_access
+      if session[:access_id] == @memorial.code
+        redirect_to memorial_path(@memorial)
+      end
+    end
 end

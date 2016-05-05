@@ -1,0 +1,32 @@
+<%= render 'shared/content_title', title: "This Memorial is Password Protected" %>
+
+<section id="contact-page" class="page contact-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-12 post-container" role="main">
+				<div class="row">
+					<div class="col-md-8">
+            <%= form_tag access_memorial_path do %>
+							<div class="control-group">
+                <%= label_tag :code %>
+                <%= text_field_tag :code, nil, placeholder: "Pass Phrase for Memorial", class: "form-control" %>
+							</div>
+              <%= submit_tag 'Login', class: "submit-btn submit md-btn btn" %>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <h4 class="contact-title">Private Memorial </h4>
+            <p>
+              Some users wish to keep Memorials private for various reasons.
+            </p>
+            <p>
+              You will need to get the pass phrase from the creator of the memorial.
+            </p>
+          </div>
+        </div>
+      </div><!-- /.post-container -->
+      <!-- Post Container End -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /#contact-page -->

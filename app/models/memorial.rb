@@ -9,6 +9,8 @@
 # address         :string
 # latitude        :float
 # longitude       :float
+# protect         :boolean
+# code            :string
 
 class Memorial < ActiveRecord::Base
   after_initialize :set_default_values
