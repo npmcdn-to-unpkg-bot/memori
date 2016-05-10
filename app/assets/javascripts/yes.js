@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require yes/boxaroo
 //= require yes/modernizr
 //= require yes/device
 //= require yes/imagesloaded
