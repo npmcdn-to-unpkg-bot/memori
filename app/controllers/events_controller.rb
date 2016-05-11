@@ -80,7 +80,7 @@ class EventsController < ApplicationController
   private
 
     def set_memorial
-      @memorial = Memorial.find(params[:memorial_id])
+      @memorial = Memorial.find_by_slug(params[:memorial_id])
     end
 
     def set_event

@@ -29,10 +29,6 @@ Rails.application.routes.draw do
     end
 
     resources :messages, only: [:create]
-
-    collection do
-      get 'check_url'
-    end
   end
 
   get '/register', to: 'users#new'
@@ -41,6 +37,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:show, :create, :edit, :update]
+
+  # root namespace for show path, like FB
+  get ':id', to: 'memorials#show', as: :view_memorial
 
   # Example resource route with options:
   #   resources :products do

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
-    @memorial = Memorial.find(params[:memorial_id])
+    @memorial = Memorial.find_by_slug(params[:memorial_id])
+
     # will this work for other forms?
 
     @comment = @commentable.comments.new(comment_params)
@@ -15,7 +16,8 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:author, :body)
-  end
+    def comment_params
+      params.require(:comment).permit(:author, :body)
+    end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502232311) do
+ActiveRecord::Schema.define(version: 20160510235236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160502232311) do
 
   create_table "memorials", force: :cascade do |t|
     t.string   "name"
-    t.string   "url"
     t.string   "hero"
     t.string   "address"
     t.text     "biography"
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160502232311) do
     t.integer  "template_id"
     t.boolean  "protect"
     t.string   "code"
+    t.string   "slug"
   end
 
   create_table "messages", force: :cascade do |t|

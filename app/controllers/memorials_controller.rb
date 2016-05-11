@@ -17,18 +17,9 @@ class MemorialsController < ApplicationController
   end
 
   def show
-    if @memorial.protect
-      if !session[:access_id]
-        redirect_to protect_memorial_path(@memorial)
-      else
-        @comment = Comment.new
-        @message = Message.new
-        @guestbook = Guestbook.find_by(memorial: @memorial)
-
-        render layout: 'yes'
-      end
+    if @memorial.protect && (session[:access_id] != @memorial.code)
+      redirect_to protect_memorial_path(@memorial)
     else
-      @comment = Comment.new
       @message = Message.new
       @guestbook = Guestbook.find_by(memorial: @memorial)
 
@@ -91,28 +82,14 @@ class MemorialsController < ApplicationController
     end
   end
 
-  def check_url
-    @memorial = Memorial.find_by_url(params[:memorial][:url])
-
-    if @memorial
-      @memorial = "false"
-    else
-      @memorial = "true"
-    end
-
-    respond_to do |format|
-      format.json { render json: @memorial }
-    end
-  end
-
   private
 
     def memorial_params
-      params.require(:memorial).permit(:name, :dod, :url, :biography, :hero, :address, :template_id, :protect, :code)
+      params.require(:memorial).permit(:name, :dod, :biography, :hero, :address, :template_id, :protect, :code)
     end
 
     def set_memorial
-      @memorial = Memorial.find(params[:id])
+      @memorial = Memorial.find_by_slug(params[:id])
     end
 
     def require_creator
@@ -124,4 +101,5 @@ class MemorialsController < ApplicationController
         redirect_to memorial_path(@memorial)
       end
     end
+
 end

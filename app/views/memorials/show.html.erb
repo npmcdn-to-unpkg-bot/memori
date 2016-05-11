@@ -216,8 +216,7 @@
                               <% end %>
                               <br>
                               <a href="#" class="more">Add Comment</a>
-                              <%= form_for [@memorial, event, @comment], html: {class: "actionform"} do |f| %>
-                                <%= render 'shared/errors', obj: @comment %>
+                              <%= form_for [@memorial, event, Comment.new], html: {class: "actionform"} do |f| %>
                                 <div class="control-group">
                                   <%= f.label :author, "Name" %>
                                   <%= f.text_field :author %>
@@ -536,8 +535,7 @@
             <div class="container smaller">
               <div class="row">
               <!-- guestbook form / comment code -->
-              <%= form_for [@memorial, @guestbook, @comment], html: {class: "actionform"} do |f| %>
-                <%= render 'shared/errors', obj: @comment %>
+              <%= form_for [@memorial, @guestbook, Comment.new], html: {class: "actionform"} do |f| %>
                 <div class="control-group">
                   <%= f.label :author, "Name" %>
                   <%= f.text_field :author %>

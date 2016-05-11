@@ -5,6 +5,7 @@
 # name            :string
 # biography       :text
 # user_id         :integer
+# slug            :string
 # hero            :string
 # address         :string
 # latitude        :float
@@ -13,6 +14,8 @@
 # code            :string
 
 class Memorial < ActiveRecord::Base
+  include Sluggable
+
   after_initialize :set_default_values
 
   belongs_to :user, foreign_key: :user_id
@@ -29,6 +32,8 @@ class Memorial < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  sluggable_column :name
 
   def set_default_values
     self.biography = "This is where the biography for the deceased should go. Feel free to make it as short or long as you want. You can always come back and add more information."
