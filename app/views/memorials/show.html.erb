@@ -1,5 +1,6 @@
 <!-- Hero Section -->
 <div id="logo"><%= @memorial.name %> <span>&amp;</span></div>
+
 <section id="top" class="hero" data-type="parallax">
     <header id="main-menu">
         <div class="container">
@@ -8,14 +9,12 @@
                 <nav id="navigation" class="column twelve">
                     <ul>
                         <li class="submenu"><a href="#logo">Home</a></li>
-                        <li><a href="#couple">Story</a></li>
-                        <li><a href="#loveline">Loveline</a></li>
-                        <li><a href="#wedding-events">Events</a></li>
-                        <li><a href="#important-people">People</a></li>
-                        <li><a href="#wedding-gallery">Gallery</a></li>
-                        <li><a href="#gift-registry">Gifts</a></li>
+                        <li><a href="#story">Biography</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#gift">Condolence Gift</a></li>
                         <li><a href="#guestbook">GuestBook</a></li>
-                        <li><a href="#contact">RSVP</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
                 <a href="#" id="menu-toggle-wrapper">
@@ -37,21 +36,10 @@
     </div>
 </section>
 <!-- #Hero Section Ends -->
-
-
-<div>
-  <p>
-    Graveyard Location:
-    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@memorial.latitude}%2C#{@memorial.longitude}" %>
-
-  </p>
-</div>
-
-
-
+<%= image_tag @memorial.hero.url %>
 
 <!-- #### Animated section -->
-<!-- <div class="loaderOverlay"><i class="fa fa-heart animate-spin"></i></div> -->
+<div class="loaderOverlay"><i class="fa fa-spinner animate-spin"></i></div>
 
 <section id="home-content" class="top-menu">
     <!-- Story Section -->
@@ -79,11 +67,11 @@
     </section>
     <!-- #Story Section Ends -->
 
-    <!-- Loveline Section -->
-    <section id="loveline">
+    <!-- Timeline Section -->
+    <section id="timeline">
         <header class="section-header">
-            <h3 class="section-title">OUR LOVELINE</h3>
-            <p class="section-tagline">Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
+            <h3 class="section-title">THE TIMELINE</h3>
+            <p class="section-tagline">Here is a collection of the most cherished memories.</p>
         </header>
         <div class="container timeline">
             <span class="arrow-up"></span>
@@ -186,7 +174,7 @@
             </div>
         </div>
     </section>
-    <!-- #Loveline Section Ends -->
+    <!-- #Timeline Section Ends -->
 
 
     <!-- Loveline Section -->
@@ -266,161 +254,41 @@
     </section>
     <!-- #Loveline Section Ends -->
 
-    <!-- Parallax Section -->
-    <section class="parallax" data-type="parallax">
-        <div class="overlay"></div>
-        <div class="container">
-            <h2 class="quote">“We’ve met one summer night in the club. The music was to loud so we really didn’t speak that much. One great thing led to another and the rest is history”</h2>
-        </div>
-    </section>
-    <!-- #Parallax Section Ends -->
-
-
-
-    <!-- #Map Section -->
-    <section id="map-section">
-        <div class="container">
-            <div id="map-pins">
-                <ul>
-                    <li class="wedding">Wedding</li>
-                    <li class="weddingParty">Wedding Party</li>
-                    <li class="bachelor">Bachelor</li>
-                    <li class="bachelorette">Bachelorette</li>
-                    <li class="hotels">Hotels</li>
-                    <li class="airport">Airport</li>
-                    <li class="attractions">Attractions</li>
-                    <li class="restoraunts">Restoraunts</li>
-                    <li class="shopping">Shopping</li>
-                    <li class="special">Special</li>
-                </ul>
-            </div>
-        </div>
-        <div id="map"></div>
-    </section>
-    <!-- #Map Section Ends -->
-
     <!-- Small Gallery Section -->
-    <section id="wedding-gallery" class="pattern">
+    <section id="gallery" class="pattern">
         <header class="section-header">
             <h3 class="section-title">Photo Gallery</h3>
         </header>
-        <div class="container">
-            <div class="row">
-                <ul id="gallery-filter">
-                    <li class="active"><a href="#" data-filter="*">All</a>
-                    </li>
-                    <li><a href="#" data-filter=".wedding">Wedding Day</a>
-                    </li>
-                    <li><a href="#" data-filter=".paris">Trip to Paris</a>
-                    </li>
-                    <li><a href="#" data-filter=".photography">Summer in Greece</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <div id="gallery-wrapper">
-            <div class="block wedding">
+          <% @memorial.photos.each do |photo| %>
+            <div class="block">
                 <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple1.jpg' %>" alt="image">
+                    <%= image_tag photo.picture.url(:gallery) %>
                 </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple1.jpg' %>" class="video-hover">
+                <a href="<%= photo.picture.url %>" class="portfolio-hover">
                     <div class="portfolio-info">
                         <h3 class="portfolio-title">
-                            This is some title
-                            <span class="cat">Wedding</span>
+                            <%= photo.caption %>
                         </h3>
                     </div>
                 </a>
             </div>
-            <div class="block photography">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple2.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple2.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">
-                            This is some title
-                            <span class="cat">Wedding</span>
-                        </h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block photography">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple3.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple3.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">This is some title</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block photography">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple4.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple4.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">This is some title</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block wedding">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple5.jpg' %>"alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple5.jpg' %>" class="video-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">
-                            This is some title
-                            <span class="cat">Design</span>
-                        </h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block paris">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple6.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple6.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">
-                            This is some title
-                            <span class="cat">Design</span>
-                        </h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block paris">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple7.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple7.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">This is some title</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="block photography">
-                <div class="image-holder">
-                    <img src="<%= asset_path 'yes/album/WeddCouple8.jpg' %>" alt="image">
-                </div>
-                <a href="<%= asset_path 'yes/album/WeddCouple8.jpg' %>" class="portfolio-hover">
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">This is some title</h3>
-                    </div>
-                </a>
-            </div>
+          <% end %>
         </div>
     </section>
     <!-- #Small Gallery Section Ends -->
 
-    <!-- Gift Registry Section -->
-    <section id="gift-registry" class="pattern">
+    <!-- #Map Section -->
+    <section id="map-section">
+        <div id="map"></div>
+    </section>
+    <!-- #Map Section Ends -->
+
+    <!-- Gift Section -->
+    <section id="gift" class="pattern">
         <header class="section-header">
-            <h3 class="section-title">Gift Registry</h3>
-            <p class="section-tagline">Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
+            <h3 class="section-title">Condolence Gift</h3>
+            <p class="section-tagline">Send a simple bereavement gift such as flowers or chocolates.</p>
         </header>
         <div class="container">
             <ul class="small-box corner">
@@ -453,65 +321,23 @@
                     <div class="corners-bottomright"></div>
                 </li>
             </ul>
-            <ul class="small-box corner">
-                <li>
-                    <div class="money">
-                        <span class="amount">$100</span>
-                        <a href="#" class="button donate">DONATE</a>
-                        <div class="corners-topleft"></div>
-                        <div class="corners-bottomleft"></div>
-                        <div class="corners-topright"></div>
-                        <div class="corners-bottomright"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="money">
-                        <span class="amount">$200</span>
-                        <a href="#" class="button donate">DONATE</a>
-                        <div class="corners-topleft"></div>
-                        <div class="corners-bottomleft"></div>
-                        <div class="corners-topright"></div>
-                        <div class="corners-bottomright"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="money">
-                        <span class="amount">$400</span>
-                        <a href="#" class="button donate">DONATE</a>
-                        <div class="corners-topleft"></div>
-                        <div class="corners-bottomleft"></div>
-                        <div class="corners-topright"></div>
-                        <div class="corners-bottomright"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="money">
-                        <span class="amount">$1000</span>
-                        <a href="#" class="button donate">DONATE</a>
-                        <div class="corners-topleft"></div>
-                        <div class="corners-bottomleft"></div>
-                        <div class="corners-topright"></div>
-                        <div class="corners-bottomright"></div>
-                    </div>
-                </li>
-            </ul>
         </div>
     </section>
-    <!-- #Gift Registry Section Ends -->
+    <!-- #Gift Section Ends -->
 
     <!-- Guestbook Section -->
     <section id="guestbook">
         <header class="section-header">
             <h3 class="section-title">Guestbook</h3>
-            <p class="section-tagline">Quisque aliquet erat condimentum sit aptent varius convallis quam a scelerisque nulla accumsan suspendisse scelerisque  aliquet erat aliquet porta erat.</p>
+            <p class="section-tagline">Please share any stories or memories of the deceased.</p>
         </header>
         <div class="container timeline">
             <span class="arrow-up"></span>
             <span class="arrow-down"></span>
             <div class="row">
                 <div class="timeline-year start"><span>2014</span></div>
-                <!-- display guestbook comments -->
 
+                <!-- display guestbook comments -->
                 <% @guestbook.comments.each_with_index do |comment,index| %>
                   <div class="column six heart <%= (index+1) % 2 == 0 ? 'right' : 'left' %>">
                     <div class="box pattern">
@@ -589,7 +415,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="column four copyright">Memorial made by <a href="#">memorialspaces.com</a></div>
+                <div class="column four copyright">Memorial made at <a href="#">Memorial Spaces</a></div>
                 <div class="column four logo"><%= @memorial.name %></div>
                 <div class="column four info"></a></div>
             </div>
@@ -597,3 +423,54 @@
     </footer>
     <!-- / Footer Section Ends -->
 </section>
+
+<script>
+
+  function initMap() {
+    var myLatLng = {lat: <%= @memorial.latitude %>, lng: <%= @memorial.longitude %>};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      scrollwheel: false,
+      zoom: 16,
+      center: myLatLng,
+      styles: [{
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [{
+              "visibility": "simplified"
+          }, {
+              "lightness": 20
+          },{
+              "featureType": "water",
+              "elementType": "all",
+              "stylers": [{
+                  "hue": "#a1cdfc"
+              }, {
+                  "saturation": 30
+              }, {
+                  "lightness": 49
+              }]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [{
+                  "hue": "#f49935"
+              }]
+          }, {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [{
+                  "hue": "#fad959"
+              }]
+          }]
+      }]
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+</script>

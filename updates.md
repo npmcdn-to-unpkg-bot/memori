@@ -1,22 +1,29 @@
 ## updates
 
-### Wendesday
-* Gallery - FB Format (dates and comments) - Boxaroo custom
-* [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
-* Growth Hacking Launch Plan
-
-### Thursday
+### last items
 * UI/UX - Timeline-Guestbook
-* Theme Bugs
-  * Navigation - Smooth Scroll / Always show when lower / hero section button
-  * Google Maps integration / Graveyard Marker
+* Hero Image
+
+* Landing Page
+  * Blog articles / how to guide
+  * front page copy
+  * link to back-end sections
 
 ## future features
+* [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
 * AJAX: private memorial popup with modals
-* Social Login / Facebook App Integration for Visitors
 
-* Hero Slider or New Image on Refresh
+* Gallery with comments (FB format)
 * Change Photo Order / Photo Gallery Option
 
+* Guests can suggest timeline events
+* Guests can submit pictures
+
+* Better Maps Integration
+
+* Social Login / Facebook App Integration for Visitors
+* Hero Slider or New Image on Refresh
+
 * TDD: Features
+* TDD: Shift to test::unit
 * React

@@ -3,6 +3,7 @@ class MemorialsController < ApplicationController
   before_action :require_user, except: [:home, :show, :protect, :access]
   before_action :require_creator, only: [:edit, :update]
   before_action :check_access, only: [:protect, :access]
+  skip_before_filter :verify_authenticity_token, only: [:update]
 
   def home
     @posts = Post.last(4)
