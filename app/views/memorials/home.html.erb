@@ -1,4 +1,4 @@
-<section id="top-banner" class="top-banner background-image" data-bg-image="images/top-banner/bg-img-1.jpg">
+<section id="top-banner" class="top-banner background-image" data-bg-image="<%= asset_path 'memorials/top-banner/bg-img-1.jpg' %>">
 	<div class="overlay">
 		<div class="container">
 			<div class="top-banner-item">
@@ -9,7 +9,7 @@
 					With Dignity
 				</h3>
 				<div class="top-banner-btn">
-					<a href="#" class="btn lg-btn"> Get Started <i class="fa fa-angle-double-right"></i></a>
+					<a href="/register" class="btn lg-btn"> Get Started <i class="fa fa-angle-double-right"></i></a>
 				</div>
 			</div><!-- /.top-banner-item -->
 		</div>
@@ -24,7 +24,7 @@
         <div class="col-md-3 col-sm-6">
           <div class="service-item">
             <div class="hex">
-              <div class="hex-icon"><i class="fa fa-tree"></i></div>
+              <div class="hex-icon"><i class="fa fa-users"></i></div>
             </div><!-- /.hex -->
             <h3 class="service-title">Memorials</h3>
             <p class="service-txt">
@@ -36,7 +36,7 @@
         <div class="col-md-3 col-sm-6">
           <div class="service-item">
             <div class="hex">
-              <div class="hex-icon"><i class="fa fa-fire"></i></div>
+              <div class="hex-icon"><i class="fa fa-picture-o"></i></div>
             </div><!-- /.hex -->
             <h3 class="service-title">Photos</h3>
             <p class="service-txt">
@@ -48,7 +48,7 @@
         <div class="col-md-3 col-sm-6">
           <div class="service-item">
             <div class="hex">
-              <div class="hex-icon"><i class="fa fa-bell"></i></div>
+              <div class="hex-icon"><i class="fa fa-calendar-o"></i></div>
             </div><!-- /.hex -->
             <h3 class="service-title">Events</h3>
             <p class="service-txt">
@@ -60,7 +60,7 @@
         <div class="col-md-3 col-sm-6">
           <div class="service-item">
             <div class="hex">
-              <div class="hex-icon"><i class="fa fa-road"></i></div>
+              <div class="hex-icon"><i class="fa fa-pencil-square-o"></i></div>
             </div><!-- /.hex -->
             <h3 class="service-title">Guest Book</h3>
             <p class="service-txt">
@@ -96,91 +96,13 @@
           <div class="col-md-6">
             <img src="<%= asset_path 'memorials/about.jpg' %>" alt="Image">
           </div>
+
         </div><!-- /.section-detials -->
       </div><!-- /.row -->
     </div><!-- /.container -->
   </div><!-- /.section-padding -->
 </section><!-- /#about -->
 <!-- about Section -->
-
-
-
-<!-- facts section -->
-
-<section id="facts" class="facts" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0.4">
-  <div class="parallax-style">
-    <div class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <div class="item media">
-              <div class="media-left">
-                <div class="hex">
-                  <div class="hex-icon"><i class="fa fa-user"></i></div>
-                </div><!-- /.hex -->
-              </div>
-              <div class="media-body">
-                <div class="countdown">
-                  <span class="count-number counter">234</span>
-                </div><!-- /.countdown -->
-                <h4 class="about-facts">Memorials Created</h4>
-              </div>
-            </div><!-- /.item -->
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="item media">
-              <div class="media-left">
-                <div class="hex">
-                  <div class="hex-icon"><i class="fa fa-map-marker"></i></div>
-                </div><!-- /.hex -->
-              </div>
-              <div class="media-body">
-                <div class="countdown">
-                  <span class="count-number counter">221</span>
-                </div><!-- /.countdown -->
-                <h4 class="about-facts">Photos Uploaded</h4>
-              </div>
-            </div><!-- /.item -->
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="item media">
-              <div class="media-left">
-                <div class="hex">
-                  <div class="hex-icon"><i class="fa fa-crosshairs"></i></div>
-                </div><!-- /.hex -->
-              </div>
-              <div class="media-body">
-                <div class="countdown">
-                  <span class="count-number counter">719</span>
-                </div><!-- /.countdown -->
-                <h4 class="about-facts">Timeline Events</h4>
-              </div>
-            </div><!-- /.item -->
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="item media">
-              <div class="media-left">
-                <div class="hex">
-                  <div class="hex-icon"><i class="fa fa-users"></i></div>
-                </div><!-- /.hex -->
-              </div>
-              <div class="media-body">
-                <div class="countdown">
-                  <span class="count-number counter">79</span>
-                </div><!-- /.countdown -->
-                <h4 class="about-facts">Guestbook Entries</h4>
-              </div>
-            </div><!-- /.item -->
-          </div>
-        </div><!-- /.row -->
-      </div><!-- /.container -->
-    </div><!-- /.section-padding -->
-  </div><!-- /.parallax-style -->
-</section><!-- /#facts -->
-
-<!-- facts section -->
-
-
 
 <!-- Articles -->
 <section id="articles" class="articles">
@@ -189,112 +111,46 @@
       <h3 class="section-title">Recent Memorials</h3>
       <div class="row">
         <div class="articles-details">
-          <div class="col-md-6">
-            <article class="post-content">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="featured-img">
-                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-1.jpg' %>" alt="Featured Image">
-                  </div><!-- /.featured-img -->
-                </div>
-                <div class="col-md-6">
-                  <div class="post-container">
-                    <h3 class="post-title">
-                      <a href="#">Mike Doe</a>
-                    </h3><!-- /.post-title -->
-                    <div class="post-meta">
-                      <span class="country">USA</span>
-                      <span class="from"><time datetime="2011">2011</time></span> - <span class="to"><time datetime="2011">2011</time></span>
-                    </div><!-- /.post-meta -->
-                    <p class="post-description">
-                      Through Jesus Christ, Christians are made partakers of the divine nature. They receive the imprint of divine character in their souls. Among the different principles in the character of God is found steadfastness.
-                    </p>
-                  </div><!-- /.post-container -->
-                </div>
-              </div><!-- /.row -->
-            </article><!-- /.post-content -->
-          </div><!-- /.col-md-4 -->
 
-          <div class="col-md-6">
-            <article class="post-content">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="featured-img">
-                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-2.jpg' %>" alt="Featured Image">
-                  </div><!-- /.featured-img -->
-                </div>
-                <div class="col-md-6">
-                  <div class="post-container">
-                    <h3 class="post-title">
-                      <a href="#">Phillip Diaz</a>
-                    </h3><!-- /.post-title -->
-                    <div class="post-meta">
-                      <span class="country">USA</span>
-                      <span class="from"><time datetime="2011">2011</time></span> - <span class="to"><time datetime="2011">2011</time></span>
-                    </div><!-- /.post-meta -->
-                    <p class="post-description">
-                      When God delivered Daniel from the lions, Darius the king said, To make a decree that in every dominion of my kingdom men tremble and fear before the God of Daniel: for he is the living God, and steadfast forever.
-                    </p>
-                  </div><!-- /.post-container -->
-                </div>
-              </div><!-- /.row -->
-            </article><!-- /.post-content -->
-          </div><!-- /.col-md-4 -->
+					<% @memorials.each do |memorial| %>
+						<div class="col-md-6">
+	            <article class="post-content">
+	              <div class="row">
+	                <div class="col-md-6">
+	                  <div class="featured-img">
+											<% if memorial.hero.url %>
+	                    	<img class="blog-post-image" src="<%= memorial.hero.url(:home) %>" alt="Featured Image">
+											<% else %>
+		                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-2.jpg' %>" alt="Featured Image">
+											<% end %>
+	                  </div><!-- /.featured-img -->
+	                </div>
+	                <div class="col-md-6">
+	                  <div class="post-container">
+	                    <h3 class="post-title">
+												<%= link_to memorial.name, view_memorial_path(memorial) %>
+	                    </h3><!-- /.post-title -->
+	                    <div class="post-meta">
+	                      <!-- <span class="country">USA</span> -->
+	                      <!-- <span class="from"><time datetime="2011">2011</time></span> -  -->
+												<span class="to"><time datetime="<%= display_year(memorial.dod) %>"><%= display_month_day_year(memorial.dod)%></time></span>
+	                    </div><!-- /.post-meta -->
+	                    <p class="post-description">
+												<%= raw(memorial.biography) %>
+	                    </p>
+	                  </div><!-- /.post-container -->
+	                </div>
+	              </div><!-- /.row -->
+	            </article><!-- /.post-content -->
+	          </div><!-- /.col-md-4 -->
+					<% end %>
 
-          <div class="col-md-6">
-            <article class="post-content">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="featured-img">
-                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-3.jpg' %>" alt="Featured Image">
-                  </div><!-- /.featured-img -->
-                </div>
-                <div class="col-md-6">
-                  <div class="post-container">
-                    <h3 class="post-title">
-                      <a href="#">Janet Sims</a>
-                    </h3><!-- /.post-title -->
-                    <div class="post-meta">
-                      <span class="country">USA</span>
-                      <span class="from"><time datetime="2011">2011</time></span> - <span class="to"><time datetime="2011">2011</time></span>
-                    </div><!-- /.post-meta -->
-                    <p class="post-description">
-                      You will find that, if you attend to every Christian duty, you will often have to go contrary to your feelings. How often the enemy of your soul will, if he can, cast indifferent feelings over you concerning prayer.
-                    </p>
-                  </div><!-- /.post-container -->
-                </div>
-              </div><!-- /.row -->
-            </article><!-- /.post-content -->
-          </div><!-- /.col-md-4 -->
 
-          <div class="col-md-6">
-            <article class="post-content">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="featured-img">
-                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-4.jpg' %>" alt="Featured Image">
-                  </div><!-- /.featured-img -->
-                </div>
-                <div class="col-md-6">
-                  <div class="post-container">
-                    <h3 class="post-title">
-                      <a href="#">Willi Chen</a>
-                    </h3><!-- /.post-title -->
-                    <div class="post-meta">
-                      <span class="country">USA</span>
-                      <span class="from"><time datetime="2011">2011</time></span> - <span class="to"><time datetime="2011">2011</time></span>
-                    </div><!-- /.post-meta -->
-                    <p class="post-description">
-                      You will find that, if you attend to every Christian duty, you will often have to go contrary to your feelings. How often the enemy of your soul will, if he can, cast indifferent feelings over you concerning prayer.
-                    </p>
-                  </div><!-- /.post-container -->
-                </div>
-              </div><!-- /.row -->
-            </article><!-- /.post-content -->
-          </div><!-- /.col-md-4 -->
+
+
         </div><!-- /.articles-details -->
         <div class="continue-reading text-center">
-          <a class="lg-btn" href="#">See all Obituaries</a>
+          <!-- <a class="lg-btn" href="#">See all Obituaries</a> -->
         </div><!-- /.continue-reading -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -307,6 +163,8 @@
 	<div class="section-padding">
 		<div class="container">
 			<div class="row">
+				<h3 class="section-title">Blog Posts</h3>
+
 			<% @posts.each do |post| %>
 				<div class="col-md-3 col-sm-6">
 					<article class="post-content">
@@ -317,11 +175,11 @@
 						</div><!-- /.featured-img -->
 						<div class="post-container">
 							<h3 class="post-title">
-								<a href="#"><%= post.title %></a>
+								<%= link_to post.title, post_path(post) %>
 							</h3><!-- /.post-title -->
 							<small><%= display_datetime(post.created_at) %></small>
 							<p class="post-description">
-								<%= post.body.html_safe %>
+								<%= post.summary %>
 							</p>
 						</div><!-- /.post-container -->
 					</article><!-- /.post-content -->
@@ -340,137 +198,22 @@
 		<div class="container">
 			<div class="row">
 				<h2 class="section-title">Recent Photos</h2>
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/1.jpg' %>" alt="Gallery Image">
-						<a href="<%= asset_path 'memorials/gallery/img-big.jpg' %>" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/2.jpg' %>"  alt="Gallery Image">
-						<a href="<%= asset_path 'memorials/gallery/img-big.jpg' %>" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/3.jpg' %>"  alt="Gallery Image">
-						<a href="<%= asset_path 'memorials/gallery/img-big.jpg' %>" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/4.jpg' %>"  alt="Gallery Image">
-						<a href="images/gallery/img-big.jpg" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/5.jpg' %>"  alt="Gallery Image">
-						<a href="<%= asset_path 'memorials/gallery/img-big.jpg' %>" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
-				<div class="item col-md-4 col-sm-6">
-					<div class="gallery-item">
-						<img src="<%= asset_path 'memorials/gallery-2/6.jpg' %>"  alt="Gallery Image">
-						<a href="<%= asset_path 'memorials/gallery/img-big.jpg' %>" title="Image tittle goes here" class="gallery-item-link transition boxer">
-							<div class="hex-container">
-								<div class="hex">
-									<div class="hex-icon"><i class="fa fa-plus"></i></div>
-								</div><!-- /.hex -->
-							</div>
-						</a>
-					</div><!-- ./gallery-item -->
-				</div><!-- /.item -->
+				<% @photos.each do |photo| %>
+					<div class="item col-md-4 col-sm-6">
+						<div class="gallery-item">
+							<%= image_tag photo.picture.url(:home) %>
+							<a href="<%= photo.picture.url %>" title="<%= photo.caption %>" class="gallery-item-link transition boxer">
+								<div class="hex-container">
+									<div class="hex">
+										<div class="hex-icon"><i class="fa fa-plus"></i></div>
+									</div><!-- /.hex -->
+								</div>
+							</a>
+						</div><!-- ./gallery-item -->
+					</div><!-- /.item -->
+				<% end %>
 			</div><!-- /.row -->
 		</div><!--  /.container -->
 	</div><!-- /.section-padding -->
 </section><!-- /#gallery -->
 <!-- Gallery End -->
-
-
-<!-- help Section -->
-<section id="help" class="help">
-	<div class="section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="section-details">
-          <div class="testimonial-section">
-          <h2 class="section-title">Testimonials </h2>
-          <div class="testimonial-box white-bg text-center">
-            <div id="testimonial-slider" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#testimonial-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#testimonial-slider" data-slide-to="1"></li>
-                <li data-target="#testimonial-slider" data-slide-to="2"></li>
-              </ol><!-- /.carousel-indicators -->
-              <div class="carousel-inner">
-                <div class="item active">
-                  <p class="testimonial">
-                    " Jesus will help you to make some gains each day if you will press your way through the crowd and touch him. It is the earnest prayer of faith that gets us through to God and makes us feel like giants in his strength. "
-                  </p>
-                  <h4 class="testimonial-author">
-                    John Doe
-                  </h4>
-                  <h5 class="testimonial-author-location">New York</h5>
-                </div> <!-- /.item -->
-
-                <div class="item">
-                  <p class="testimonial">
-                    " If you would be strengthened in your soul, you must exercise. This is the law of development in the spiritual as well as in the animal life. "Exercise thyself unto godliness." This is a motto we should hang upon the walls of our memory. "
-                  </p>
-                  <h4 class="testimonial-author">
-                    John Doe
-                  </h4>
-                  <h5 class="testimonial-author-location">New York</h5>
-                </div> <!-- /.item -->
-
-                <div class="item">
-                  <p class="testimonial">
-                    " I shall not tell you so much you do not know as I shall endeavor to get you to practise what you know. How many times have you resolved to do and have failed to keep your resolution "
-                  </p>
-                  <h4 class="testimonial-author">
-                    John Doe
-                  </h4>
-                  <h5 class="testimonial-author-location">New York</h5>
-                </div> <!-- /.item -->
-              </div>	<!-- /.carousel-inner -->
-            </div><!-- /#testimonial-slider  -->
-          </div><!-- /.testimonial-box -->
-        </div><!-- /.testimonial-section -->
-				</div><!-- /.section-detials -->
-			</div><!-- /.row -->
-		</div><!-- /.container -->
-	</div><!-- /.section-padding -->
-</section><!-- /#help -->
-<!-- help Section -->

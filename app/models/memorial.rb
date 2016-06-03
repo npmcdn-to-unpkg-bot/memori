@@ -16,7 +16,7 @@
 class Memorial < ActiveRecord::Base
   include Sluggable
 
-  after_initialize :set_default_values
+  after_create :set_default_values
 
   belongs_to :user, foreign_key: :user_id
   belongs_to :template, foreign_key: :template_id

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'memorials#home'
 
+  get "/pages/:page" => "pages#show"
+
+  resources :letters, only: [:create]
+
   namespace :admin do
     resources :posts
     resources :templates

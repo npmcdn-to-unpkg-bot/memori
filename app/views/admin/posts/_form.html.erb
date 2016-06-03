@@ -9,6 +9,14 @@
     <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="control-group">
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle, class: "form-control" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :summary %>
+    <%= f.text_area :summary, rows: 5, class: "form-control", placeholder: "First paragraph as a summary" %>
+  </div>
+  <div class="control-group">
     <%= f.label :body %>
     <%= f.cktext_area :body, ckeditor: { toolbar: 'mini' } %>
   </div>

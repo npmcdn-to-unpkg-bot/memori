@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    @memorial = Memorial.find(params[:memorial_id])
+    @memorial = Memorial.find_by_slug(params[:memorial_id])
     @message = Message.new(params.require(:message).permit(:name, :email, :content))
 
     if @message.valid?

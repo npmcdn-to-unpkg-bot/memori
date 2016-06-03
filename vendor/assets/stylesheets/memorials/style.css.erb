@@ -156,7 +156,12 @@ img {
 }
 
 .overlay {
-	background: rgba(0, 105, 92, 0.35);
+	/*background: rgba(0, 105, 92, 0.35);*/
+	background: url(<%= asset_path 'memorials/fall-bg.jpg' %>) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 .background-image {
 	background-position:50% 0;

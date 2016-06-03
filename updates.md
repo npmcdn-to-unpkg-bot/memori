@@ -1,18 +1,16 @@
 ## updates
 
-### last items
-* UI/UX - Timeline-Guestbook
-* Hero Image
-
-* Landing Page
-  * Blog articles / how to guide
-  * front page copy
-  * link to back-end sections
+* Blog
+  * paginate blog posts
+  * Blog articles / how to guide / link to client-backend
 
 ## future features
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
 * AJAX: private memorial popup with modals
+* [AJAX (will_paginate)](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
 
+* Better Header Icons (timeline / graveyard)
+* Comments on events
 * Gallery with comments (FB format)
 * Change Photo Order / Photo Gallery Option
 

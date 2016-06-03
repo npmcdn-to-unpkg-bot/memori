@@ -12,6 +12,10 @@ module ApplicationHelper
     dt.strftime("%B %d")
   end
 
+  def display_month_day_year(dt)
+    dt.strftime("%B %d, %Y")
+  end
+
   def display_year(dt)
     dt.strftime("%Y")
   end

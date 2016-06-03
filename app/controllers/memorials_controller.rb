@@ -6,7 +6,9 @@ class MemorialsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:update]
 
   def home
-    @posts = Post.last(4)
+    @posts = Post.order('created_at DESC').limit(4)
+    @memorials = Memorial.order('created_at DESC').limit(4).where(protect: false)
+    @photos = Photo.joins(:memorial).where(memorials: {protect:false}).limit(6)
 
     if current_user
       redirect_to current_user.admin? ? admin_posts_path : memorials_path

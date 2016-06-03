@@ -6,11 +6,19 @@ class CommentsController < ApplicationController
 
     @comment = @commentable.comments.new(comment_params)
 
-    if @comment.save
-      flash[:notice] = "your comment was added."
-      redirect_to memorial_path(@memorial)
-    else
-      render 'memorials/show'
+    respond_to do |format|
+      format.html do
+        if @comment.save
+          flash[:notice] = "your comment was added."
+          redirect_to memorial_path(@memorial)
+        else
+          render 'memorials/show'
+        end
+      end
+
+      format.js do
+          
+      end
     end
   end
 

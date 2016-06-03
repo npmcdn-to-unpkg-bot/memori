@@ -82,7 +82,7 @@ class Admin::PostsController < AdminsController
   private
 
     def post_params
-      params.require(:post).permit(:title, :picture, :body)
+      params.require(:post).permit(:title, :subtitle, :summary, :body, :picture)
     end
 
     def set_post

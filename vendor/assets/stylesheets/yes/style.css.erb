@@ -352,7 +352,7 @@ a.button i {
     position: relative;
 }
 .timeline .column.heart:after {
-    content: '\f004';
+    content: '\f111';
     font-family: "FontAwesome";
     font-size: 20px;
     position: absolute;
@@ -360,6 +360,7 @@ a.button i {
     color: #FF8C89;
     background-color: #fff;
 }
+
 .timeline .movetop {
     margin-top: 100px;
 }
@@ -650,7 +651,6 @@ a.button i {
     vertical-align: bottom;
 }
 .hero {
-    background-image: url(<%= asset_path 'yes/hero.jpg' %>);
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -1296,7 +1296,7 @@ a.button i {
 ============================================================ */
 
 #timeline h3.section-title:before {
-    content: "\e000";
+    /*content: "\e000";*/
     top: -60px;
     font-size: 78px;
     margin-left: -40px;
@@ -1728,6 +1728,7 @@ a.button i {
 #gift h3.section-title:before {
     content: "\e009";
 }
+
 .small-box {
     text-align: center;
     margin-top: 25px;
@@ -1973,7 +1974,11 @@ select {
 ============================================================ */
 
 #map-section {
-    padding: 0;
+    padding-bottom: 0;
+}
+#map-section h3.section-title:before {
+    margin-left: -35px;
+    /*content: "\e00d";*/
 }
 #map-section .container {
     position: relative;
