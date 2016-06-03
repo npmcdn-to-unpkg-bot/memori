@@ -16,3 +16,7 @@ Rails.application.config.assets.precompile += %w( yes/* )
 Rails.application.config.assets.precompile += %w( yes.css )
 Rails.application.config.assets.precompile += %w( yes.js )
 Rails.application.config.assets.precompile += %w( vendor/yes/* )
+
+# ckeditor fix for heroku
+Rails.application.config.assets.precompile += Ckeditor.assets
+Rails.application.config.assets.precompile += %w( ckeditor/* )
