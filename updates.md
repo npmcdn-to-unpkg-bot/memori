@@ -4,6 +4,7 @@
   - Add Admin Account
   - Add blog articles with pictures
   - Get How-to article written
+  - Font Awesome CSS Issue
   - Add 6 fake memorials
   - Link articles / how-to with client backend sections
 
