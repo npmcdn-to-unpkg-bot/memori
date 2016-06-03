@@ -37,15 +37,13 @@
 
             </div><!--  /.about-right-box -->
 
-						<!-- <nav>
+
+						<nav style="text-align: center;">
 							<ul class="pagination">
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+								<%= will_paginate @posts, class: 'digg_pagination' %>
+
 							</ul>
-						</nav> -->
+						</nav>
 					</div><!-- /.post-container -->
 					<!-- Post Container End -->
 

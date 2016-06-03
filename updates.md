@@ -1,8 +1,11 @@
 ## updates
 
-* Blog
-  * paginate blog posts
-  * Blog articles / how to guide / link to client-backend
+* Publish on Heroku
+  - Add Admin Account
+  - Add blog articles with pictures
+  - Get How-to article written
+  - Add 6 fake memorials
+  - Link articles / how-to with client backend sections
 
 ## future features
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
