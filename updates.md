@@ -1,16 +1,18 @@
 ## updates
 
 * Heroku
-  - Add blog articles with pictures
   - Get How-to article written
   - Add 6 fake memorials
   - Link articles / how-to with client backend sections
 
 ## future features
+* Logged in users can access homepage and admin sections when the want
+* Comment on blog articles (Disqus)
+* Proper form fields / HTML5 Validations
+
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
 * AJAX: private memorial popup with modals
 * [AJAX (will_paginate)](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
-* Logged in users can access homepage and admin sections when the want
 
 * Better Header Icons (timeline / graveyard)
 * Comments on events

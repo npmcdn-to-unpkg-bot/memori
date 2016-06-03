@@ -10,19 +10,19 @@
             <%= form_for @user do |f| %>
 						<div class="control-group">
 							<%= f.label :name %>
-              <%= f.text_field :name, class: "form-control", placeholder: "Your Name" %>
+              <%= f.text_field :name, class: "form-control", placeholder: "Your Name", required: true %>
 						</div>
 						<div class="control-group">
 							<%= f.label :email %>
-              <%= f.text_field :email, class: "form-control", placeholder: "Your Email" %>
+              <%= f.text_field :email, class: "form-control", placeholder: "Your Email", required: true %>
 						</div>
 						<div class="control-group">
 							<%= f.label :username %>
-              <%= f.text_field :username, class: "form-control", placeholder: "Your Username" %>
+              <%= f.text_field :username, class: "form-control", placeholder: "Your Username", required: true %>
 						</div>
 						<div class="control-group">
 							<%= f.label :password %>
-              <%= f.password_field :password, class: "form-control", placeholder: "Your Password" %>
+              <%= f.password_field :password, class: "form-control", placeholder: "Your Password", required: true %>
 						</div>
               <%= f.submit 'Register', class: "submit-btn submit md-btn btn" %>
             <% end %>
