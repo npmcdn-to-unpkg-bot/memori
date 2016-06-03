@@ -12,4 +12,4 @@ A person closed to me passed away and I wanted to create an online memorial for 
 ### Tech Stack
 * Back-end: Ruby, Rails, Postgres
 * Front-end: HTML/CSS, jQuery, AJAX
-* Services/Integrations: Mailgun, Facebook(?)
+* Services/Integrations: Mailgun, Facebook
