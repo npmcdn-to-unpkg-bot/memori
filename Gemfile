@@ -27,6 +27,9 @@ gem 'jquery-fileupload-rails'
 gem 'best_in_place'
 gem 'will_paginate', '~> 3.1.0'
 
+# visitor stats
+gem 'ahoy_matey'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

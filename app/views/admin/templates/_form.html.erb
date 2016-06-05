@@ -6,15 +6,15 @@
   <%= form_for([:admin, @template], remote: true) do |f| %>
   <div class="control-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", autofocus: true, required: true %>
   </div>
   <div class="control-group">
     <%= f.label :theme %>
-    <%= f.text_field :theme, class: "form-control" %>
+    <%= f.text_field :theme, class: "form-control", required: true %>
   </div>
   <div class="control-group">
     <%= f.label :variant %>
-    <%= f.text_field :variant, class: "form-control" %>
+    <%= f.text_field :variant, class: "form-control", required: true %>
   </div>
   <%= f.submit (@template.new_record? ? "Add New Template" : "Update Template"), class: "submit-btn submit md-btn btn" %>
   <% end %>

@@ -5,11 +5,11 @@
   <%= form_for([@memorial, @photo], remote: true) do |f| %>
     <div class="control-group">
       <%= f.label :caption %>
-      <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo" %>
+      <%= f.text_field :caption, class: "form-control", placeholder: "Put a description that describes the photo", required: true %>
     </div>
     <div class="control-group">
       <%= f.label :picture %>
-      <%= f.file_field :picture, class: "form-control" %>
+      <%= f.file_field :picture, class: "form-control", required: true %>
     </div>
     <%= f.submit (@photo.new_record? ? "Submit Photo" : "Update Photo"), class: "submit-btn submit md-btn btn" %>
   <% end %>

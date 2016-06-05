@@ -15,6 +15,7 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.purr
+//= require ahoy
 //= require best_in_place
 //= require jgrowl
 //= require validate

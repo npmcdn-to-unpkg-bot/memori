@@ -6,7 +6,7 @@
   <%= form_for([:admin, @post], remote: true) do |f| %>
   <div class="control-group">
     <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control", autofocus: true, required: true %>
   </div>
   <div class="control-group">
     <%= f.label :subtitle %>
@@ -14,7 +14,7 @@
   </div>
   <div class="control-group">
     <%= f.label :summary %>
-    <%= f.text_area :summary, rows: 5, class: "form-control", placeholder: "First paragraph as a summary" %>
+    <%= f.text_area :summary, rows: 5, class: "form-control", placeholder: "First paragraph as a summary", required: true %>
   </div>
   <div class="control-group">
     <%= f.label :body %>

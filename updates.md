@@ -1,14 +1,11 @@
 ## updates
 
-* Heroku
-  - Get How-to article written
-  - Add 6 fake memorials
-  - Link articles / how-to with client backend sections
-
 ## future features
+* Visitor Statistics
 * Logged in users can access homepage and admin sections when the want
+
+* Link Jessie How-to with Back-end sections
 * Comment on blog articles (Disqus)
-* Proper form fields / HTML5 Validations
 
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
 * AJAX: private memorial popup with modals
@@ -23,10 +20,8 @@
 * Guests can submit pictures
 
 * Better Maps Integration
-
 * Social Login / Facebook App Integration for Visitors
 * Hero Slider or New Image on Refresh
 
 * TDD: Features
 * TDD: Shift to test::unit
-* React
