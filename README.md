@@ -1,15 +1,25 @@
 # Memorial Project
 
-A person closed to me passed away and I wanted to create an online memorial for them, so their friends and relatives from around the world could celebrate that person's legacy. I searched around the web, and all the available platforms were severely outdated.
+I was trying to create an online memorial for a friend and noticed all the available platforms were severely outdated. So I decided to create my own.
 
-### Feature Overview
+### Current Features
 * Allow people to quickly and easily launch an online memorial
 * Be able to upload photos and create a timeline of events
-* Allow interactivity through a guestbook and possibly commenting on events and photos
-* Actions will be shown on synced Facebook accounts to enhance visibility of the memorial
-* Users will be able to password protect a memorial if needed
+* Allow people to leave stories through a guestbook
+* Password protected option
+
+### Future Features
+* Commenting on events and photos
+* FB and Twitter Integration
+* Multiple Photo Galleries
+* Visitors can add photos and timeline events
+* Additional templates
 
 ### Tech Stack
 * Back-end: Ruby, Rails, Postgres
 * Front-end: HTML/CSS, jQuery, AJAX
-* Services/Integrations: Mailgun, Facebook
+* Integrations: Mailgun
+* Testing: Rspec
+
+### Deployed Link
+[Herkou](https://gentle-basin-44448.herokuapp.com/)

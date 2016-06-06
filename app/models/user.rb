@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
 
+  # simple roles for admin user
   def admin?
     self.role == 'admin'
   end

@@ -17,6 +17,7 @@ class Memorial < ActiveRecord::Base
   include Sluggable
 
   after_create :set_default_values
+  after_validation :geocode, if: :address_changed?
 
   belongs_to :user, foreign_key: :user_id
   belongs_to :template, foreign_key: :template_id
@@ -31,7 +32,6 @@ class Memorial < ActiveRecord::Base
   validates :dod, presence: true
 
   geocoded_by :address
-  after_validation :geocode, if: :address_changed?
 
   sluggable_column :name
 

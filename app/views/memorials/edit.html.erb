@@ -6,67 +6,64 @@
 			<!-- Post Container -->
 			<div id="post-container" class="col-md-8 post-container" role="main">
 				<div class="about-right-box">
+
+					<!-- Basic information about the memorial -->
 					<%= render 'memorials/client_backend/form' %>
-        <br>
-        <hr>
-        <h2>Timeline</h2>
-        <br>
-        <h4>Event Listing</h4>
-        <br>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Image</th>
-              <th>Description</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody id="events">
-						<%= render @events %>
-          </tbody>
-        </table>
-        <br>
+	        <br>
+	        <hr>
 
-				<%= link_to "New Timeline Event", new_memorial_event_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
+					<!-- Events Section -->
+	        <h2>Timeline</h2>
+	        <br>
+	        <h4>Event Listing</h4>
+	        <br>
+	        <table class="table">
+	          <thead>
+	            <tr>
+	              <th>#</th>
+	              <th>Title</th>
+	              <th>Date</th>
+	              <th>Image</th>
+	              <th>Description</th>
+	              <th>Edit</th>
+	              <th>Delete</th>
+	            </tr>
+	          </thead>
+	          <tbody id="events">
+							<%= render @events %>
+	          </tbody>
+	        </table>
+	        <br>
 
-				<br>
+					<%= link_to "New Timeline Event", new_memorial_event_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
 
-				<div id="event-form" style="display:none;">
+					<br>
+					<div id="event-form" style="display:none;"></div>
+					<br>
+					<hr>
 
-				</div>
+					<!-- Photo Section -->
+	        <h2>Photos</h2>
+	        <div id="team-page" class="page team-page page-container text-center">
+	          <div class="container">
+	            <div class="row" id="photos">
+								<%= render @photos %>
 
-        <br>
-        <hr>
-        <h2>Photos</h2>
-        <div id="team-page" class="page team-page page-container text-center">
-          <div class="container">
-            <div class="row" id="photos">
-							<%= render @photos %>
+	            </div><!-- /.row -->
+	          </div><!-- /.container -->
+	        </div><!-- /#about-page -->
 
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div><!-- /#about-page -->
+					<%= form_for [@memorial, @photo] do |f| %>
+						<%= f.label :picture, "Upload Multiple Photos:" %>
+						<%= f.file_field :picture, multiple: true, name: "photo[picture]" %>
+					<% end %>
 
-				<%= form_for [@memorial, @photo] do |f| %>
-					<%= f.label :picture, "Upload Multiple Photos:" %>
-					<%= f.file_field :picture, multiple: true, name: "photo[picture]" %>
-				<% end %>
-
-				<div id="photo-form" style="display:none;"></div>
-        <br><br>
-
-
-			</div><!--  /.about-right-box -->
-
-
+					<div id="photo-form" style="display:none;"></div>
+	        <br><br>
+				</div><!--  /.about-right-box -->
 
 			</div><!-- /.post-container -->
 			<!-- Post Container End -->
-
 
 			<!-- Sidebar -->
 			<%= render 'edit_sidebar' %>

@@ -20,6 +20,7 @@ class MemorialsController < ApplicationController
   end
 
   def show
+    # Check if memorial is private
     if @memorial.protect && (session[:access_id] != @memorial.code)
       redirect_to protect_memorial_path(@memorial)
     else
@@ -30,9 +31,10 @@ class MemorialsController < ApplicationController
     end
   end
 
-  def protect
-  end
 
+  def protect; end
+
+  # route for accessing private memorial
   def access
     if @memorial.code == params[:code]
       session[:access_id] = @memorial.code

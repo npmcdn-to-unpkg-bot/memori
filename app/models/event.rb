@@ -3,8 +3,8 @@
 #
 # id              :integer
 # title           :string
-# description     :text
 # date            :datetime
+# description     :text
 
 class Event < ActiveRecord::Base
   belongs_to :memorial, foreign_key: :memorial_id

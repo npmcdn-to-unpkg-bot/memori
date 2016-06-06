@@ -1,3 +1,4 @@
+# Controller for static pages
 class PagesController < ApplicationController
   def show
     if valid_page?

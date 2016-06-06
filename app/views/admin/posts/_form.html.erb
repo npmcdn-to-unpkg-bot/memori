@@ -22,7 +22,7 @@
   </div>
   <div class="control-group">
     <%= f.label :picture %>
-    <%= f.file_field :picture, class: "form-control" %>
+    <%= f.file_field :picture, class: "form-control", required: true %>
   </div>
   <%= f.submit (@post.new_record? ? "Add Blog Post" : "Update Blog Post"), class: "submit-btn submit md-btn btn" %>
   <% end %>
