@@ -1,14 +1,16 @@
-## updates
-
 ## future features
 
 ### Monday
-* Check test coverage (add new ones for models and controllers)
-* Visitor Statistics
+* Change image upload to Amazon S3 (use fog / heroku credentials)
+* Blog image blur
+* Increase font size for readers
 * Comment on blog articles (Disqus)
 
 ### Tuesday
 * Better Header Icons (timeline / graveyard)
+* Check test coverage (add new ones for models and controllers)
+* Visitor Statistics
+
 * Comments on events
 * Gallery with comments (FB format)
 * Change Photo Order / Photo Gallery Option

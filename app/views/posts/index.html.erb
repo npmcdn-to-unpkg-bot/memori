@@ -5,50 +5,14 @@
 				<div class="row">
 					<!-- Post Container -->
 					<div id="post-container" class="col-md-12 post-container" role="main">
-						<div class="about-right-box">
 
-              <% @posts.each do |post| %>
-							<article class="post-content">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="featured-img">
-                      <%= image_tag post.picture.url(:thumb) if post.picture? %>
-										</div><!-- /.featured-img -->
-									</div>
-									<div class="col-sm-6">
-										<div class="post-container">
-											<h3 class="post-title">
-												<%= link_to post.title, post_path(post) %>
-											</h3><!-- /.post-title -->
-											<div class="post-meta">
-												<span class="time"><%= display_datetime(post.created_at) %></span>
-											</div><!-- /.post-meta -->
-											<p class="post-description">
-                        <td><%= post.summary %>
-											</p>
-											<div class="continue-reading pull-left">
-                        <%= link_to "Read More", post_path(post)  %>
-											</div><!-- /.continue-reading -->
-										</div><!-- /.post-container -->
-									</div>
-								</div><!-- /.row -->
-							</article><!-- /.post-content -->
-              <% end %>
-
-            </div><!--  /.about-right-box -->
+						<div id="posts">
+							<%= render 'posts' %>
+						</div>
 
 
-						<nav style="text-align: center;">
-							<ul class="pagination">
-								<%= will_paginate @posts, class: 'digg_pagination' %>
-
-							</ul>
-						</nav>
 					</div><!-- /.post-container -->
 					<!-- Post Container End -->
-
-
-
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</div><!-- /#about-page -->

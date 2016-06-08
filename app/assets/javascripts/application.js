@@ -19,6 +19,7 @@
 //= require best_in_place
 //= require jgrowl
 //= require validate
+//= require pagination
 //= require ckeditor/init
 //= require memorials/bootstrap
 //= require memorials/boxer
