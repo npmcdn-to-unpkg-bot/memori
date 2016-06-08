@@ -26,7 +26,7 @@ class Memorial < ActiveRecord::Base
   has_many :photos, foreign_key: :memorial_id
   has_one :guestbook, foreign_key: :memorial_id
 
-  mount_uploader :hero, HeroUploader
+  mount_uploader :picture, PictureUploader
 
   validates :name, presence: true
   validates :dod, presence: true

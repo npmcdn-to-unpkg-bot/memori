@@ -1,5 +1,5 @@
 <!-- If the user has not choosen a hero image, a default image is shown -->
-<% if @memorial.hero.url.nil? %>
+<% if @memorial.picture.url.nil? %>
 <style>
   .hero {
     background-image: url(<%= asset_path 'yes/hero.jpg' %>);
@@ -8,7 +8,7 @@
 <% else %>
 <style>
   .hero {
-    background-image: url(<%= @memorial.hero.url %>);
+    background-image: url(<%= @memorial.picture.url %>);
   }
 </style>
 <% end %>

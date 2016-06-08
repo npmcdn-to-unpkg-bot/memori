@@ -34,8 +34,8 @@
 <%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
 <br><br><br>
 <div class="control-group">
-  <%= f.label :hero, "Cover Image (Use a Large Picture)" %>
-  <%= f.file_field :hero, class: "form-control" %>
+  <%= f.label :picture, "Cover Image (Use a Large Picture)" %>
+  <%= f.file_field :picture, class: "form-control" %>
 </div>
 <%= f.submit "Update Memorial", class: "submit-btn submit md-btn btn" %>
 <% end %>

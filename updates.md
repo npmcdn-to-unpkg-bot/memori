@@ -2,8 +2,6 @@
 
 ### Monday
 * Change image upload to Amazon S3 (use fog / heroku credentials)
-* Blog image blur
-* Increase font size for readers
 * Comment on blog articles (Disqus)
 
 ### Tuesday
@@ -21,7 +19,7 @@
 * Separate Client front-end with backend (views / controllers / etc.)
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
 * AJAX: private memorial popup with modals
-* [AJAX (will_paginate)](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
+* [AJAX: comments and timeline](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
 
 ### Thursday
 * Guests can suggest timeline events
