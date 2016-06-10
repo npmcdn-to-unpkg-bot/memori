@@ -20,3 +20,6 @@
 /public/uploads
 
 # Ignore local notes
+
+# Ignore application configuration
+/config/application.yml

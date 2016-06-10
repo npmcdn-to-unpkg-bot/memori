@@ -15,10 +15,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# image uploading
+# Gems for image uploading
+gem "figaro", ">= 1.0.0"
 gem 'carrierwave'
-# image manipulation
 gem 'rmagick'
+gem 'fog'
+
 # convert street address to lat / long
 gem 'geocoder'
 # WYSIWYG editor
