@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_memorial
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :require_user
-  before_action :require_creator
+  before_action :require_creator, only: [:edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, only: [:create]
 
   def new
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = @memorial.events.build(params.require(:event).permit(:date, :title, :description, :picture))
+    @event = @memorial.events.build(event_params)
 
     respond_to do |format|
       format.html do
@@ -85,7 +85,7 @@ class EventsController < ApplicationController
     end
 
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find_by_id(params[:id])
     end
 
     def event_params

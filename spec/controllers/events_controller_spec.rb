@@ -7,14 +7,15 @@ describe EventsController do
       session[:user_id] = alice.id
       memorial1 = Fabricate(:memorial, user: alice)
     end
+
     it "sets the @event variable" do
-      get :new, memorial_id: Memorial.first.id
+      get :new, memorial_id: Memorial.first.slug
       expect(assigns(:event)).to be_new_record
       expect(assigns(:event)).to be_instance_of(Event)
     end
 
     it "renders the new template" do
-      get :new, memorial_id: Memorial.first.id
+      get :new, memorial_id: Memorial.first.slug
       expect(response).to render_template :new
     end
   end
@@ -24,7 +25,7 @@ describe EventsController do
       alice = Fabricate(:user)
       session[:user_id] = alice.id
       memorial1 = Fabricate(:memorial, user: alice)
-      post :create, memorial_id: memorial1.id, event: {title: "test", date: DateTime.now, description: "test"}
+      post :create, memorial_id: memorial1.slug, event: {title: "test", date: DateTime.now, description: "test"}
     end
 
     it "creates an event record when the input is valid" do
@@ -42,8 +43,8 @@ describe EventsController do
       alice = Fabricate(:user)
       session[:user_id] = alice.id
       memorial1 = Fabricate(:memorial, user: alice)
-      post :create, memorial_id: memorial1.id, event: {title: "test", date: DateTime.now, description: "test"}
-      get :destroy, memorial_id: Memorial.first.id, id: Event.first.id
+      post :create, memorial_id: memorial1.slug, event: {title: "test", date: DateTime.now, description: "test"}
+      get :destroy, memorial_id: Memorial.first.slug, id: Event.first.id
     end
 
     it "deletes the event record" do

@@ -16,4 +16,6 @@ class Post < ActiveRecord::Base
   validates :picture, presence: true
 
   mount_uploader :picture, PictureUploader
+
+  DISQUS_SHORTNAME = Rails.env == "development" ? "dev_shortname".freeze : "production_shortname".freeze
 end

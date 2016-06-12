@@ -43,11 +43,11 @@ describe MemorialsController do
 
   describe "GET show" do
     it "sets the @memorial variable" do
-      get :show, id: bob.id
+      get :show, id: bob.slug
       expect(assigns(:memorial)).to eq(bob)
     end
     it "renders the show template" do
-      get :show, id: bob.id
+      get :show, id: bob.slug
       expect(response).to render_template :show
     end
   end
@@ -109,7 +109,7 @@ describe MemorialsController do
     end
 
     it "sets @memorial variable" do
-      get :edit, id: Memorial.first.id
+      get :edit, id: Memorial.first.slug
       expect(assigns(:memorial)).to eq(Memorial.first)
     end
   end
@@ -121,11 +121,11 @@ describe MemorialsController do
     end
 
     it "updates the memorial" do
-      post :update, id: Memorial.first.id, memorial: {name: "bob", dod: DateTime.now, theme: "purps"}
-      expect(Memorial.first.name).to eq('bob')
+      post :update, id: Memorial.first.slug, memorial: {biography: "hello", dod: DateTime.now, theme: "purps"}
+      expect(Memorial.first.biography).to eq('hello')
     end
     it "redirects to the edit memorial path" do
-      post :update, id: Memorial.first.id, memorial: {name: "bob", dod: DateTime.now, theme: "purps"}
+      post :update, id: Memorial.first.slug, memorial: {dod: DateTime.now, theme: "purps"}
       expect(response).to redirect_to edit_memorial_path
     end
   end
