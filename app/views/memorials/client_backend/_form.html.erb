@@ -31,7 +31,7 @@
 </div>
 <br><br>
 <h4>Current Cover Image</h4>
-<%= image_tag @memorial.hero.url(:thumb) if @memorial.hero? %>
+<%= image_tag @memorial.picture.url(:thumb) if @memorial.picture? %>
 <br><br><br>
 <div class="control-group">
   <%= f.label :picture, "Cover Image (Use a Large Picture)" %>
