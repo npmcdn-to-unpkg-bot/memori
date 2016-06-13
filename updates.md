@@ -1,20 +1,18 @@
 ## future features
 
 ### Sunday
-* Comment on blog articles (Disqus)
+* Comments on events
 * Better Header Icons (timeline / graveyard)
 * Visitor Statistics
 
 ### Monday
-* Comments on events
-* Gallery with comments (FB format)
-* Dependent Destroy (check if works with events and photos)
+* Photos with comments (FB format)
 * Change Photo Order / Photo Gallery Option
 * Hero Slider Gallery
 
 ### Tuesday
 * Separate Visitor / Logged in User / Admin Templates Properly
-* Separate Client front-end with backend (views / controllers / etc.)
+* Separate Client front-end with backend (views / controllers / etc.) / Lots of partials
 
 ### Wednesday
 * [Full jQuery Upload UI](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))

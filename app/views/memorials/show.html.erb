@@ -117,6 +117,30 @@
                                     </a>
                                 </div>
                                   <p><%= event.description %></p>
+                                  <p>
+                                    <a href="#" class="more">Add Comment</a>
+                                    <%= form_for [@memorial, event, Comment.new], html: {class: "actionform"} do |f| %>
+                                      <div class="control-group">
+                                        <%= f.label :author, "Name" %>
+                                        <%= f.text_field :author %>
+                                      </div>
+                                      <div class="control-group">
+                                        <%= f.label :body, "Comment" %>
+                                        <%= f.text_area :body, rows: 5 %>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                      <%= f.submit "Leave Entry", class: "color" %>
+                                      <div class="clearfix"></div>
+                                    <% end %>
+                                  </p>
+                                  <p>
+                                    <a href="#" class="more">View Comments</a>
+                                    <% event.comments.each_with_index do |comment,index| %>
+                                      <span class="date"><%= display_month_day_year(comment.created_at) %></span>
+                                        <p><%= comment.body %></p>
+                                        <span class="name"><%= comment.author %></span>
+                                    <% end %>
+                                  </p>
                               </div>
                           </div>
                       </div>
