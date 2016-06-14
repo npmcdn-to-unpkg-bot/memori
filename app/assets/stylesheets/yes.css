@@ -21,3 +21,11 @@
  *= require yes/ie8
  *= require yes/boxaroo
  */
+
+.add-comment-form, .comments-listing {
+  display: none;
+}
+
+.comment-box p {
+  margin: 0;
+}

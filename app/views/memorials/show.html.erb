@@ -117,30 +117,39 @@
                                     </a>
                                 </div>
                                   <p><%= event.description %></p>
-                                  <p>
-                                    <a href="#" class="more">Add Comment</a>
+                                    <br />
+                                    <a class="more add-comment-link">Add Comment</a>
+                                    <div class="form add-comment-form">
+                                      <br />
                                     <%= form_for [@memorial, event, Comment.new], html: {class: "actionform"} do |f| %>
                                       <div class="control-group">
-                                        <%= f.label :author, "Name" %>
-                                        <%= f.text_field :author %>
+                                        <%= f.text_field :author, class: 'form-control', placeholder: "Your Name" %>
                                       </div>
                                       <div class="control-group">
-                                        <%= f.label :body, "Comment" %>
-                                        <%= f.text_area :body, rows: 5 %>
+                                        <%= f.text_area :body, rows: 5, class: 'form-control',  placeholder: "Your Comment" %>
                                       </div>
                                       <div class="clearfix"></div>
                                       <%= f.submit "Leave Entry", class: "color" %>
                                       <div class="clearfix"></div>
                                     <% end %>
-                                  </p>
-                                  <p>
-                                    <a href="#" class="more">View Comments</a>
-                                    <% event.comments.each_with_index do |comment,index| %>
-                                      <span class="date"><%= display_month_day_year(comment.created_at) %></span>
-                                        <p><%= comment.body %></p>
-                                        <span class="name"><%= comment.author %></span>
-                                    <% end %>
-                                  </p>
+                                  </div>
+                                    <br />
+                                    <div>
+                                      <a class="more view-comment-link">View Comments</a>
+
+                                      <div class="comments-listing">
+                                        <br />
+                                        <% event.comments.each_with_index do |comment,index| %>
+                                          <div class="comment-box">
+                                              <p><strong><%= comment.author %></strong></p>
+                                              <p><%= display_month_day_year(comment.created_at) %></p>
+                                              <br />
+                                              <p><%= comment.body %></p>
+                                          </div>
+                                          <br />
+                                        <% end %>
+                                      </div>
+                                    </div>
                               </div>
                           </div>
                       </div>

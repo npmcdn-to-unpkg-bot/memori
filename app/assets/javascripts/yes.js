@@ -28,3 +28,14 @@
 //= require yes/retina
 //= require yes/soc-share
 //= require yes/custom
+
+
+$(document).ready(function() {
+  $('.add-comment-link').click(function() {
+    $(this).nextAll('.add-comment-form').toggle();
+  });
+
+  $('.view-comment-link').click(function() {
+    $(this).nextAll('.comments-listing').toggle();
+  });
+});

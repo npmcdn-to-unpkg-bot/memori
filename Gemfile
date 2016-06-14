@@ -26,7 +26,8 @@ gem 'geocoder'
 # WYSIWYG editor
 gem 'ckeditor'
 # better rails web server
-gem 'puma'
+# gem 'puma'
+gem 'unicorn'
 # postgres db
 gem 'pg'
 # mailgun rails gem
