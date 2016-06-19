@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'memorials#home'
+  root 'pages#home'
 
   get "/pages/:page" => "pages#show"
-
-  resources :letters, only: [:create]
+  post "pages/contact", to: "pages#contact"
 
   namespace :admin do
     resources :posts
@@ -14,10 +13,10 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show]
 
   resources :memorials, except: [:destroy] do
-
     member do
       get 'protect'
       post 'access'
+      post 'contact'
     end
 
     resources :guestbooks, only: [:create] do
@@ -31,8 +30,6 @@ Rails.application.routes.draw do
     resources :photos, except: [:index, :show] do
       resources :comments, module: :photos, only: [:create]
     end
-
-    resources :messages, only: [:create]
   end
 
   get '/register', to: 'users#new'

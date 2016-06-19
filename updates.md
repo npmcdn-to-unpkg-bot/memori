@@ -1,27 +1,41 @@
 ## future features
 
-### Tuesday
-
-* Change Photo Order (rankmodel gem / jQuery)
-
+### Weekend
 * Separate Visitor / Logged in User / Admin Templates Properly
 * Separate Client front-end with backend (views / controllers / etc.) / Lots of partials
+* Letters / Messages(?)
+
+Visitor / Not logged in User
+* Can view homepage and any memorials
+* Can register
+* cannot access any backend links
+
+Logged in User
+* different homepage items when logged in
+* ability to go between memorials dashboard and homepage
+
+Admin
+* different homepage items when logged in
+* ability to go between admin section, memorials dashboard and homepage
+
 
 * Visitor Statistics
 * Photos with comments (FB format)
 * Better Header Icons (timeline / graveyard)
+* Flash error messages like on the memorial Update page
 
-### Wednesday
-* [Full jQuery Upload UI ](https://github.com/blueimp/jquery-file-upload/wiki/rails-setup-for-v6-(multiple))
+### Monday
 * [AJAX: guestbook, event and photo comments ](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
 * AJAX: private memorial popup with modals
 
-### Thursday
+### Tuesday
 * Guests can suggest timeline events
 * Guests can submit pictures
 
+
 ### Later
 * Photo Gallery Option
+* Change Photo Order (jQuery)
 * Hero Slider Gallery
 
 * Better Maps Integration

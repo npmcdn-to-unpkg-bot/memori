@@ -1,19 +1,9 @@
 class MemorialsController < ApplicationController
-  before_action :set_memorial, only: [:show, :edit, :update, :protect, :access]
-  before_action :require_user, except: [:home, :show, :protect, :access]
+  before_action :set_memorial, only: [:show, :edit, :update, :protect, :access, :contact]
+  before_action :require_user, except: [:show, :protect, :access, :contact]
   before_action :require_creator, only: [:edit, :update]
   before_action :check_access, only: [:protect, :access]
   skip_before_filter :verify_authenticity_token, only: [:update]
-
-  def home
-    @posts = Post.order('created_at DESC').limit(4)
-    @memorials = Memorial.order('created_at DESC').limit(4).where(protect: false)
-    @photos = Photo.joins(:memorial).where(memorials: {protect:false}).limit(6)
-
-    if current_user
-      redirect_to current_user.admin? ? admin_posts_path : memorials_path
-    end
-  end
 
   def index
     @memorials = current_user.memorials.order("created_at DESC")
@@ -84,6 +74,22 @@ class MemorialsController < ApplicationController
       end
 
       format.js
+    end
+  end
+
+  def contact
+    @message = Message.new(params.require(:message).permit(:name, :email, :content))
+
+    if @message.valid?
+      NotificationMailer.contact_memorial_creator(@message, @memorial.user).deliver_now
+      if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+        redirect_to :back, notice: "Your message has been sent"
+      else
+        flash[:notice] = "your message has been sent"
+      end
+    else
+      flash[:alert] = "An error occured while delivering this message."
+      render :new
     end
   end
 

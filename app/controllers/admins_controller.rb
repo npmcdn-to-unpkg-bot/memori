@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class AdminsController < AuthenticatedController
   before_action :require_admin
 
   layout 'admin'

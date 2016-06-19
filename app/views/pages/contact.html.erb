@@ -10,45 +10,37 @@
 </div><!-- /.page-naem-container -->
 
 
-		<section id="contact-page" class="page contact-page page-container">
-			<div class="container">
+<section id="contact-page" class="page contact-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-12 post-container" role="main">
 				<div class="row">
-					<!-- Post Container -->
-					<div id="post-container" class="col-md-12 post-container" role="main">
-						<div class="row">
-							<div class="col-md-8">
-                <%= form_for @letter, html: {class: "contact-form"} do |f| %>
-                  <div class="control-group column six">
-                    <%= f.text_field :name, class: "form-control", placeholder: "Your Name", required: true %>
-                  </div>
-                  <div class="control-group column six">
-                    <%= f.email_field :email, class: "form-control", placeholder: "Your Email", type: 'email', required: true %>
-                  </div>
-                  <div class="control-group column six">
-                    <%= f.text_field :subject, class: "form-control", placeholder: "Subject", required: true %>
-                  </div>
-                  <div class="control-group column twelve">
-                    <%= f.text_area :content, rows: 5, class: "form-control", placeholder: "Message", required: true %>
-                  </div>
-                  <div class="clearfix"></div>
-                  <%= f.submit "Send Now", class: "submit-btn submit md-btn btn" %>
-                  <div class="clearfix"></div>
-                <% end %>
-
-							</div>
-
-							<div class="col-md-4">
-								<h4 class="contact-title">Contact Info </h4>
-								<p>
-									Contact us if you have any feedback or questions. We are always looking for testimonials from people that love our site as well as requests for new features.
-								</p>
-							</div>
-						</div>
-
-
-
-					</div><!-- /.post-container -->
-					<!-- Post Container End -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</section><!-- /#contact-page -->
+					<div class="col-md-8">
+          <%= form_for Message.new, url: url_for(controller: 'pages', action: 'contact'), html: {class: "actionform"} do |f| %>
+              <div class="control-group column six">
+                <%= f.text_field :name, class: "form-control", placeholder: "Your Name", required: true %>
+              </div>
+              <div class="control-group column six">
+                <%= f.email_field :email, class: "form-control", placeholder: "Your Email", type: 'email', required: true %>
+              </div>
+              <div class="control-group column twelve">
+                <%= f.text_area :content, rows: 5, class: "form-control", placeholder: "Message", required: true %>
+              </div>
+              <div class="clearfix"></div>
+              <%= f.submit "Send Now", class: "submit-btn submit md-btn btn" %>
+              <div class="clearfix"></div>
+            <% end %>
+					</div>
+					<div class="col-md-4">
+						<h4 class="contact-title">Contact Info </h4>
+						<p>
+							Contact us if you have any feedback or questions. We are always looking for testimonials from people that love our site as well as requests for new features.
+						</p>
+					</div>
+				</div>
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /#contact-page -->
