@@ -3,7 +3,6 @@
 ### Weekend
 * Separate Visitor / Logged in User / Admin Templates Properly
 * Separate Client front-end with backend (views / controllers / etc.) / Lots of partials
-* Letters / Messages(?)
 
 Visitor / Not logged in User
 * Can view homepage and any memorials
@@ -22,7 +21,7 @@ Admin
 * Visitor Statistics
 * Photos with comments (FB format)
 * Better Header Icons (timeline / graveyard)
-* Flash error messages like on the memorial Update page
+* Flash error messages like on thm e memorial Update page
 
 ### Monday
 * [AJAX: guestbook, event and photo comments ](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)

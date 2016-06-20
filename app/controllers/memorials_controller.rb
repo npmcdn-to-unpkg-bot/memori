@@ -96,7 +96,7 @@ class MemorialsController < ApplicationController
   private
 
     def memorial_params
-      params.require(:memorial).permit(:name, :dod, :biography, :hero, :address, :template_id, :protect, :code)
+      params.require(:memorial).permit(:name, :dod, :biography, :picture, :address, :template_id, :protect, :code)
     end
 
     def set_memorial
