@@ -1,44 +1,26 @@
 ## future features
 
-### Weekend
-* Separate Visitor / Logged in User / Admin Templates Properly
-* Separate Client front-end with backend (views / controllers / etc.) / Lots of partials
-
-Visitor / Not logged in User
-* Can view homepage and any memorials
-* Can register
-* cannot access any backend links
-
-Logged in User
-* different homepage items when logged in
-* ability to go between memorials dashboard and homepage
-
-Admin
-* different homepage items when logged in
-* ability to go between admin section, memorials dashboard and homepage
-
-
+### Tuesday
 * Visitor Statistics
 * Photos with comments (FB format)
-* Better Header Icons (timeline / graveyard)
-* Flash error messages like on thm e memorial Update page
 
-### Monday
+### Wednesday
 * [AJAX: guestbook, event and photo comments ](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
 * AJAX: private memorial popup with modals
 
-### Tuesday
+### Thursday
+* Authenticated Controller (?) / Separate Memorial Edit View into 3 separate sections
 * Guests can suggest timeline events
 * Guests can submit pictures
-
+* Link Jessie How-to with Back-end sections
 
 ### Later
 * Photo Gallery Option
 * Change Photo Order (jQuery)
 * Hero Slider Gallery
+* Higher Performance JS / Rails / CSS
+* TDD: Features
 
 * Better Maps Integration
 * Social Login / Facebook App Integration for Visitors
-* TDD: Features
 * TDD: Shift to test::unit
-* Link Jessie How-to with Back-end sections

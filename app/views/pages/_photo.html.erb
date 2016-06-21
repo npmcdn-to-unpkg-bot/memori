@@ -1,0 +1,12 @@
+<div class="item col-md-4 col-sm-6">
+  <div class="gallery-item">
+    <%= image_tag photo.picture.url(:home) %>
+    <a href="<%= photo.picture.url %>" title="<%= photo.caption %>" class="gallery-item-link transition boxer">
+      <div class="hex-container">
+        <div class="hex">
+          <div class="hex-icon"><i class="fa fa-plus"></i></div>
+        </div><!-- /.hex -->
+      </div>
+    </a>
+  </div><!-- ./gallery-item -->
+</div><!-- /.item -->

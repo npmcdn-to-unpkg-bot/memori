@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Memorial Spaces - Remember Your Loved Ones</title>
+  <title>Memori - Remember Your Loved Ones</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,13 @@
 <body>
 
   <%= render 'layouts/navigation' %>
+
+  <% flash.each do |name, msg| -%>
+    <%= javascript_tag do %>
+      var stuff = "<%= msg %>";
+      $.jGrowl(stuff, { life: 10000 });
+    <% end %>
+  <% end %>
 
   <%= yield %>
 

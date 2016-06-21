@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         if @comment.save
-          flash[:notice] = "your comment was added."
+          flash[:notice] = "Your comment was added."
           redirect_to memorial_path(@memorial)
         else
           render 'memorials/show'

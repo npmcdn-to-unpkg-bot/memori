@@ -8,7 +8,6 @@ class PagesController < ApplicationController
 
   def show
     if valid_page?
-      @letter = Letter.new
       render template: "pages/#{params[:page]}"
     else
       render file: "public/404.html", status: :not_found
@@ -23,7 +22,7 @@ class PagesController < ApplicationController
       if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
         redirect_to root_path
       else
-        flash[:notice] = "your message has been sent"
+        flash[:notice] = "Your message has been sent."
       end
     else
       flash[:alert] = "An error occured while delivering this message."

@@ -12,6 +12,8 @@
 //
 //= require yes/jquery.min
 //= require jquery_ujs
+//= require jquery.purr
+//= require jgrowl
 //= require yes/boxaroo
 //= require yes/modernizr
 //= require yes/device

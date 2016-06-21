@@ -1,0 +1,18 @@
+<div class="col-md-3 col-sm-6">
+  <article class="post-content">
+    <div class="featured-img">
+      <% if post.picture? %>
+        <%= image_tag post.picture.url(:thumb), class: "blog-post-image" %>
+      <% end %>
+    </div><!-- /.featured-img -->
+    <div class="post-container">
+      <h3 class="post-title">
+        <%= link_to post.title, post_path(post) %>
+      </h3><!-- /.post-title -->
+      <small><%= display_datetime(post.created_at) %></small>
+      <p class="post-description">
+        <%= post.summary %>
+      </p>
+    </div><!-- /.post-container -->
+  </article><!-- /.post-content -->
+</div><!-- /.col-md-3 -->

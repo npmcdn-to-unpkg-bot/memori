@@ -63,10 +63,19 @@
         <nav class="collapse navbar-collapse">
           <!-- Main navigation -->
           <ul id="mainNavigation" class="main-mav nav navbar-nav">
-            <% if logged_in? %>
+            <% if logged_in? && current_user.admin? %>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "View Blog", posts_path %></li>
+              <li><%= link_to "Blog Posts", admin_posts_path %></a></li>
+              <li><%= link_to "Templates", admin_templates_path %></a></li>
+              <li><%= link_to "Logout", logout_path %></li>
+            <% elsif logged_in? %>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Blog", posts_path %></li>
+              <li><a href="/pages/contact">Contact Us</a></li>
               <li><%= link_to "My Memorials", memorials_path %></li>
-              <li><%= link_to "Add a Memorial", new_memorial_path %></li>
-              <li><%= link_to "Account Settings", user_path(current_user) %></li>
+              <li><%= link_to "New Memorial", new_memorial_path %></li>
+              <li><%= link_to "Settings", user_path(current_user) %></li>
               <li><%= link_to "Logout", logout_path %></li>
             <% else %>
               <li><%= link_to "Home", root_path %></li>

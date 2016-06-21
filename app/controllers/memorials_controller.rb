@@ -1,4 +1,4 @@
-class MemorialsController < ApplicationController
+class MemorialsController < AuthenticatedController
   before_action :set_memorial, only: [:show, :edit, :update, :protect, :access, :contact]
   before_action :require_user, except: [:show, :protect, :access, :contact]
   before_action :require_creator, only: [:edit, :update]
@@ -7,6 +7,7 @@ class MemorialsController < ApplicationController
 
   def index
     @memorials = current_user.memorials.order("created_at DESC")
+    @post = Post.order("RANDOM()").first
   end
 
   def show
@@ -85,7 +86,7 @@ class MemorialsController < ApplicationController
       if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
         redirect_to :back, notice: "Your message has been sent"
       else
-        flash[:notice] = "your message has been sent"
+        flash[:notice] = "Your message has been sent."
       end
     else
       flash[:alert] = "An error occured while delivering this message."

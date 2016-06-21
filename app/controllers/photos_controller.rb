@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < AuthenticatedController
   before_action :set_memorial
   before_action :set_photo, only: [:edit, :update, :destroy]
   before_action :require_user
@@ -21,10 +21,10 @@ class PhotosController < ApplicationController
       format.html do
         puts "ran html block"
         if @photo.save
-          flash[:notice] = "your photo was added"
+          flash[:notice] = "Your photo was added."
           redirect_to edit_memorial_path(@memorial)
         else
-          flash[:notice] = "problem adding your photo"
+          flash[:notice] = "There was a problem adding your photo."
           redirect_to edit_memorial_path(@memorial)
         end
       end

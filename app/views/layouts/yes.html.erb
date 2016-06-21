@@ -8,11 +8,18 @@
 </head>
 <body>
 
+  <% flash.each do |name, msg| -%>
+    <%= javascript_tag do %>
+      var stuff = "<%= msg %>";
+      $.jGrowl(stuff, { life: 10000 });
+    <% end %>
+  <% end %>
+
   <%= yield %>
 
   <%= javascript_include_tag 'yes' %>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlYTA2SI73Y-aA1Br5eVMzkLffonsby7w&callback=initMap"></script>
-  
+
 </body>
 </html>

@@ -8,7 +8,7 @@
 				<div class="about-right-box">
 
 					<!-- Basic information about the memorial -->
-					<%= render 'memorials/client_backend/form' %>
+					<%= render 'memorials/backend/form' %>
 	        <br>
 	        <hr>
 
@@ -30,7 +30,7 @@
 	            </tr>
 	          </thead>
 	          <tbody id="events">
-							<%= render @events %>
+							<%= render partial: "events/event", collection: @events %>
 	          </tbody>
 	        </table>
 	        <br>
@@ -47,9 +47,7 @@
 	        <div id="team-page" class="page team-page page-container text-center">
 	          <div class="container">
 	            <div class="row" id="photos">
-
-								<%= render @photos.rank(:position) %>
-
+								<%= render partial: "photos/photo", collection: @photos.rank(:position) %>
 	            </div><!-- /.row -->
 	          </div><!-- /.container -->
 	        </div><!-- /#about-page -->

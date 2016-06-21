@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "you have registered"
+      flash[:notice] = "Registration Successful!"
       redirect_to new_memorial_path
     else
       render :new
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "your profile has been updated"
+      flash[:notice] = "Your profile has been updated."
       redirect_to user_path(@user)
     else
       render :edit
@@ -43,5 +43,5 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-    
+
 end

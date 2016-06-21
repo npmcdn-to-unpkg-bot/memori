@@ -8,17 +8,17 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = "welcome to the app"
-      redirect_to current_user.admin? ? admin_posts_path : root_path
+      flash[:notice] = "Welcome to the Memori App."
+      redirect_to current_user.admin? ? admin_posts_path : memorials_path
     else
-      flash[:error] = "there was something wrong"
+      flash[:error] = "You provided the wrong username or password."
       redirect_to login_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "you have logged out"
+    flash[:notice] = "You have logged out."
     redirect_to root_path
   end
 end

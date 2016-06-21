@@ -90,11 +90,11 @@
               A place that looks beautiful and can be easily accessed by anyone.
             </p>
             <div class="continue-reading pull-left">
-              <a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+              <a href="/pages/about">Read More <i class="fa fa-angle-double-right"></i></a>
             </div>
           </div>
           <div class="col-md-6">
-            <img src="<%= asset_path 'memorials/about.jpg' %>" alt="Image">
+            <img src="<%= asset_path 'memorials/about_mlk.png' %>" alt="Image">
           </div>
 
         </div><!-- /.section-detials -->
@@ -111,43 +111,7 @@
       <h3 class="section-title">Recent Memorials</h3>
       <div class="row">
         <div class="articles-details">
-
-					<% @memorials.each do |memorial| %>
-						<div class="col-md-6">
-	            <article class="post-content">
-	              <div class="row">
-	                <div class="col-md-6">
-	                  <div class="featured-img">
-											<% if memorial.picture.url %>
-	                    	<img class="blog-post-image" src="<%= memorial.picture.url(:home) %>" alt="Featured Image">
-											<% else %>
-		                    <img class="blog-post-image" src="<%= asset_path 'memorials/articles/image-2.jpg' %>" alt="Featured Image">
-											<% end %>
-	                  </div><!-- /.featured-img -->
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="post-container">
-	                    <h3 class="post-title">
-												<%= link_to memorial.name, view_memorial_path(memorial) %>
-	                    </h3><!-- /.post-title -->
-	                    <div class="post-meta">
-	                      <!-- <span class="country">USA</span> -->
-	                      <!-- <span class="from"><time datetime="2011">2011</time></span> -  -->
-												<span class="to"><time datetime="<%= display_year(memorial.dod) %>"><%= display_month_day_year(memorial.dod)%></time></span>
-	                    </div><!-- /.post-meta -->
-	                    <p class="post-description">
-												<%= raw(memorial.biography) %>
-	                    </p>
-	                  </div><!-- /.post-container -->
-	                </div>
-	              </div><!-- /.row -->
-	            </article><!-- /.post-content -->
-	          </div><!-- /.col-md-4 -->
-					<% end %>
-
-
-
-
+					<%= render partial: "pages/memorial", collection: @memorials %>
         </div><!-- /.articles-details -->
         <div class="continue-reading text-center">
           <!-- <a class="lg-btn" href="#">See all Obituaries</a> -->
@@ -164,27 +128,7 @@
 		<div class="container">
 			<div class="row">
 				<h3 class="section-title">Blog Posts</h3>
-
-			<% @posts.each do |post| %>
-				<div class="col-md-3 col-sm-6">
-					<article class="post-content">
-						<div class="featured-img">
-							<% if post.picture? %>
-								<%= image_tag post.picture.url(:thumb), class: "blog-post-image" %>
-							<% end %>
-						</div><!-- /.featured-img -->
-						<div class="post-container">
-							<h3 class="post-title">
-								<%= link_to post.title, post_path(post) %>
-							</h3><!-- /.post-title -->
-							<small><%= display_datetime(post.created_at) %></small>
-							<p class="post-description">
-								<%= post.summary %>
-							</p>
-						</div><!-- /.post-container -->
-					</article><!-- /.post-content -->
-				</div><!-- /.col-md-3 -->
-				<% end %>
+					<%= render partial: "pages/post", collection: @posts %>
 			</div><!-- /.row -->
 		</div><!-- /.container -->
 	</div><!-- /.section-padding -->
@@ -198,20 +142,7 @@
 		<div class="container">
 			<div class="row">
 				<h2 class="section-title">Recent Photos</h2>
-				<% @photos.each do |photo| %>
-					<div class="item col-md-4 col-sm-6">
-						<div class="gallery-item">
-							<%= image_tag photo.picture.url(:home) %>
-							<a href="<%= photo.picture.url %>" title="<%= photo.caption %>" class="gallery-item-link transition boxer">
-								<div class="hex-container">
-									<div class="hex">
-										<div class="hex-icon"><i class="fa fa-plus"></i></div>
-									</div><!-- /.hex -->
-								</div>
-							</a>
-						</div><!-- ./gallery-item -->
-					</div><!-- /.item -->
-				<% end %>
+					<%= render partial: "pages/photo", collection: @photos %>
 			</div><!-- /.row -->
 		</div><!--  /.container -->
 	</div><!-- /.section-padding -->

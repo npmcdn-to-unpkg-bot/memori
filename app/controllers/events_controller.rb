@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < AuthenticatedController
   before_action :set_memorial
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :require_user
@@ -20,10 +20,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html do
         if @event.save
-          flash[:notice] = "your event was added."
+          flash[:notice] = "Your event was added."
           redirect_to edit_memorial_path(@memorial)
         else
-          flash[:notice] = "problem adding your event."
+          flash[:notice] = "Problem adding your event."
           redirect_to edit_memorial_path(@memorial)
         end
       end
