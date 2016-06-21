@@ -4,11 +4,9 @@
       <div class="banner-item">
       <div class="banner-icon">
       </div>
-      <h3 class="banner-title">Visitor Statistics</h3>
+      <h3 class="banner-title">Visitor Stats</h3>
       <p class="banner-txt">
-        Visitors Today:<br>
-        Visitors This Month:<br>
-        Visitors This Year:<br>
+        Total Views: <%= @recent_visits %><br>
       </p>
     </div>
   </div><!-- /.banner -->
@@ -23,31 +21,21 @@
     </p>
   </div>
 
-  <div class="banner-item">
-    <div class="banner-icon">
-      <i class="fa fa-file-text"></i>
-    </div>
-    <h3 class="banner-title">Video Tutorial</h3>
-    <p class="banner-txt">
-      Video tutorial of creating a memorial
-    </p>
-  </div>
-
-
   <!-- Rotating blog articles from main site -->
   <aside class="widget widget_post">
-    <img src="<%= asset_path 'memorials/follow-our-faith/ing-sidebar.jpg' %>" alt="Faith Image">
+    <img src="<%= @post.picture.url %>" alt="<%= @post.title %>">
     <h4 class="post-title">
-      Rotate Blog Article
+      <%= @post.title %>
     </h4>
     <p>
-      We have already learned that we should be active in doing good, when the act will be most helpful.
+      <%= @post.summary %>
     </p>
     <div class="continue-reading">
-      <a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+      <a href="<%= post_path(@post) %>" target="_blank">Read More <i class="fa fa-angle-double-right"></i></a>
     </div><!-- /.continue-reading -->
 
   </aside><!-- /.widget -->
+
 
 
   <aside class="widget widget_slider">

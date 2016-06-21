@@ -18,6 +18,9 @@ class MemorialsController < AuthenticatedController
       @message = Message.new
       @guestbook = Guestbook.find_by(memorial: @memorial)
 
+      ahoy.track "#{@memorial.name}"
+      p current_visit
+
       render layout: 'yes'
     end
   end
@@ -54,6 +57,10 @@ class MemorialsController < AuthenticatedController
   end
 
   def edit
+    @recent_visits = Ahoy::Event.where(name: @memorial.name).count
+    @post = Post.order("RANDOM()").first
+
+
     @events = @memorial.events
     @event = Event.new
 

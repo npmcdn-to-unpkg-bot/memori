@@ -15,12 +15,15 @@
 * Link Jessie How-to with Back-end sections
 
 ### Later
-* Photo Gallery Option
+* Validations / Error Msgs
+* Better Maps Integration
 * Change Photo Order (jQuery)
-* Hero Slider Gallery
+
 * Higher Performance JS / Rails / CSS
 * TDD: Features
 
-* Better Maps Integration
+* Photo Gallery Option
+* Hero Slider Gallery
+
 * Social Login / Facebook App Integration for Visitors
 * TDD: Shift to test::unit
