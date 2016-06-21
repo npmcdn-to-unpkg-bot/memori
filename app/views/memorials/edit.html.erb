@@ -55,6 +55,7 @@
 					<%= form_for [@memorial, @photo] do |f| %>
 						<%= f.label :picture, "Upload Multiple Photos:" %>
 						<%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
+						<%= f.submit "Add Photo", class: "submit-btn submit md-btn btn" %>
 					<% end %>
 
 					<div id="photo-form" style="display:none;"></div>

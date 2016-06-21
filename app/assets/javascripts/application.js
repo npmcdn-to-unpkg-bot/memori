@@ -33,14 +33,3 @@
 //= require memorials/isotope
 //= require memorials/owl
 //= require jquery-ui
-
-$(document).ready(function() {
-  $('.counter').counterUp();
-  $('.boxer').boxer();
-  $('#new_photo').fileupload({
-    dataType: "script"
-  });
-  /* Activating Best In Place */
-  $(".best_in_place").best_in_place();
-
-});
