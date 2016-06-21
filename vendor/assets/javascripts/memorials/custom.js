@@ -95,14 +95,6 @@
 
 	/*------------  Owl Carousel  End ---------------*/
 
-	//  Custom JS for Memorials
 
-	$('.counter').counterUp();
-  $('.boxer').boxer();
-  $('#new_photo').fileupload({
-    dataType: "script"
-  });
-  /* Activating Best In Place */
-  $(".best_in_place").best_in_place();
 
 })(jQuery);

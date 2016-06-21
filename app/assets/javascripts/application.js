@@ -33,3 +33,8 @@
 //= require memorials/isotope
 //= require memorials/owl
 //= require jquery-ui
+
+$(document).ready(function() {
+  $('.counter').counterUp();
+  $('.boxer').boxer();
+});
