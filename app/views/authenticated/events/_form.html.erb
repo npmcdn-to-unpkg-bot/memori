@@ -1,5 +1,5 @@
 <h4>Add New Event</h4>
-  <%= form_for([@memorial, @event]) do |f| %>
+  <%= form_for([@memorial, Event.new]) do |f| %>
   <div class="control-group">
     <%= f.label :date %>
     <%= f.date_field :date, class: "form-control" %>
