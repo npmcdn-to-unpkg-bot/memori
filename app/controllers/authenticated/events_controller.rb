@@ -1,4 +1,4 @@
-class EventsController < AuthenticatedController
+class Authenticated::EventsController < AuthenticatedController
   before_action :set_memorial
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :require_user
@@ -17,20 +17,12 @@ class EventsController < AuthenticatedController
   def create
     @event = @memorial.events.build(event_params)
 
-    respond_to do |format|
-      format.html do
-        if @event.save
-          flash[:notice] = "Your event was added."
-          redirect_to edit_memorial_path(@memorial)
-        else
-          flash[:notice] = "Problem adding your event."
-          redirect_to edit_memorial_path(@memorial)
-        end
-      end
-
-      format.js do
-        @events = @memorial.events
-      end
+    if @event.save
+      flash[:notice] = "Your event was added."
+      redirect_to :back
+    else
+      flash[:notice] = "Problem adding your event."
+      redirect_to :back
     end
   end
 
@@ -48,7 +40,7 @@ class EventsController < AuthenticatedController
       format.html do
         if @event.update(event_params)
           flash[:notice] = "Your event was updated."
-          redirect_to edit_memorial_path(@memorial)
+          redirect_to edit_events_memorial_path(@memorial)
         else
           render :edit
         end
@@ -68,7 +60,7 @@ class EventsController < AuthenticatedController
         if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
           redirect_to :back
         else
-          redirect_to memorials_path
+          redirect_to edit_events_memorial_path(@memorial)
         end
       end
 
@@ -89,7 +81,7 @@ class EventsController < AuthenticatedController
     end
 
     def event_params
-      params.require(:event).permit(:date, :title, :description, :picture)
+      params.require(:event).permit(:date, :title, :description, :picture, :published)
     end
 
     def require_creator

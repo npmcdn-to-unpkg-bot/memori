@@ -20,6 +20,7 @@
  *= require yes/ie
  *= require yes/ie8
  *= require yes/boxaroo
+ *= require yes/jquery.modal
  */
 
 .add-comment-form, .comments-listing {

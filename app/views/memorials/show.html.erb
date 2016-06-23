@@ -93,14 +93,12 @@
             <span class="arrow-down"></span>
             <div class="row">
                 <div class="timeline-year start"><span>EVENTS</span></div>
-                  <% @memorial.events.each_with_index do |event,index| %>
-                    <% if index == 0 %>
-                      <div class="column six heart right">
-                    <% elsif index == 1 %>
-                      <div class="column six heart left movetop">
-                    <% else %>
-                      <div class="column six heart <%= (index+1) % 2 == 0 ? 'left' : 'right' %>">
-                    <% end %>
+                  <% @memorial.events.where(published: true).each_with_index do |event,index| %>
+                    <div class="column twelve">
+                      <div class="column three">
+                        <span style="opacity:0">Space</span>
+                      </div>
+                      <div class="column six">
                           <div class="box pattern">
                               <span class="date"><%= display_month_day_year(event.date) %></span>
                               <h2><%= event.title %></h2>
@@ -153,12 +151,27 @@
                               </div>
                           </div>
                       </div>
+                      </div>
                     <% end %>
                     </div>
-              </div>
-          </div>
+
+                  <div class="timeline-button">
+                    <br />
+                    <br />
+                    <a href="#" class="button">Load more</a>
+                    <br />
+                    <br />
+                    <a href="#suggest-event" rel="modal:open" class="button">Suggest Event</a>
+                  </div>
+              </div> <!-- row end -->
+          </div> <!-- container end -->
     </section>
     <!-- #Timeline Section Ends -->
+
+    <!-- Modal HTML embedded directly into document -->
+    <div id="suggest-event" style="display:none;">
+      <%= render 'memorials/event_form' %>
+    </div>
 
     <!-- Small Gallery Section -->
     <section id="gallery" class="pattern">
@@ -166,7 +179,7 @@
             <h3 class="section-title">Photo Gallery</h3>
         </header>
         <div id="gallery-wrapper">
-          <% @memorial.photos.each do |photo| %>
+          <% @memorial.photos.where(published: true).each do |photo| %>
             <div class="block">
                 <div class="image-holder">
                     <%= image_tag photo.picture.url(:gallery) %>
@@ -251,13 +264,9 @@
 
                 <!-- display guestbook comments -->
                 <% @guestbook.comments.each_with_index do |comment,index| %>
-                  <% if index == 0 %>
-                    <div class="column six heart right">
-                  <% elsif index == 1 %>
-                    <div class="column six heart left movetop">
-                  <% else %>
-                    <div class="column six heart <%= (index+1) % 2 == 0 ? 'left' : 'right' %>">
-                  <% end %>
+                <div class="column twelve">
+                  <div class="column three"><span style="opacity:0">Space</span></div>
+                  <div class="column six">
                     <div class="box pattern">
                       <span class="date"><%= display_month_day_year(comment.created_at) %></span>
                       <div class="guest">
@@ -265,8 +274,9 @@
                         <span class="name"><%= comment.author %></span>
                       </div>
                     </div>
+                    </div>
                   </div>
-                <% end %>
+                  <% end %>
 
                 <!-- <div class="clearfix"></div>
                 <div class="timeline-button">
@@ -321,7 +331,7 @@
                   <%= f.text_area :content, rows: 5, required: true %>
                 </div>
                 <div class="clearfix"></div>
-                <%= f.submit "Send -->" %>
+                <%= f.submit "Send your message →" %>
                 <div class="clearfix"></div>
               <% end %>
             </div>

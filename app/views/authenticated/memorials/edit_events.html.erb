@@ -1,4 +1,4 @@
-<%= render 'shared/content_title', title: "Add Content" %>
+<%= render 'shared/content_title', title: "Timeline Section" %>
 
 <div id="obituaries-page" class="page obituaries-page page-container">
 	<div class="container">
@@ -6,11 +6,6 @@
 			<!-- Post Container -->
 			<div id="post-container" class="col-md-8 post-container" role="main">
 				<div class="about-right-box">
-
-					<!-- Basic information about the memorial -->
-					<%= render 'memorials/backend/form' %>
-	        <br>
-	        <hr>
 
 					<!-- Events Section -->
 	        <h2>Timeline</h2>
@@ -25,12 +20,13 @@
 	              <th>Date</th>
 	              <th>Image</th>
 	              <th>Description</th>
+                <th>Published?</th>
 	              <th>Edit</th>
 	              <th>Delete</th>
 	            </tr>
 	          </thead>
 	          <tbody id="events">
-							<%= render partial: "events/event", collection: @events %>
+							<%= render partial: "authenticated/events/event", collection: @events %>
 	          </tbody>
 	        </table>
 	        <br>
@@ -40,25 +36,7 @@
 					<br>
 					<div id="event-form" style="display:none;"></div>
 					<br>
-					<hr>
 
-					<!-- Photo Section -->
-	        <h2>Photos</h2>
-	        <div id="team-page" class="page team-page page-container text-center">
-	          <div class="container">
-	            <div class="row" id="photos">
-								<%= render partial: "photos/photo", collection: @photos.rank(:position) %>
-	            </div><!-- /.row -->
-	          </div><!-- /.container -->
-	        </div><!-- /#about-page -->
-
-					<%= form_for [@memorial, @photo] do |f| %>
-						<%= f.label :picture, "Upload Multiple Photos:" %>
-						<%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
-					<% end %>
-
-					<div id="photo-form" style="display:none;"></div>
-	        <br><br>
 				</div><!--  /.about-right-box -->
 
 			</div><!-- /.post-container -->
@@ -71,14 +49,3 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#about-page -->
-
-
-<script>
-$(document).ready(function() {
-  $('#new_photo').fileupload({
-    dataType: "script"
-  });
-
-  $(".best_in_place").best_in_place();
-});
-</script>

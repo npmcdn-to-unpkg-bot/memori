@@ -1,0 +1,26 @@
+<%= render 'shared/content_title', title: "Memorial Settings" %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+
+					<!-- Basic information about the memorial -->
+					<%= render 'authenticated/memorials/form' %>
+	        <br>
+	        <hr>
+
+				</div><!--  /.about-right-box -->
+
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+
+			<!-- Sidebar -->
+			<%= render 'edit_sidebar' %>
+			<!-- Sidebar End-->
+
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#about-page -->

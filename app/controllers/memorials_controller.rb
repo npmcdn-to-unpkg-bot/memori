@@ -1,14 +1,6 @@
-class MemorialsController < AuthenticatedController
-  before_action :set_memorial, only: [:show, :edit, :update, :protect, :access, :contact]
-  before_action :require_user, except: [:show, :protect, :access, :contact]
-  before_action :require_creator, only: [:edit, :update]
+class MemorialsController < ApplicationController
+  before_action :set_memorial, only: [:show, :protect, :access, :contact]
   before_action :check_access, only: [:protect, :access]
-  skip_before_filter :verify_authenticity_token, only: [:update]
-
-  def index
-    @memorials = current_user.memorials.order("created_at DESC")
-    @post = Post.order("RANDOM()").first
-  end
 
   def show
     # Check if memorial is private
@@ -36,52 +28,6 @@ class MemorialsController < AuthenticatedController
     else
       flash[:error] = "That was not the right password."
       redirect_to protect_memorial_path(@memorial)
-    end
-  end
-
-  def new
-    @memorial = Memorial.new
-  end
-
-  def create
-    @memorial = Memorial.new(memorial_params)
-    @memorial.user = current_user
-    @guestbook = Guestbook.create(memorial: @memorial)
-
-    if @memorial.save
-      flash[:notice] = "Your memorial was saved."
-      redirect_to memorials_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @recent_visits = Ahoy::Event.where(name: @memorial.name).count
-    @post = Post.order("RANDOM()").first
-
-
-    @events = @memorial.events
-    @event = Event.new
-
-    @photos = @memorial.photos
-    @photo = Photo.new
-  end
-
-  def update
-    @memorial.update_attributes(memorial_params)
-
-    respond_to do |format|
-      format.html do
-        if @memorial.update(memorial_params)
-          flash[:notice] = "Your memorial was updated."
-          redirect_to edit_memorial_path(@memorial)
-        else
-          render :edit
-        end
-      end
-
-      format.js
     end
   end
 

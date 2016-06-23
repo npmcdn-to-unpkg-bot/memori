@@ -1,0 +1,50 @@
+<%= render 'shared/content_title', title: "Photo Gallery" %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+
+          <!-- Photo Section -->
+          <h2>Photos</h2>
+          <div id="team-page" class="page team-page page-container text-center">
+            <div>
+              <div class="row" id="photos">
+                <%= render partial: "authenticated/photos/photo", collection: @photos.rank(:position) %>
+              </div><!-- /.row -->
+            </div><!-- /.container -->
+          </div><!-- /#about-page -->
+
+          <%= form_for [@memorial, @photo] do |f| %>
+            <%= f.label :picture, "Upload Multiple Photos:" %>
+            <%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
+          <% end %>
+
+          <div id="photo-form" style="display:none;"></div>
+          <br><br>
+
+				</div><!--  /.about-right-box -->
+
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+
+			<!-- Sidebar -->
+			<%= render 'edit_sidebar' %>
+			<!-- Sidebar End-->
+
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#about-page -->
+
+
+<script>
+$(document).ready(function() {
+  $('#new_photo').fileupload({
+    dataType: "script"
+  });
+
+  $(".best_in_place").best_in_place();
+});
+</script>

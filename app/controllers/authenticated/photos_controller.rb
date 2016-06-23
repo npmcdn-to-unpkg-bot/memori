@@ -1,4 +1,4 @@
-class PhotosController < AuthenticatedController
+class Authenticated::PhotosController < AuthenticatedController
   before_action :set_memorial
   before_action :set_photo, only: [:edit, :update, :destroy]
   before_action :require_user
@@ -15,7 +15,7 @@ class PhotosController < AuthenticatedController
   end
 
   def create
-    @photo =  @memorial.photos.build(params.require(:photo).permit(:caption, :picture))
+    @photo =  @memorial.photos.build(photo_params)
 
     respond_to do |format|
       format.html do
@@ -88,7 +88,7 @@ class PhotosController < AuthenticatedController
     end
 
     def photo_params
-      params.require(:photo).permit(:caption, :picture)
+      params.require(:photo).permit(:caption, :picture, :published)
     end
 
     def require_creator

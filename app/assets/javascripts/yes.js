@@ -30,6 +30,7 @@
 //= require yes/retina
 //= require yes/soc-share
 //= require yes/custom
+//= require yes/jquery.modal
 
 
 $(document).ready(function() {
@@ -39,5 +40,10 @@ $(document).ready(function() {
 
   $('.view-comment-link').click(function() {
     $(this).nextAll('.comments-listing').toggle();
+  });
+
+  $("#new_event").submit(function(event) {
+    $("#new_event").hide();
+    $("#suggest-event-title").text("Thank You. The memorial creator has been notified.");
   });
 });

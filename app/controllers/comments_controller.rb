@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       format.html do
         if @comment.save
           flash[:notice] = "Your comment was added."
-          redirect_to memorial_path(@memorial)
+          redirect_to :back
         else
           render 'memorials/show'
         end

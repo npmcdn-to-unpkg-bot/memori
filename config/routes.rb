@@ -12,7 +12,19 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :show]
 
-  resources :memorials, except: [:destroy] do
+  scope module: 'authenticated' do
+    resources :memorials, only: [:index, :new, :create, :edit, :update] do
+      member do
+        get 'edit_photos'
+        get 'edit_events'
+      end
+      resources :guestbooks, only: [:create]
+      resources :events, except: [:show]
+      resources :photos, except: [:show]
+    end
+  end
+
+  resources :memorials, only: [:show] do
     member do
       get 'protect'
       post 'access'
@@ -23,11 +35,11 @@ Rails.application.routes.draw do
       resources :comments, module: :guestbooks, only: [:create]
     end
 
-    resources :events, except: [:index, :show] do
+    resources :events, only: [:create] do
       resources :comments, module: :events, only: [:create]
     end
 
-    resources :photos, except: [:index, :show] do
+    resources :photos, only: [:create] do
       resources :comments, module: :photos, only: [:create]
     end
   end
