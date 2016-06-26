@@ -1,7 +1,5 @@
 ### This Week
-* Photos
-  - Publish option (checkbox?)
-
+* Photos - Publish option (checkbox?)
 * AJAX: private memorial popup with modals
 
 * Higher Performance JS / Rails / CSS

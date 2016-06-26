@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: memori_development
+  database: memorial_development
 
 test:
   <<: *default
-  database: memori_test
+  database: memorial_test
 
 production:
   <<: *default
-  database: memori_production
+  database: memorial_production
   username:
   password:
