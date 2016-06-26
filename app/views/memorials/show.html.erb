@@ -1,17 +1,10 @@
 <!-- If the user has not choosen a hero image, a default image is shown -->
-<% if @memorial.picture.url.nil? %>
-<style>
-  .hero {
-    background-image: url(<%= asset_path 'yes/hero.jpg' %>);
-  }
-</style>
-<% else %>
-<style>
-  .hero {
-    background-image: url(<%= @memorial.picture.url %>);
-  }
-</style>
+<% if @memorial.picture.url %>
+  <style>
+    .hero { background-image: url(<%= @memorial.picture.url %>); }
+  </style>
 <% end %>
+
 
 <!-- Hero Section -->
 <div id="logo"><%= @memorial.name %> <span></span></div>
@@ -94,6 +87,7 @@
             <div class="row">
                 <div class="timeline-year start"><span>EVENTS</span></div>
                   <% @memorial.events.where(published: true).each_with_index do |event,index| %>
+
                     <div class="column twelve">
                       <div class="column three">
                         <span style="opacity:0">Space</span>
@@ -170,13 +164,16 @@
 
     <!-- Modal HTML embedded directly into document -->
     <div id="suggest-event" style="display:none;">
-      <%= render 'memorials/event_form' %>
+      <%= render 'memorials/event_form', object: @memorial  %>
     </div>
 
     <!-- Small Gallery Section -->
     <section id="gallery" class="pattern">
-        <header class="section-header">
+        <header class="section-header" style="text-align: center">
             <h3 class="section-title">Photo Gallery</h3>
+            <a href="#suggest-photo" rel="modal:open" class="button">Submit Photo</a>
+            <br />
+            <br />
         </header>
         <div id="gallery-wrapper">
           <% @memorial.photos.where(published: true).each do |photo| %>
@@ -196,6 +193,11 @@
         </div>
     </section>
     <!-- #Small Gallery Section Ends -->
+
+    <!-- Modal HTML embedded directly into document -->
+    <div id="suggest-photo" style="display:none;">
+      <%= render 'memorials/photo_form', object: @memorial  %>
+    </div>
 
     <% if @memorial.address.present? %>
     <!-- #Map Section -->
@@ -401,5 +403,9 @@
       map: map,
       title: 'Hello World!'
     });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      window.location.href = 'http://maps.google.com/maps?q=<%= @memorial.latitude %>+<%= @memorial.longitude %>'
+    })
   }
 </script>

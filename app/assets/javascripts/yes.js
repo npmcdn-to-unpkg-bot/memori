@@ -46,4 +46,9 @@ $(document).ready(function() {
     $("#new_event").hide();
     $("#suggest-event-title").text("Thank You. The memorial creator has been notified.");
   });
+
+  $("#new_photo").submit(function(event) {
+    $("#new_photo").hide();
+    $("#submit-photo-title").text("Thank You. The memorial creator has been notified.");
+  });
 });

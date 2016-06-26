@@ -1,0 +1,7 @@
+<tr>
+  <th scope="row"><%= photo_counter + 1 %></th>
+  <td><%= best_in_place photo, :caption, url: creator_memorial_photo_path(@memorial, photo) %></td>
+  <td><%= photo.published == true ? "Yes" : "No"  %></td>
+  <td><%= image_tag photo.picture.url(:thumb) if photo.picture? %></td>
+  <td><%= link_to "Delete", creator_memorial_photo_path(@memorial, photo), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></td>
+</tr>

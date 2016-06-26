@@ -1,3 +1,54 @@
+## Photos Upload
+
+<div class="col-md-3 col-sm-4 col-xs-6">
+  <div class="member">
+    <div class="member-avatar"><%= image_tag photo.picture.url(:thumb) if photo.picture? %></div>
+    <div class="member-details">
+      <h4 class="name"><a><%= best_in_place photo, :caption, url: creator_memorial_photo_path(@memorial, photo) %></a></h4><!-- /.name -->
+      <h6><%= link_to "Delete", creator_memorial_photo_path(@memorial, photo), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></h6>
+    </div><!-- /.member-details -->
+  </div><!-- /.member -->
+</div>
+
+<div id="team-page" class="page team-page page-container text-center">
+  <div>
+    <div class="row" id="photos">
+      <%= render partial: "creator/photos/photo", collection: @photos.rank(:position) %>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /#about-page -->
+
+<%= form_for [@memorial, @photo] do |f| %>
+  <%= f.label :picture, "Upload Multiple Photos:" %>
+  <%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
+<% end %>
+
+<div id="photo-form" style="display:none;"></div>
+<br><br>
+
+
+## Caching
+<% cache([:v1, @memorial]) do %>
+<% cache([:v1, :partial_event, event]) %>
+
+
+<% if @memorial.picture.url.nil? %>
+<style>
+  .hero {
+    background-image: url(<%= asset_path 'yes/hero.jpg' %>);
+  }
+</style>
+<% else %>
+<style>
+  .hero {
+    background-image: url(<%= @memorial.picture.url %>);
+  }
+</style>
+<% end %>
+
+
+
+
 <%= render 'events/form' %>
 
 

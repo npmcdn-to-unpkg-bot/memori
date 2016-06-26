@@ -1,4 +1,4 @@
-class AuthenticatedController < ApplicationController
+class CreatorController < ApplicationController
   before_action :require_user
 
   def require_user

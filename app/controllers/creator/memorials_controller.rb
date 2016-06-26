@@ -1,4 +1,4 @@
-class Authenticated::MemorialsController < AuthenticatedController
+class Creator::MemorialsController < CreatorController
   before_action :set_memorial, only: [:show, :edit, :edit_photos, :edit_events, :update]
   before_action :require_user
   before_action :require_creator, only: [:edit, :update]
@@ -13,6 +13,10 @@ class Authenticated::MemorialsController < AuthenticatedController
     @memorial = Memorial.new
   end
 
+  def about
+  end
+  
+
   def create
     @memorial = Memorial.new(memorial_params)
     @memorial.user = current_user
@@ -20,7 +24,7 @@ class Authenticated::MemorialsController < AuthenticatedController
 
     if @memorial.save
       flash[:notice] = "Your memorial was saved."
-      redirect_to memorials_path
+      redirect_to creator_memorials_path
     else
       render :new
     end
@@ -54,7 +58,7 @@ class Authenticated::MemorialsController < AuthenticatedController
       format.html do
         if @memorial.update(memorial_params)
           flash[:notice] = "Your memorial was updated."
-          redirect_to edit_memorial_path(@memorial)
+          redirect_to edit_creator_memorial_path(@memorial)
         else
           render :edit
         end

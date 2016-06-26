@@ -10,8 +10,6 @@
 					<!-- Events Section -->
 	        <h2>Timeline</h2>
 	        <br>
-	        <h4>Event Listing</h4>
-	        <br>
 	        <table class="table">
 	          <thead>
 	            <tr>
@@ -26,12 +24,12 @@
 	            </tr>
 	          </thead>
 	          <tbody id="events">
-							<%= render partial: "authenticated/events/event", collection: @events %>
+							<%= render partial: "creator/events/event", collection: @events %>
 	          </tbody>
 	        </table>
 	        <br>
 
-					<%= link_to "New Timeline Event", new_memorial_event_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
+					<%= link_to "New Timeline Event", new_creator_memorial_event_path(@memorial), remote: true, class: "submit-btn submit md-btn btn" %>
 
 					<br>
 					<div id="event-form" style="display:none;"></div>

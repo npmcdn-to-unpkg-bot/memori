@@ -19,7 +19,7 @@
   <div id="header-middle" class="header-middle">
     <div class="container">
       <div class="logo pull-left">
-        <a class="navbar-brand" href="./">
+        <a class="navbar-brand" href="/">
           <img src="<%= asset_path 'memorials/logo2.png' %>" alt="Memorial Logo">
         </a><!-- /.navbar-brand -->
       </div><!-- /.logo -->
@@ -73,8 +73,8 @@
               <li><%= link_to "Home", root_path %></li>
               <li><%= link_to "Blog", posts_path %></li>
               <li><a href="/pages/contact">Contact Us</a></li>
-              <li><%= link_to "My Memorials", memorials_path %></li>
-              <li><%= link_to "New Memorial", new_memorial_path %></li>
+              <li><%= link_to "My Memorials", creator_memorials_path %></li>
+              <li><%= link_to "New Memorial", new_creator_memorial_path %></li>
               <li><%= link_to "Account", user_path(current_user) %></li>
               <li><%= link_to "Logout", logout_path %></li>
             <% else %>

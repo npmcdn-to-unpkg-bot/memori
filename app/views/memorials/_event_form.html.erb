@@ -1,5 +1,5 @@
 <h4 id="suggest-event-title">Suggest an Event</h4>
-<%= form_for([@memorial, Event.new], remote: true) do |f| %>
+<%= form_for [@memorial, Event.new] do |f| %>
 <div class="control-group">
   <%= f.label :date %>
   <%= f.date_field :date, class: "form-control", required: true %>
@@ -15,10 +15,6 @@
 <div class="control-group">
   <%= f.label :picture %>
   <%= f.file_field :picture, class: "form-control" %>
-</div>
-<br />
-<div class="control-group">
-  <%= f.hidden_field :published, value: false, class: "form-control" %>
 </div>
 <br />
 <%= f.submit "Suggest Event", class: "submit-btn submit md-btn btn" %>

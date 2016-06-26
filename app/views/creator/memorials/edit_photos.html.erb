@@ -9,15 +9,28 @@
 
           <!-- Photo Section -->
           <h2>Photos</h2>
-          <div id="team-page" class="page team-page page-container text-center">
-            <div>
-              <div class="row" id="photos">
-                <%= render partial: "authenticated/photos/photo", collection: @photos.rank(:position) %>
-              </div><!-- /.row -->
-            </div><!-- /.container -->
-          </div><!-- /#about-page -->
+					<br />
+					<!-- - table of photos, with edit (position, caption, published, photo) -->
+					<h4>Click on the Caption to Edit<br/><br/>
+						Drag Table Rows to Switch Position of Photos</h4>
+					<br />
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Caption</th>
+								<th>Published?</th>
+								<th>Image</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody id="photos">
+							<%= render partial: "creator/photos/photo", collection: @photos.rank(:position) %>
+						</tbody>
+					</table>
+					<br>
 
-          <%= form_for [@memorial, @photo] do |f| %>
+          <%= form_for [:creator, @memorial, @photo] do |f| %>
             <%= f.label :picture, "Upload Multiple Photos:" %>
             <%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
           <% end %>

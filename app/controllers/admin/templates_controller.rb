@@ -48,7 +48,7 @@ class Admin::TemplatesController < AdminsController
       format.html do
         if @template.update(template_params)
           flash[:notice] = "Your template was updated."
-          redirect_to admin_templates_path
+          redirect_to superadmin_templates_path
         else
           render :edit
         end
@@ -68,7 +68,7 @@ class Admin::TemplatesController < AdminsController
         if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
           redirect_to :back
         else
-          redirect_to admin_templates_path
+          redirect_to superadmin_templates_path
         end
       end
 

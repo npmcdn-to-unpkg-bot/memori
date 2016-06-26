@@ -48,7 +48,7 @@ class Admin::PostsController < AdminsController
       format.html do
         if @post.update(post_params)
           flash[:notice] = "Your post was updated."
-          redirect_to posts_path
+          redirect_to superadmin_posts_path
         else
           render :edit
         end
@@ -68,7 +68,7 @@ class Admin::PostsController < AdminsController
         if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
           redirect_to :back
         else
-          redirect_to posts_path
+          redirect_to superadmin_posts_path
         end
       end
 

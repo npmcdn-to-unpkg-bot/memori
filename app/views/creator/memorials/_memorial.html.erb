@@ -31,7 +31,7 @@
           Guestbook Entries: <%= memorial.guestbook.comments.size if memorial.guestbook %>
         </p>
         <%= link_to "View Memorial", view_memorial_path(memorial), class: "submit-btn submit md-btn btn", target: "_blank" %>
-        <%= link_to "Add Content", edit_memorial_path(memorial), class: "submit-btn submit md-btn btn" %>
+        <%= link_to "Add Content", edit_creator_memorial_path(memorial), class: "submit-btn submit md-btn btn" %>
       </div><!-- /.post-container -->
     </div>
   </div><!-- /.row -->

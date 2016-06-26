@@ -11,7 +11,6 @@ class MemorialsController < ApplicationController
       @guestbook = Guestbook.find_by(memorial: @memorial)
 
       ahoy.track "#{@memorial.name}"
-      p current_visit
 
       render layout: 'yes'
     end

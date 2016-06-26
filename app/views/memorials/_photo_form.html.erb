@@ -1,0 +1,13 @@
+<h4 id="submit-photo-title">Submit a Photo</h4>
+<%= form_for [@memorial, Photo.new] do |f| %>
+  <div class="control-group">
+    <%= f.label :caption %>
+    <%= f.text_field :caption, class: "form-control", placeholder: "Put Caption Here", required: true %>
+  </div>
+  <div class="control-group">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, class: "form-control", required: true %>
+  </div>
+  <br />
+  <%= f.submit "Submit Photo", class: "submit-btn submit md-btn btn" %>
+<% end %>

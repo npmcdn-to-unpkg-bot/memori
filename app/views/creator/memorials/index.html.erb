@@ -1,0 +1,24 @@
+<%= render 'shared/content_title', title: (current_user.memorials.count == 1 ? "Your Memorial" : "Your Memorials") %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<!-- Post Container -->
+			<div id="post-container" class="col-md-8 post-container" role="main">
+				<div class="about-right-box">
+					<% @memorials.each do |memorial| %>
+					  <%= render 'memorial', memorial: memorial %>
+					<% end %>
+				</div><!--  /.about-right-box -->
+			</div><!-- /.post-container -->
+			<!-- Post Container End -->
+			<!-- Sidebar -->
+			<div id="sidebar" class="col-md-4 sidebar">
+				<%= render 'common_sidebar' %>
+			</div>
+
+			</div><!-- /#sidebar -->
+			<!-- Sidebar End-->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /#obituaries-page -->

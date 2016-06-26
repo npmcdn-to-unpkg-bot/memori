@@ -7,7 +7,7 @@
 # description     :text
 
 class Event < ActiveRecord::Base
-  belongs_to :memorial, foreign_key: :memorial_id
+  belongs_to :memorial, foreign_key: :memorial_id, touch: true
 
   has_many :comments, as: :commentable, dependent: :destroy
 

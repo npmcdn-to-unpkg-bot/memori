@@ -1,0 +1,28 @@
+<a href="/pages/howto" target"_blank">
+  <div class="banner-item">
+    <div class="banner-icon">
+      <i class="fa fa-book"></i>
+    </div>
+    <h3 class="banner-title">Memorials 101</h3>
+    <p class="banner-txt">
+      Articles showing how to create a memorial
+    </p>
+  </div>
+</a>
+
+<br />
+<br />
+<!-- Rotating blog articles from main site -->
+<aside class="widget widget_post">
+  <img src="<%= @post.picture.url %>" alt="<%= @post.title %>">
+  <h4 class="post-title">
+    <%= @post.title %>
+  </h4>
+  <p>
+    <%= @post.summary %>
+  </p>
+  <div class="continue-reading">
+    <a href="<%= post_path(@post) %>" target="_blank">Read More <i class="fa fa-angle-double-right"></i></a>
+  </div><!-- /.continue-reading -->
+
+</aside><!-- /.widget -->

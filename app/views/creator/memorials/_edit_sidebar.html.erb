@@ -1,0 +1,23 @@
+<div id="sidebar" class="col-md-4 sidebar">
+	<%= link_to "Memorial Settings", edit_creator_memorial_path(@memorial), class: "submit-btn submit md-btn btn" %>
+	<%= link_to "Timeline Section", edit_events_creator_memorial_path(@memorial), class: "submit-btn submit md-btn btn" %>
+	<%= link_to "Photo Gallery", edit_photos_creator_memorial_path(@memorial), class: "submit-btn submit md-btn btn" %>
+
+  <!-- Banner Section -->
+  <div id="banners" class="banners">
+      <div class="banner-item">
+      <div class="banner-icon">
+      </div>
+      <h3 class="banner-title">Visitor Stats</h3>
+      <p class="banner-txt">
+        Total Views: <%= @recent_visits %><br>
+      </p>
+    </div>
+  </div><!-- /.banner -->
+
+	<%= render 'common_sidebar' %>
+
+
+  <aside class="widget widget_slider">
+  </aside>
+</div><!-- /#sidebar -->

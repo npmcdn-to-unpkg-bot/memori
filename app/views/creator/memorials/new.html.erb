@@ -7,7 +7,7 @@
 			<div id="post-container" class="col-md-12 post-container" role="main">
 				<div class="row">
 					<div class="col-md-8">
-            <%= form_for @memorial do |f| %>
+            <%= form_for [:creator, @memorial] do |f| %>
               <%= render 'shared/errors', obj: @memorial %>
 							<div class="control-group">
               	<%= f.label :name, "Full Name" %>

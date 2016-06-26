@@ -1,6 +1,6 @@
-class Authenticated::PhotosController < AuthenticatedController
+class Creator::PhotosController < CreatorController
   before_action :set_memorial
-  before_action :set_photo, only: [:edit, :update, :destroy]
+  before_action :set_photo, only: [:edit, :update, :destroy, :toggle]
   before_action :require_user
   before_action :require_creator
   skip_before_filter :verify_authenticity_token
@@ -22,10 +22,10 @@ class Authenticated::PhotosController < AuthenticatedController
         puts "ran html block"
         if @photo.save
           flash[:notice] = "Your photo was added."
-          redirect_to edit_memorial_path(@memorial)
+          redirect_to edit_creator_memorial_path(@memorial)
         else
           flash[:notice] = "There was a problem adding your photo."
-          redirect_to edit_memorial_path(@memorial)
+          redirect_to edit_creator_memorial_path(@memorial)
         end
       end
 
@@ -42,7 +42,7 @@ class Authenticated::PhotosController < AuthenticatedController
     respond_to do |format|
       format.html do
         if @photo.update(photo_params)
-          redirect_to edit_memorial_path(@memorial)
+          redirect_to edit_creator_memorial_path(@memorial)
         else
           render :edit
         end
@@ -58,6 +58,10 @@ class Authenticated::PhotosController < AuthenticatedController
     end
   end
 
+  def toggle
+    binding.pry
+  end
+
   def destroy
     @photo.destroy if @memorial.photos.include?(@photo)
 
@@ -66,7 +70,7 @@ class Authenticated::PhotosController < AuthenticatedController
         if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
           redirect_to :back
         else
-          redirect_to memorials_path
+          redirect_to creator_memorials_path
         end
       end
 

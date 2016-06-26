@@ -1,4 +1,4 @@
-class Authenticated::EventsController < AuthenticatedController
+class Creator::EventsController < CreatorController
   before_action :set_memorial
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :require_user
@@ -40,7 +40,7 @@ class Authenticated::EventsController < AuthenticatedController
       format.html do
         if @event.update(event_params)
           flash[:notice] = "Your event was updated."
-          redirect_to edit_events_memorial_path(@memorial)
+          redirect_to edit_events_creator_memorial_path(@memorial)
         else
           render :edit
         end
@@ -60,7 +60,7 @@ class Authenticated::EventsController < AuthenticatedController
         if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
           redirect_to :back
         else
-          redirect_to edit_events_memorial_path(@memorial)
+          redirect_to edit_events_creator_memorial_path(@memorial)
         end
       end
 
