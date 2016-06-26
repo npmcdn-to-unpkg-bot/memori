@@ -1,4 +1,4 @@
-class AdminsController < AuthenticatedController
+class AdminsController < CreatorController
   before_action :require_admin
 
   def require_admin

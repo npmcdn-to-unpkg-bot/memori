@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to memorials_path if current_user
+    redirect_to creator_memorials_path if current_user
 
     @user = User.new
   end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Registration Successful!"
-      redirect_to new_memorial_path
+      redirect_to new_creator_memorial_path
     else
       render :new
     end

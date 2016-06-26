@@ -58,10 +58,6 @@ class Creator::PhotosController < CreatorController
     end
   end
 
-  def toggle
-    binding.pry
-  end
-
   def destroy
     @photo.destroy if @memorial.photos.include?(@photo)
 
@@ -92,7 +88,7 @@ class Creator::PhotosController < CreatorController
     end
 
     def photo_params
-      params.require(:photo).permit(:caption, :picture, :published)
+      params.require(:photo).permit(:caption, :picture, :published, :row_order_position)
     end
 
     def require_creator

@@ -176,7 +176,7 @@
             <br />
         </header>
         <div id="gallery-wrapper">
-          <% @memorial.photos.where(published: true).each do |photo| %>
+          <% @memorial.photos.where(published: true).rank(:row_order).each do |photo| %>
             <div class="block">
                 <div class="image-holder">
                     <%= image_tag photo.picture.url(:gallery) %>

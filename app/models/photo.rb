@@ -5,10 +5,10 @@
 # caption         :string
 # picture         :string
 # memorial_id     :integer
+# position        :integer
 
 class Photo < ActiveRecord::Base
   include RankedModel
-
   before_create :default_caption
 
   belongs_to :memorial, foreign_key: :memorial_id
@@ -16,10 +16,7 @@ class Photo < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   # model ranking
-  ranks :position
-
-  # code for ordering within galleries
-  # with_same: :gallery_id
+  ranks :row_order, with_same: :memorial_id
 
   # Caption based on filename
   def default_caption

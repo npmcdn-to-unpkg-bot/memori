@@ -17,7 +17,6 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>Caption</th>
 								<th>Published?</th>
 								<th>Image</th>
@@ -25,7 +24,7 @@
 							</tr>
 						</thead>
 						<tbody id="photos">
-							<%= render partial: "creator/photos/photo", collection: @photos.rank(:position) %>
+							<%= render partial: "creator/photos/photo", collection: @photos.rank(:row_order) %>
 						</tbody>
 					</table>
 					<br>
@@ -37,20 +36,15 @@
 
           <div id="photo-form" style="display:none;"></div>
           <br><br>
-
 				</div><!--  /.about-right-box -->
-
 			</div><!-- /.post-container -->
 			<!-- Post Container End -->
-
 			<!-- Sidebar -->
 			<%= render 'edit_sidebar' %>
 			<!-- Sidebar End-->
-
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#about-page -->
-
 
 <script>
 $(document).ready(function() {
@@ -59,5 +53,18 @@ $(document).ready(function() {
   });
 
   $(".best_in_place").best_in_place();
+
+	$(function() {
+		$('#photos').sortable({
+			update: function(event, ui) {
+				$.ajax({
+					type: 'PUT',
+					url: ui.item.data('update-url'),
+					dataType: 'json',
+					data: { photo: { row_order_position: ui.item.index() } }
+				});
+			}
+		});
+	});
 });
 </script>

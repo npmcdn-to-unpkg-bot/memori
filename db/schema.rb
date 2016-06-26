@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623002433) do
+ActiveRecord::Schema.define(version: 20160626200749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 20160623002433) do
     t.integer  "memorial_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
+    t.integer  "row_order"
     t.boolean  "published",   default: true
   end
 
-  add_index "photos", ["position"], name: "index_photos_on_position", using: :btree
+  add_index "photos", ["row_order"], name: "index_photos_on_row_order", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

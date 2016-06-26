@@ -1,6 +1,5 @@
 ### This Week
 * Photos
-  - Order (rankedmodel / jQuery)
   - Publish option (checkbox?)
 
 * AJAX: private memorial popup with modals

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to memorials_path if current_user
+    redirect_to creator_memorials_path if current_user
   end
 
   def create
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome to the Memori App."
-      redirect_to current_user.admin? ? admin_posts_path : memorials_path
+      redirect_to current_user.admin? ? admin_posts_path : creator_memorials_path
     else
       flash[:error] = "You provided the wrong username or password."
       redirect_to login_path
