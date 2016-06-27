@@ -30,7 +30,6 @@
 .comment-box p {
   margin: 0;
 }
-$('#EventContainer').notify({ text: 'Hello world!' });
 
 #EventContainer {
   position: absolute;
