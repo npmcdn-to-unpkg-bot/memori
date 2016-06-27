@@ -9,6 +9,9 @@ class MemorialsController < ApplicationController
     else
       @message = Message.new
       @guestbook = Guestbook.find_by(memorial: @memorial)
+      @comments = @guestbook.comments
+      @events = @memorial.events.where(published: true).limit(3)
+      @photos = @memorial.photos.where(published: true).rank(:row_order)
 
       ahoy.track "#{@memorial.name}"
 
@@ -17,7 +20,9 @@ class MemorialsController < ApplicationController
   end
 
 
-  def protect; end
+  def protect
+    render layout: 'yes'
+  end
 
   # route for accessing private memorial
   def access

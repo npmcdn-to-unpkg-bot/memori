@@ -1,9 +1,0 @@
-<div class="column six heart <%= (index + 1) % 2 == 0 ? 'right' : 'left' %>">
-    <div class="box pattern">
-        <span class="date"><%= display_datetime(comment.created_at) %></span>
-        <div class="guest">
-            <p><%= comment.body %></p>
-            <span class="name"><%= comment.author %></span>
-        </div>
-    </div>
-</div>

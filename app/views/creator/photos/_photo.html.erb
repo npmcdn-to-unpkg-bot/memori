@@ -1,6 +1,14 @@
 <tr data-update-url="<%= creator_memorial_photo_path(@memorial, photo) %>">
   <td><%= best_in_place photo, :caption, url: creator_memorial_photo_path(@memorial, photo) %></td>
-  <td><%= photo.published == true ? "Yes" : "No"  %></td>
+  <td>
+    <%= check_box_tag 'published', photo.id, photo.published,
+        data: {
+          remote: true,
+          url: url_for(action: :toggle_photo, photo_id: photo.id, id: @memorial.slug),
+          method: "POST"
+        }
+    %>
+  </td>
   <td><%= image_tag photo.picture.url(:thumb) if photo.picture? %></td>
   <td><%= link_to "Delete", creator_memorial_photo_path(@memorial, photo), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></td>
 </tr>

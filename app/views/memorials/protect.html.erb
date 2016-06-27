@@ -1,32 +1,65 @@
-<%= render 'shared/content_title', title: "This Memorial is Password Protected" %>
+<!-- If the user has not choosen a hero image, a default image is shown -->
+<% if @memorial.picture.url %>
+  <style>
+    .hero { background-image: url(<%= @memorial.picture.url %>); }
+  </style>
+<% end %>
 
-<section id="contact-page" class="page contact-page page-container">
-	<div class="container">
-		<div class="row">
-			<!-- Post Container -->
-			<div id="post-container" class="col-md-12 post-container" role="main">
-				<div class="row">
-					<div class="col-md-8">
-            <%= form_tag access_memorial_path do %>
-							<div class="control-group">
-                <%= label_tag :code %>
-                <%= text_field_tag :code, nil, placeholder: "Pass Phrase for Memorial", class: "form-control" %>
-							</div>
-              <%= submit_tag 'Login', class: "submit-btn submit md-btn btn" %>
-            <% end %>
-          </div>
-          <div class="col-md-4">
-            <h4 class="contact-title">Private Memorial </h4>
-            <p>
-              Some users wish to keep Memorials private for various reasons.
-            </p>
-            <p>
-              You will need to get the pass phrase from the creator of the memorial.
-            </p>
-          </div>
+
+<!-- Hero Section -->
+<div id="logo"><%= @memorial.name %> <span></span></div>
+
+<section id="top" class="hero" data-type="parallax">
+    <header id="main-menu">
+        <div class="container">
+            <div class="row">
+                <div id="menu-logo"></div>
+                <nav id="navigation" class="column twelve">
+                    <ul>
+                        <li class="submenu"><a href="#logo">Home</a></li>
+                        <li><a href="#story">Biography</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <!-- <li><a href="#gift">Condolence Gift</a></li> -->
+                        <li><a href="#guestbook">GuestBook</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#" id="menu-toggle-wrapper">
+                    <div id="menu-toggle"></div>
+                </a>
+            </div>
+            <!-- close .ha-header-perspective -->
         </div>
-      </div><!-- /.post-container -->
-      <!-- Post Container End -->
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-</section><!-- /#contact-page -->
+        <!-- close grid container -->
+    </header>
+    <div class="overlay-dark"></div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="info">
+							<a href="#example2" class="openCSSModal">Click to Enter</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #Hero Section Ends -->
+
+<!-- #### Animated section -->
+<div class="loaderOverlay"><i class="fa fa-spinner animate-spin"></i></div>
+
+<!-- Modal Content -->
+<aside id="example2" class="css-modal">
+    <div>
+        <h2>Password Protected</h2>
+        <p>
+				<%= form_tag access_memorial_path do %>
+					<div class="control-group">
+            <%= text_field_tag :code, nil, placeholder: "Password", class: "form-control", autofocus: true %>
+					</div>
+					<br />
+          <%= submit_tag 'Enter', class: "submit-btn submit md-btn btn" %>
+        <% end %>
+				</p>
+        <a href="#close" title="Close">Close</a>
+    </div>
+</aside>

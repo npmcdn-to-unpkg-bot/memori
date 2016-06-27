@@ -6,6 +6,6 @@
 
 class Guestbook < ActiveRecord::Base
   # create a single guestbook for each memorial to store the comments
-  belongs_to :memorial, foreign_key: :memorial_id
+  belongs_to :memorial, foreign_key: :memorial_id, touch: true
   has_many :comments, as: :commentable
 end

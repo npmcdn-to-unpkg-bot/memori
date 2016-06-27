@@ -330,7 +330,7 @@ if (!Array.prototype.indexOf) {
 
         /* Google Map
         ==================================================================================== */
-      
+
 
         /* Theme Tabs
         ==================================================================================== */
@@ -381,89 +381,6 @@ if (!Array.prototype.indexOf) {
         $('.accordion .contents').hide();
         $('.accordion .active').next().slideDown('normal');
 
-        /* Twitter - open get_tweets.php and populate file with your info.
-        ==================================================================================== */
-        $('.tweets').each(function() {
-            var $this = $(this);
-
-            $.getJSON("twitter/get_tweets.php?get=" + $this.attr('id'), function(data) {
-
-                if (data) {
-                    var tweets = '';
-
-                    $.each(data, function() {
-                        var tweet = '<div class="tweet">';
-                        tweet += '<span class="one-tweet">' + this.text + '</span>';
-                        tweet += '<span class="time">' + this.time_ago + ' ago</span>';
-                        tweet += '</div>';
-
-                        tweets += tweet;
-                    });
-
-                    $this.prepend(tweets);
-                }
-
-            }).always(function() {
-                //twitterCarousel();
-            });
-
-        });
-
-        /* Instagram Script - change Tag to yours and update ClientId
-        ==================================================================================== */
-        var instagramTag = 'wedding'; // Add Instagram Tag here
-        var instagramClientId = '630b5c9d2cab44e08fb9d014cf00b2b6'; // Add ClientId here
-        var $instagramSection = $('#instagram-section');
-        var max_tag_id = false;
-
-        var getInstagramByTag = function() {
-
-            $.ajax({
-                url: "https://api.instagram.com/v1/tags/" + instagramTag + "/media/recent",
-                data: $.extend({}, {
-                    client_id: instagramClientId,
-                    count: 10,
-                }, (max_tag_id ? {
-                    max_tag_id: max_tag_id
-                } : {})),
-                type: "GET",
-                dataType: "jsonp",
-            }).done(function(resp) {
-
-                var img = [];
-
-                $.each(resp.data, function() {
-                    if (this.type != 'image') {
-                        return;
-                    }
-
-                    img.push(
-                        $("<a href='" + this.link + "' target='_blank'></a>").append(
-                            $("<img>", {
-                                src: this.images.thumbnail.url,
-                                title: this.caption.text
-                            })
-                        )
-                    );
-                });
-
-                if (typeof resp.pagination.next_max_tag_id != 'undefined') {
-                    max_tag_id = resp.pagination.next_max_tag_id;
-                } else {
-                    $instagramSection.find('.load-more').fadeOut();
-                }
-
-                $instagramSection.find('.instagram-images').append(img);
-            });
-        };
-
-        $instagramSection.on('click', '.load-more a', function(e) {
-            e.preventDefault();
-
-            getInstagramByTag();
-        });
-
-        getInstagramByTag();
 
         /* WOW plugin triggers animation.css on scroll
         ================================================== */
@@ -474,54 +391,6 @@ if (!Array.prototype.indexOf) {
             mobile:       false  // trigger animations on mobile devices (true is default)
           }
         );
-
-        /* Share Icons
-        ==================================================================================== */
-        $('.share').socShare({
-            facebook: '.soc-fb',
-            twitter: '.soc-tw',
-            google_plus: '.soc-gplus',
-            pinterest: '.soc-pin'
-        });
-
-        /* Simple Countdown Timer - change belows date to specific one you want.
-        ==================================================================================== */
-        if($("#countdown").length) {
-            CountDownTimer('12/08/2015 12:00 AM', 'countdown');
-        }
-        function CountDownTimer(dt, id) {
-            var end = new Date(dt);
-
-            var _second = 1000;
-            var _minute = _second * 60;
-            var _hour = _minute * 60;
-            var _day = _hour * 24;
-            var timer;
-
-            function showRemaining() {
-                var now = new Date();
-                var distance = end - now;
-                if (distance < 0) {
-
-                    clearInterval(timer);
-                    document.getElementById(id).innerHTML = 'EVENT POCEO!';
-
-                    return;
-                }
-                var days = Math.floor(distance / _day);
-                var hours = Math.floor((distance % _day) / _hour);
-                var minutes = Math.floor((distance % _hour) / _minute);
-                var seconds = Math.floor((distance % _minute) / _second);
-
-                document.getElementById(id).innerHTML = days + '<span>days</span>';
-                document.getElementById(id).innerHTML += hours + '<span>hours</span>';
-                document.getElementById(id).innerHTML += minutes + '<span>minutes</span>';
-                document.getElementById(id).innerHTML += seconds + '<span>seconds</span>';
-            }
-
-            timer = setInterval(showRemaining, 1000);
-        }
-
 
     });
 

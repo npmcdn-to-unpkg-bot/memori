@@ -24,11 +24,9 @@
 //= require yes/parallax
 //= require yes/scrollTo
 //= require yes/waypoints
-//= require yes/YTPlayer
 //= require yes/magnific-popup
 //= require yes/wow
 //= require yes/retina
-//= require yes/soc-share
 //= require yes/custom
 //= require yes/jquery.modal
 
@@ -51,4 +49,5 @@ $(document).ready(function() {
     $("#new_photo").hide();
     $("#submit-photo-title").text("Thank You. The memorial creator has been notified.");
   });
+
 });

@@ -1,5 +1,5 @@
 class Creator::MemorialsController < CreatorController
-  before_action :set_memorial, only: [:show, :edit, :edit_photos, :edit_events, :update]
+  before_action :set_memorial, only: [:show, :edit, :edit_photos, :edit_events, :update, :toggle_photo]
   before_action :require_user
   before_action :require_creator, only: [:edit, :update]
   skip_before_filter :verify_authenticity_token, only: [:update]
@@ -15,7 +15,28 @@ class Creator::MemorialsController < CreatorController
 
   def about
   end
-  
+
+  def toggle_photo
+    @photo = Photo.find(params[:photo_id])
+    @photo.published = !@photo.published
+    @photo.save
+
+    respond_to do |format|
+      format.js do
+      end
+    end
+  end
+
+  def toggle_event
+    @event = Event.find(params[:event_id])
+    @event.published = !@event.published
+    @event.save
+
+    respond_to do |format|
+      format.js do
+      end
+    end
+  end
 
   def create
     @memorial = Memorial.new(memorial_params)

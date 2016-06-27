@@ -1,18 +1,7 @@
 ### This Week
-* Photos - Publish option (checkbox?)
-* AJAX: private memorial popup with modals
-
-* Higher Performance JS / Rails / CSS
-  1. Caching / Logging
-  2. Jacob's tips
-  3. Remove excess JS / CSS files from themes
-  https://css-tricks.com/snippets/jquery/smooth-scrolling/
-  http://paulrhayes.com/2011-03/css-modal/
-  Growl(?) - for backend/frontend
-
-* [AJAX: guestbook, event and photo comments ](http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button)
-  - Timeline left / right
-* Photos with comments (FB format) - boxaroo or custom CSS/JS
+* AJAX - guestbook comments, event comments, load more (events + guestbook comments)
+  - http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button
+  - http://josephndungu.com/tutorials/rails-load-more-results-using-jquery-ajax
 
 * Validations / Error Msgs
   - growl on visitor front-end
@@ -21,8 +10,15 @@
 ### Later
 * Photo Gallery Option
 * Hero Slider Gallery
-
-* TDD: Features
+* Photos with comments (FB format) - boxaroo or custom CSS/JS
 
 * Social Login / Facebook App Integration for Visitors
+
+* Custom JS / CSS
+  - Smooth Scrolling - https://css-tricks.com/snippets/jquery/smooth-scrolling/
+  - CSS Modal - http://paulrhayes.com/2011-03/css-modal/
+  - Growl - http://popdevelop.com/2010/05/writing-a-simple-growl-like-jquery-plugin/
+
+* Speed (Screencasts about Caching / Performance)
+* TDD: Features
 * TDD: Shift to test::unit

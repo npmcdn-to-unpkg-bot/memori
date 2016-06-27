@@ -1,5 +1,6 @@
 # Controller for static pages
 class PagesController < ApplicationController
+
   def home
     @posts = Post.order('created_at DESC').limit(4)
     @memorials = Memorial.order('created_at DESC').limit(4).where(protect: false)

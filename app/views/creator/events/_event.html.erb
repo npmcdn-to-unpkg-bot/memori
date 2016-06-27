@@ -4,7 +4,15 @@
   <td><%= display_short_date(event.date) %></td>
   <td><%= image_tag event.picture.url(:thumb) if event.picture? %></td>
   <td><%= truncate(event.description, length: 50, separator: '') %></td>
-  <td><%= event.published == true ? "Yes" : "No"  %></td>
+  <td>
+    <%= check_box_tag 'published', event.id, event.published,
+        data: {
+          remote: true,
+          url: url_for(action: :toggle_event, event_id: event.id, id: @memorial.slug),
+          method: "POST"
+        }
+    %>
+  </td>
   <td><%= link_to "Edit", edit_creator_memorial_event_path(@memorial, event), remote: true  %></td>
   <td><%= link_to "Delete", creator_memorial_event_path(@memorial, event), remote: true, method: :delete, data: { confirm: "Are you sure?" } %></td>
 </tr>

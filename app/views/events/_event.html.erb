@@ -1,0 +1,58 @@
+<div class="column twelve">
+  <div class="column three">
+    <span style="opacity:0">Space</span>
+  </div>
+  <div class="column six">
+      <div class="box pattern">
+          <span class="date"><%= display_month_day_year(event.date) %></span>
+          <h2><%= event.title %></h2>
+          <div class="box-content">
+            <div class="block">
+              <div class="image-holder">
+                    <%= image_tag event.picture.url(:gallery) %>
+                </div>
+                <a href="<%= event.picture.url %>" class="portfolio-hover">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">
+                        </h3>
+                    </div>
+                </a>
+            </div>
+              <p><%= event.description %></p>
+                <br />
+                <a class="more add-comment-link">Add Comment</a>
+                <div class="form add-comment-form">
+                  <br />
+                <%= form_for [@memorial, event, Comment.new], html: {class: "actionform"} do |f| %>
+                  <div class="control-group">
+                    <%= f.text_field :author, class: 'form-control', placeholder: "Your Name" %>
+                  </div>
+                  <div class="control-group">
+                    <%= f.text_area :body, rows: 5, class: 'form-control',  placeholder: "Your Comment" %>
+                  </div>
+                  <div class="clearfix"></div>
+                  <%= f.submit "Leave Entry", class: "color" %>
+                  <div class="clearfix"></div>
+                <% end %>
+              </div>
+                <br />
+                <div>
+                  <a class="more view-comment-link">View Comments</a>
+
+                  <div class="comments-listing">
+                    <br />
+                    <% event.comments.each_with_index do |comment,index| %>
+                      <div class="comment-box">
+                          <p><strong><%= comment.author %></strong></p>
+                          <p><%= display_month_day_year(comment.created_at) %></p>
+                          <br />
+                          <p><%= comment.body %></p>
+                      </div>
+                      <br />
+                    <% end %>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>

@@ -1,5 +1,5 @@
 <h2>General Information</h2>
-<%= form_for(@memorial, remote: true) do |f| %>
+<%= form_for [:creator, @memorial], remote: true do |f| %>
 <%= render 'shared/errors', obj: @memorial %>
 <div class="control-group">
   <%= f.label :name, "Full Name" %>

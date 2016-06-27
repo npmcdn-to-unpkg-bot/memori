@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       member do
         get 'edit_photos'
         get 'edit_events'
+        post 'toggle_photo'
+        post 'toggle_event'
       end
 
       resources :guestbooks, only: [:create]
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
       get 'protect'
       post 'access'
       post 'contact'
+
     end
 
     resources :guestbooks, only: [:create] do

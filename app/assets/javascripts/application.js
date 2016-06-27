@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require jquery.purr
 //= require ahoy
 //= require best_in_place
 //= require jgrowl
@@ -24,12 +23,8 @@
 //= require memorials/bootstrap
 //= require memorials/boxer
 //= require memorials/custom
-//= require memorials/gmap3
 //= require memorials/html5shiv
 //= require memorials/modernizr
 //= require memorials/plugins
-//= require memorials/waypoints
-//= require memorials/counterup
-//= require memorials/isotope
 //= require memorials/owl
 //= require jquery-ui
