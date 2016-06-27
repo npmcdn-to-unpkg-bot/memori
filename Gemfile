@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 
+
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
@@ -68,6 +70,10 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'dalli'
+  gem 'rack-cache'
+  gem 'kgio'
+  gem "memcachier"
 end
 
 

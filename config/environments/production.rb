@@ -20,13 +20,29 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
+  client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                           :username => ENV["MEMCACHIER_USERNAME"],
+                           :password => ENV["MEMCACHIER_PASSWORD"],
+                           :failover => true,
+                           :socket_timeout => 1.5,
+                           :socket_failure_delay => 0.2,
+                           :value_max_bytes => 10485760)
+
+  config.action_dispatch.rack_cache = {
+    :metastore    => client,
+    :entitystore  => client
+  }
+
+  config.static_cache_control = "public, max-age=2592000"
+  config.serve_static_assets = true
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
@@ -55,7 +71,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
