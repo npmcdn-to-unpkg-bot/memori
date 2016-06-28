@@ -10,10 +10,7 @@
 
 
 class Post < ActiveRecord::Base
-  validates :title, presence: true
-  validates :summary, presence: true
-  validates :body, presence: true
-  validates :picture, presence: true
+  validates :title, :summary, :body, :picture, presence: true
 
   mount_uploader :picture, PictureUploader
 

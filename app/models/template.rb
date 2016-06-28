@@ -10,9 +10,5 @@
 class Template < ActiveRecord::Base
   has_many :memorials
 
-  validates :name, presence: true
-  validates :theme, presence: true
-
-  # color variation of theme
-  validates :variant, presence: true
+  validates :name, :theme, :variant, presence: true
 end

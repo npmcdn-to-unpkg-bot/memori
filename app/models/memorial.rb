@@ -28,8 +28,7 @@ class Memorial < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  validates :name, presence: true
-  validates :dod, presence: true
+  validates :name, :dod, presence: true
 
   geocoded_by :address
 

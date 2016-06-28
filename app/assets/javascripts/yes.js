@@ -33,11 +33,11 @@
 
 $(document).ready(function() {
   $('.add-comment-link').click(function() {
-    $(this).nextAll('.add-comment-form').toggle();
+    $(this).nextAll('.add-comment-form').toggle("slow");
   });
 
   $('.view-comment-link').click(function() {
-    $(this).nextAll('.comments-listing').toggle();
+    $(this).nextAll('.comments-listing').toggle("slow");
   });
 
   $("#new_event").submit(function(event) {

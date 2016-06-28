@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, on: :create, length: { minimum: 6 }
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, :email, presence: true
 
   # simple roles for admin user
   def admin?

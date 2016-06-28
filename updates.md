@@ -3,16 +3,16 @@
   - http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button
   - http://josephndungu.com/tutorials/rails-load-more-results-using-jquery-ajax
 
-* Validations / Error Msgs
-  - growl on visitor front-end
-  - better redirects and notifications for errors and success
-
 ### Later
 * Photo Gallery Option
 * Hero Slider Gallery
 * Photos with comments (FB format) - boxaroo or custom CSS/JS
 
 * Social Login / Facebook App Integration for Visitors
+
+* Yes JS with Update to new jQuery
+  - Preloader (wow, imagesLoaded, isotope)
+  - Menu (waypoint, scrollTo)
 
 * Custom JS / CSS
   - Smooth Scrolling - https://css-tricks.com/snippets/jquery/smooth-scrolling/

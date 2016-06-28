@@ -24,7 +24,7 @@
 		var  bgImage = $(this).data('bg-image');
 		if (bgImage!="") {
 			$(this).css({ 'background-image': 'url('+bgImage+')' });
-		}
+		}a
 	});
 
 	/*-----------  Boxer Video and image Gallery  --------*/
