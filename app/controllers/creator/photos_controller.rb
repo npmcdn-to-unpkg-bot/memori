@@ -63,11 +63,7 @@ class Creator::PhotosController < CreatorController
 
     respond_to do |format|
       format.html do
-        if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-          redirect_to :back
-        else
-          redirect_to creator_memorials_path
-        end
+        redirect_to :back
       end
 
       format.js do

@@ -10,7 +10,7 @@ describe SessionsController do
     it 'redirects to the home page for authenticated users' do
       session[:user_id] = Fabricate(:user).id
       get :new
-      expect(response).to redirect_to memorials_path
+      expect(response).to redirect_to creator_memorials_path
     end
   end
 
@@ -25,7 +25,7 @@ describe SessionsController do
         expect(session[:user_id]).not_to be_nil
       end
       it "redirects to the home page" do
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to creator_memorials_path
       end
       it "sets the notice" do
         expect(flash[:notice]).not_to be_blank

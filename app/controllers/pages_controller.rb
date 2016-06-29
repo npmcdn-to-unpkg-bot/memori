@@ -1,4 +1,3 @@
-# Controller for static pages
 class PagesController < ApplicationController
 
   def home
@@ -20,11 +19,7 @@ class PagesController < ApplicationController
 
     if @message.valid?
       NotificationMailer.contact_admin(@message).deliver_now
-      if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-        redirect_to root_path
-      else
-        flash[:notice] = "Your message has been sent."
-      end
+      redirect_to root_path
     else
       flash[:alert] = "An error occured while delivering this message."
       redirect_to :back

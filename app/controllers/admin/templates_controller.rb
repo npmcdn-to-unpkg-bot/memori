@@ -65,11 +65,7 @@ class Admin::TemplatesController < AdminsController
 
     respond_to do |format|
       format.html do
-        if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-          redirect_to :back
-        else
-          redirect_to superadmin_templates_path
-        end
+        redirect_to :back
       end
 
       format.js do

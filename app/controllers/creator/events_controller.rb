@@ -57,11 +57,7 @@ class Creator::EventsController < CreatorController
 
     respond_to do |format|
       format.html do
-        if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-          redirect_to :back
-        else
-          redirect_to edit_events_creator_memorial_path(@memorial)
-        end
+        redirect_to :back
       end
 
       format.js do

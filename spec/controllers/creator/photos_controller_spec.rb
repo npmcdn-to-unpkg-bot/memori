@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PhotosController do
+describe Creator::PhotosController do
   describe 'GET new' do
     before do
       alice = Fabricate(:user)
@@ -8,13 +8,13 @@ describe PhotosController do
       memorial1 = Fabricate(:memorial, user: alice)
     end
     it "sets the @photo variable" do
-      get :new, memorial_id: Memorial.first.slug
+      xhr :get, :new, memorial_id: Memorial.first.slug
       expect(assigns(:photo)).to be_new_record
       expect(assigns(:photo)).to be_instance_of(Photo)
     end
 
     it "renders the new template" do
-      get :new, memorial_id: Memorial.first.slug
+      xhr :get, :new, memorial_id: Memorial.first.slug
       expect(response).to render_template :new
     end
   end
@@ -35,7 +35,7 @@ describe PhotosController do
     end
 
     it "redirects to the edit memorial path" do
-      expect(response).to redirect_to edit_memorial_path(Memorial.first)
+      expect(response).to redirect_to edit_creator_memorial_path(Memorial.first)
     end
   end
 
@@ -44,6 +44,7 @@ describe PhotosController do
       alice = Fabricate(:user)
       session[:user_id] = alice.id
       memorial1 = Fabricate(:memorial, user: alice)
+      request.env["HTTP_REFERER"] = 'http://test.host/creator/memorials/' + Memorial.first.slug + '/edit'
       post :create, memorial_id: memorial1.slug, photo: {
         caption: "test",
         picture: fixture_file_upload("/picture.jpg", 'image/jpg')

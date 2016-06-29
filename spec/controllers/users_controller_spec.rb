@@ -18,7 +18,7 @@ describe UsersController do
         expect(User.count).to eq(1)
       end
       it 'redirects to the new memorial path' do
-        expect(response).to redirect_to new_memorial_path
+        expect(response).to redirect_to new_creator_memorial_path
       end
 
     end

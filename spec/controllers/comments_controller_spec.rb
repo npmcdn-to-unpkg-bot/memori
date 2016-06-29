@@ -7,11 +7,13 @@ describe Guestbooks::CommentsController do
     session[:user_id] = alice.id
     bobjohnson = Fabricate(:memorial, user: alice)
     guestb = Fabricate(:guestbook, memorial: bobjohnson)
+    request.env["HTTP_REFERER"] = 'http://localhost/' + Memorial.first.slug
   end
 
   describe "POST create" do
     it "creates a valid comment" do
       post :create, commentable: :guestbooks, comment: Fabricate.attributes_for(:comment), memorial_id: Memorial.first.id, guestbook_id: Memorial.first.guestbook.id
+
       expect(Comment.count).to eq(1)
     end
   end
@@ -25,6 +27,7 @@ describe Events::CommentsController do
     session[:user_id] = alice.id
     bobjohnson = Fabricate(:memorial, user: alice)
     holiday = Fabricate(:event, memorial: bobjohnson)
+    request.env["HTTP_REFERER"] = 'http://localhost/' + Memorial.first.slug
   end
 
   describe "POST create" do
@@ -43,6 +46,7 @@ describe Photos::CommentsController do
     session[:user_id] = alice.id
     bobjohnson = Fabricate(:memorial, user: alice)
     graduation = Fabricate(:photo, memorial: bobjohnson)
+    request.env["HTTP_REFERER"] = 'http://localhost/' + Memorial.first.slug
   end
 
   describe "POST create" do
