@@ -5,5 +5,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    if stale?(@post)
+      respond_with @post
+    end
+
   end
 end

@@ -36,7 +36,8 @@ Rails.application.routes.draw do
       get 'protect'
       post 'access'
       post 'contact'
-
+      get 'load_comments'
+      get 'load_events'
     end
 
     resources :guestbooks, only: [:create] do

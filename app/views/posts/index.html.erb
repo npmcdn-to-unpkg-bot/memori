@@ -1,18 +1,23 @@
 <%= render 'shared/content_title', title: "Blog" %>
 
 <div id="obituaries-page" class="page obituaries-page page-container">
-			<div class="container">
-				<div class="row">
-					<!-- Post Container -->
-					<div id="post-container" class="col-md-12 post-container" role="main">
+	<div class="container">
+		<div class="row">
+			<div id="post-container" class="col-md-12 post-container" role="main">
+				<div id="posts">
+					<% cache @posts do %>
+						<%= render partial: 'posts/post', collection: @posts %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-						<div id="posts">
-							<%= render 'posts' %>
-						</div>
-
-
-					</div><!-- /.post-container -->
-					<!-- Post Container End -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /#about-page -->
+<% cache 'blog-pagination' do %>
+	<nav style="text-align: center;">
+	  <ul class="pagination">
+	    <%= will_paginate @posts, class: 'digg_pagination' %>
+	  </ul>
+	</nav>
+<% end %>

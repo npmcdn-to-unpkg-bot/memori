@@ -1,7 +1,6 @@
 <div class="about-right-box">
-
-  <% @posts.each do |post| %>
   <article class="post-content">
+    <% cache [post, 'main-content'] do %>
     <div class="row">
       <div class="col-sm-6">
         <div class="featured-img">
@@ -25,14 +24,6 @@
         </div><!-- /.post-container -->
       </div>
     </div><!-- /.row -->
+    <% end %>
   </article><!-- /.post-content -->
-  <% end %>
-
 </div><!--  /.about-right-box -->
-
-
-<nav style="text-align: center;">
-  <ul class="pagination">
-    <%= will_paginate @posts, class: 'digg_pagination' %>
-  </ul>
-</nav>

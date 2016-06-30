@@ -1,0 +1,16 @@
+$('#ordered-events').append('<%= escape_javascript render partial: 'events/event', collection: @events %>');
+
+$('#events-load').attr("href", "<%= load_events_memorial_path(id: @memorial.slug, event_page: @events.current_page + 1) %>" );
+
+<% if @events.current_page == @events.total_pages %>
+  $('#events-load').remove();
+<% end %>
+
+
+$('.add-comment-link').click(function() {
+  $(this).nextAll('.add-comment-form').toggle("slow");
+});
+
+$('.view-comment-link').click(function() {
+  $(this).nextAll('.comments-listing').toggle("slow");
+});

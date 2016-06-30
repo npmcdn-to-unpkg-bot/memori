@@ -1,5 +1,5 @@
 class MemorialsController < ApplicationController
-  before_action :set_memorial, only: [:show, :protect, :access, :contact]
+  before_action :set_memorial, only: [:show, :protect, :access, :contact, :load_comments, :load_events]
   before_action :check_access, only: [:protect, :access]
 
   def show
@@ -9,8 +9,9 @@ class MemorialsController < ApplicationController
     else
       @message = Message.new
       @guestbook = Guestbook.find_by(memorial: @memorial)
-      @comments = @guestbook.comments
-      @events = @memorial.events.where(published: true).limit(3)
+
+      @comments = @guestbook.comments.paginate(page: params[:guestbook_page], per_page: 5)
+      @events = @memorial.events.paginate(page: params[:event_page], per_page: 2)
       @photos = @memorial.photos.where(published: true).rank(:row_order)
 
       ahoy.track "#{@memorial.name}"
@@ -19,12 +20,29 @@ class MemorialsController < ApplicationController
     end
   end
 
+  def load_events
+    @events = @memorial.events.paginate(page: params[:event_page], per_page: 2)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def load_comments
+    @guestbook = Guestbook.find_by(memorial: @memorial)
+    @comments = @guestbook.comments.paginate(page: params[:guestbook_page], per_page: 5)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def protect
     render layout: 'yes'
   end
 
-  # route for accessing private memorial
   def access
     if @memorial.code == params[:code]
       session[:access_id] = @memorial.code

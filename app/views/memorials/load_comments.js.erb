@@ -1,0 +1,7 @@
+$('#guestbook-comments').append('<%= escape_javascript render partial: 'comments/comment', collection: @comments %>');
+
+$('#guestbook-comments-load').attr("href", "<%= load_comments_memorial_path(id: @memorial.slug, guestbook_page: @comments.current_page + 1) %>" );
+
+<% if @comments.current_page == @comments.total_pages %>
+  $('#guestbook-comments-load').remove();
+<% end %>

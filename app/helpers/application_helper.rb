@@ -23,4 +23,5 @@ module ApplicationHelper
   def theme_stylesheet
     "vendor/#{@memorial.template.theme}/#{@memorial.template.variant}"
   end
+
 end

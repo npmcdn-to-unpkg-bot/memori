@@ -1,12 +1,14 @@
-<div class="block">
+<% cache [photo, 'main-content'] do  %>
+  <div class="block">
     <div class="image-holder">
-        <%= image_tag photo.picture.url(:gallery) %>
+      <%= image_tag photo.picture.url(:gallery) %>
     </div>
     <a href="<%= photo.picture.url %>" class="portfolio-hover">
-        <div class="portfolio-info">
-            <h3 class="portfolio-title">
-                <%= photo.caption %>
-            </h3>
-        </div>
+      <div class="portfolio-info">
+        <h3 class="portfolio-title">
+          <%= photo.caption %>
+        </h3>
+      </div>
     </a>
-</div>
+  </div>
+<% end %>

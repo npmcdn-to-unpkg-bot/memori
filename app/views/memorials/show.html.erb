@@ -5,7 +5,6 @@
   </style>
 <% end %>
 
-<% cache @memorial do %>
   <!-- Hero Section -->
   <div id="logo"><%= @memorial.name %> <span></span></div>
 
@@ -87,12 +86,16 @@
               <div class="row">
                   <div class="timeline-year start"><span>EVENTS</span></div>
                     <div id="ordered-events">
-                      <%= render partial: 'events/event', collection: @events, cached: true %>
+                      <% cache @events do %>
+                        <%= render partial: 'events/event', collection: @events %>
+                      <% end %>
                     </div>
                   </div>
+                  <div class="clearfix"></div>
                   <div class="timeline-button">
-                    <br /><br />
-                    <%= link_to 'Load More', '#', class: "button" %>
+                    <% unless @events.total_pages < 2 %>
+                      <%= link_to 'Load More', load_events_memorial_path(id: @memorial.slug, event_page: 2), class: "button", id: "events-load", remote: true %>
+                    <% end %>
                     <br /><br />
                     <a href="#suggest-event" rel="modal:open" class="button">Suggest Event</a>
                   </div>
@@ -115,7 +118,9 @@
               <br />
           </header>
           <div id="gallery-wrapper">
-            <%= render partial: 'photos/photo', collection: @photos, cached: true %>
+            <% cache @photos do %>
+              <%= render partial: 'photos/photo', collection: @photos %>
+            <% end %>
           </div>
       </section>
       <!-- #Small Gallery Section Ends -->
@@ -179,6 +184,7 @@
       #Gift Section Ends -->
 
       <!-- Guestbook Section -->
+      <% cache @guestbook do %>
       <section id="guestbook">
           <header class="section-header">
               <h3 class="section-title">Guestbook</h3>
@@ -191,11 +197,18 @@
                   <div class="timeline-year start"><span>ENTRIES</span></div>
 
                   <!-- display guestbook comments -->
-                  <%= render partial: 'comments/comment', collection: @comments, cached: true %>
-                  <!-- <div class="clearfix"></div>
+                  <div id="guestbook-comments">
+                    <% cache @comments do %>
+                      <%= render partial: 'comments/comment', collection: @comments %>
+                    <% end %>
+                  </div>
+
+                  <div class="clearfix"></div>
                   <div class="timeline-button">
-                    <a href="#" class="button">Load more</a>
-                  </div> -->
+                    <% unless @comments.total_pages < 2 %>
+                      <%= link_to 'Load More', load_comments_memorial_path(id: @memorial.slug, guestbook_page: 2), class: "button", id: "guestbook-comments-load", remote: true %>
+                    <% end %>
+                  </div>
               </div>
           </div>
           <div class="form color">
@@ -223,6 +236,7 @@
           </div>
       </section>
       <!-- #Guestbook Section Ends -->
+      <% end %>
 
       <!-- Contact Section -->
       <section id="contact" class="bgcolor">
@@ -322,5 +336,3 @@
       })
     }
   </script>
-
-<% end %>

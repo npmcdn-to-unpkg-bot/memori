@@ -1,14 +1,8 @@
-### This Week
-* AJAX - guestbook comments, event comments, load more (events + guestbook comments)
-  - http://stackoverflow.com/questions/23591673/rails-4-loading-posts-w-jquery-ajax-on-a-load-more-button
-  - http://josephndungu.com/tutorials/rails-load-more-results-using-jquery-ajax
-
-### Later
-* Photo Gallery Option
-* Hero Slider Gallery
+### Future Updates
 * Photos with comments (FB format) - boxaroo or custom CSS/JS
+* Hero Slider Gallery
 
-* Social Login / Facebook App Integration for Visitors
+* Photo Gallery Option
 
 * Yes JS with Update to new jQuery
   - Preloader (wow, imagesLoaded, isotope)
@@ -19,6 +13,8 @@
   - CSS Modal - http://paulrhayes.com/2011-03/css-modal/
   - Growl - http://popdevelop.com/2010/05/writing-a-simple-growl-like-jquery-plugin/
 
-* Speed (Screencasts about Caching / Performance)
+* Social Login / Facebook App Integration for Visitors
+* Add a Comment (each event and guestbook) (AJAX)
+
 * TDD: Features
 * TDD: Shift to test::unit
