@@ -41,7 +41,8 @@ class Creator::MemorialsController < CreatorController
   def create
     @memorial = Memorial.new(memorial_params)
     @memorial.user = current_user
-    @guestbook = Guestbook.create(memorial: @memorial)
+
+    Guestbook.create(memorial: @memorial)
 
     if @memorial.save
       flash[:notice] = "Your memorial was saved."

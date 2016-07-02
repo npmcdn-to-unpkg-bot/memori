@@ -28,11 +28,11 @@
 						</tbody>
 					</table>
 					<br>
+					<%= form_for [:creator, @memorial, @photo] do |f| %>
+					  <%= f.label :picture, "Upload Multiple Photos:" %>
+					  <%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
+					<% end %>
 
-          <%= form_for [:creator, @memorial, @photo] do |f| %>
-            <%= f.label :picture, "Upload Multiple Photos:" %>
-            <%= f.file_field :picture, multiple: true, name: "photo[picture]", class: 'form-control' %>
-          <% end %>
 
           <div id="photo-form" style="display:none;"></div>
           <br><br>

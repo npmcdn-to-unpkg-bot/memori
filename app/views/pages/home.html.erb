@@ -81,21 +81,10 @@
   <div class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="section-detials">
-          <div class="col-md-6">
-            <h3 class="section-title">About us</h3>
-            <p class="description">
-              <strong>Our goal is to allow everyone to create memorials for their loved ones.</strong>
-              We want to create a platform for people to share stories, photos and memories about the person they losts.
-              A place that looks beautiful and can be easily accessed by anyone.
-            </p>
-            <div class="continue-reading pull-left">
-              <a href="/pages/about">Read More <i class="fa fa-angle-double-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <img src="<%= asset_path 'memorials/about_mlk.png' %>" alt="Image">
-          </div>
+        <div class="section-details" id="react-about-us">
+
+
+
 
         </div><!-- /.section-detials -->
       </div><!-- /.row -->
@@ -103,6 +92,34 @@
   </div><!-- /.section-padding -->
 </section><!-- /#about -->
 <!-- about Section -->
+
+
+  <script type="text/babel">
+		var AboutUsBox = React.createClass({
+			render: function() {
+				return (
+					<div className="AboutUsBox">
+						<div className="col-md-6">
+							<h3 className="section-title">About Us</h3>
+							<p className="description">
+								<strong>Our goal is to allow everyone to create memorials for their loved ones.</strong>
+								We want to create a platform for people to share stories, photos and memories about the person they losts.
+								A place that looks beautiful and can be easily accessed by anyone.
+							</p>
+						</div>
+						<div className="col-md-6">
+							<img src="<%= asset_path 'memorials/about_mlk.png' %>" alt="Image" />
+						</div>
+					</div>
+				);
+			}
+		});
+
+			ReactDOM.render(
+				<AboutUsBox />,
+				document.getElementById('react-about-us')
+			);
+  </script>
 
 <!-- Articles -->
 <section id="articles" class="articles">

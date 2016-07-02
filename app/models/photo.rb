@@ -12,6 +12,7 @@ class Photo < ActiveRecord::Base
   before_create :default_caption
 
   belongs_to :memorial, foreign_key: :memorial_id, touch: true
+
   has_many :comments, as: :commentable, dependent: :destroy
   mount_uploader :picture, PictureUploader
 

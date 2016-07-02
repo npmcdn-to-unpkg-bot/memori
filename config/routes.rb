@@ -23,11 +23,13 @@ Rails.application.routes.draw do
 
       resources :guestbooks, only: [:create]
       resources :events, except: [:show]
+
       resources :photos, except: [:show] do
         member do
           post 'toggle'
         end
       end
+
     end
   end
 

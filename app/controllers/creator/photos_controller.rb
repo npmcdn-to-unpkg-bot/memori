@@ -79,6 +79,7 @@ class Creator::PhotosController < CreatorController
       @memorial = Memorial.find_by_slug(params[:memorial_id])
     end
 
+
     def set_photo
       @photo = Photo.find(params[:id])
     end
