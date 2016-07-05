@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     resources :templates
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :posts, only: [:index, :show]
+      get 'home_posts', to: "posts#home_posts"
+    end
+  end
+
   resources :posts, only: [:index, :show]
 
   namespace :creator do

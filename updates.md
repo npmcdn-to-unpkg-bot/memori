@@ -11,6 +11,7 @@
 * Social Login / Facebook App Integration for Visitors
   - http://railscasts.com/episodes/360-facebook-authentication?autoplay=true
 
+* TDD: Extend Current Specs
 * TDD: Features
 
 ### Front-end
@@ -26,3 +27,10 @@
   - Growl - http://popdevelop.com/2010/05/writing-a-simple-growl-like-jquery-plugin/
 
 * Add a Comment (each event and guestbook) (AJAX)
+
+
+### Add React
+1. Basic React Components with Babel for JSX
+2. Add React-Rails / Webpack / ES6
+3. Router
+4. Redux
