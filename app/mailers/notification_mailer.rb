@@ -9,7 +9,7 @@ class NotificationMailer < ActionMailer::Base
   def contact_admin(message)
     @message = message
 
-    mail to: 'me@tyshaikh.com', from: message.email, subject: "New Message from GoMemori"
+    mail to: 'me@tyshaikh.com', from: message.email, subject: "New Message from #{message.name} at Memori"
   end
 
   def new_event(user)

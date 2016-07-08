@@ -74,46 +74,18 @@
 </section>
 <!-- Services End -->
 
-
-
-<!-- about Section -->
+<!-- About Section -->
 <section id="about-us" class="about-us">
   <div class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="section-details" id="react-about-us">
+        <div class="section-details">
+					<%= react_component('AboutBox', img_src: (asset_path 'memorials/about_mlk.png') ) %>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-  <script type="text/babel">
-		var AboutUsBox = React.createClass({
-			render: function() {
-				return (
-					<div className="AboutUsBox">
-						<div className="col-md-6">
-							<h3 className="section-title">About Us</h3>
-							<p className="description">
-								<strong>Our goal is to allow everyone to create memorials for their loved ones.</strong>
-								We want to create a platform for people to share stories, photos and memories about the person they losts.
-								A place that looks beautiful and can be easily accessed by anyone.
-							</p>
-						</div>
-						<div className="col-md-6">
-							<img src="<%= asset_path 'memorials/about_mlk.png' %>" alt="Image" />
-						</div>
-					</div>
-				);
-			}
-		});
-
-			ReactDOM.render(
-				<AboutUsBox />,
-				document.getElementById('react-about-us')
-			);
-  </script>
 
 <!-- Memorials -->
 <section id="articles" class="articles">
@@ -121,15 +93,10 @@
     <div class="container">
       <h3 class="section-title">Recent Memorials</h3>
       <div class="row">
-        <div class="articles-details">
-					<%= render partial: "pages/memorial", collection: @memorials %>
-        </div><!-- /.articles-details -->
-        <div class="continue-reading text-center">
-          <!-- <a class="lg-btn" href="#">See all Obituaries</a> -->
-        </div><!-- /.continue-reading -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-  </div><!-- /.section-padding -->
+				<%= react_component('MemorialsBox') %>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Articles -->
@@ -157,7 +124,6 @@
 		},
 
 		render: function() {
-			console.log(this.state.posts);
 			var posts = this.state.posts.map((post) => {
 				return (
 					<div className="col-md-3 col-sm-6" key={post.id}>
@@ -167,7 +133,7 @@
 							</div>
 							<div className="post-container">
 								<h3 className="post-title">
-									<a href={ `posts\\${post.id}` }>{post.title}</a>
+									<a href={ `posts/${post.id}` }>{post.title}</a>
 								</h3>
 								<small>time place holder</small>
 								<p className="post-description">
@@ -199,13 +165,58 @@
 	<div class="section-padding">
 		<div class="container">
 			<div class="row">
-				<h2 class="section-title">Recent Photos</h2>
-					<%= render partial: "pages/photo", collection: @photos %>
+				<div id="react-gallery-images">
+				</div>
 			</div><!-- /.row -->
 		</div><!--  /.container -->
 	</div><!-- /.section-padding -->
 </section><!-- /#gallery -->
 <!-- Gallery End -->
+
+<script type="text/babel">
+	var GalleryImages = React.createClass({
+		getInitialState() {
+			return { photos: [] }
+		},
+
+		componentDidMount() {
+			$.getJSON('/api/v1/home_photos.json', (response) => {
+				this.setState({ photos: response })
+			})
+		},
+
+		render: function() {
+			var photos = this.state.photos.map((photo) => {
+				return (
+					<div className="item col-md-4 col-sm-6" key={photo.id}>
+					  <div className="gallery-item">
+							<img src={photo.picture.url} alt="Image" className="blog-post-image" />
+					    <a href={photo.picture.url} title={photo.caption} className="gallery-item-link transition boxer">
+					      <div className="hex-container">
+					        <div className="hex">
+					          <div className="hex-icon"><i className="fa fa-plus"></i></div>
+					        </div>
+					      </div>
+					    </a>
+					  </div>
+					</div>
+				)
+			});
+
+			return (
+				<div className="GalleryImages">
+					<h3 className="section-title">Recent Photos</h3>
+					{photos}
+				</div>
+			);
+		}
+	});
+
+		ReactDOM.render(
+			<GalleryImages />,
+			document.getElementById('react-gallery-images')
+		);
+</script>
 
 <script>
 $(document).ready(function() {

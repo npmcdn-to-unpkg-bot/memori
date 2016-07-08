@@ -9,6 +9,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'responders'
+gem 'react-rails'
 
 
 gem 'sdoc', '~> 0.4.0', group: :doc

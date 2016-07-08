@@ -1,53 +1,68 @@
 <%= render 'shared/content_title', title: "Blog Post" %>
 
 <section id="cremation-page" class="page cremation-page page-container">
-			<div class="container">
-				<div class="row">
-					<!-- Post Container -->
-					<div id="post-container" class="col-md-12 post-container" role="main">
-						<article class="post">
-							<div class="post-thumbnail">
-								<figure>
-                  <%= image_tag @post.picture.url if @post.picture? %>
-									<figcaption>
-										<h1 class="image-caption">
-                      <%= @post.title %>
-										</h1>
-									</figcaption>
-								</figure>
-							</div><!-- /.post-thumbnail -->
-							<div class="post-content">
-								<h2 class="post-title">
-								</h2>
-								<div class="entry">
-									<p>
-										<%= @post.body.html_safe %>
-									</p>
-								</div><!-- /.entry -->
-							</div><!-- /.post-content -->
-						</article><!-- /.post -->
-
-						<div id="disqus_thread"></div>
-						<script>
-						  var disqus_config = function () {
-						    this.page.url = "http://gomemori.com<%= url_for(@post) %>" ;
-						    this.page.identifier = "<%= @post.id %>";
-						  };
-						  (function() {
-						    var d = document, s = d.createElement('script');
-						    s.src = '//memoriapp.disqus.com/embed.js';
-						    s.setAttribute('data-timestamp', +new Date());
-						    (d.head || d.body).appendChild(s); })();
-						</script>
-						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+	<div class="container">
+		<div class="row">
+			<div id="react-post" class="col-md-12 post-container" role="main">
+			</div>
+		</div>
+</section>
 
 
+<script type="text/babel">
+	var Post = React.createClass({
+		getInitialState() {
+			return { post: [] }
+		},
 
-					</div><!-- /.post-container -->
-					<!-- Post Container End -->
+		componentDidMount() {
+			$.getJSON('/api/v1/posts/' + <%= params[:id] %> + '.json', (response) => {
+				this.setState({ post: response })
+			})
+		},
 
+		render: function() {
+			return (
+				<div className="Post">
+					<article className="post">
+						<div className="post-thumbnail">
+							<figure>
+							<img src={this.state.post.picture} />
+								<figcaption>
+									<h1 className="image-caption">
+										{this.state.post.title}
+									</h1>
+								</figcaption>
+							</figure>
+						</div>
+						<div className="post-content">
+							<div className="entry" dangerouslySetInnerHTML={{ __html: this.state.post.body}}>
 
+							</div>
+						</div>
+					</article>
 
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</section><!-- /#cremation-page -->
+					<div id="disqus_thread"></div>
+				</div>
+			);
+		}
+	});
+
+		ReactDOM.render(
+			<Post />,
+			document.getElementById('react-post')
+		);
+</script>
+
+<script>
+	var disqus_config = function () {
+		this.page.url = "http://gomemori.com/posts/<%= params[:id] %>";
+		this.page.identifier = <%= params[:id] %>;
+	};
+	(function() {
+		var d = document, s = d.createElement('script');
+		s.src = '//memoriapp.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

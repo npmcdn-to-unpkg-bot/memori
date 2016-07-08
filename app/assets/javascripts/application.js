@@ -16,7 +16,6 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require ahoy
 //= require best_in_place
-//= require jgrowl
 //= require validate
 //= require pagination
 //= require ckeditor/init
@@ -28,3 +27,6 @@
 //= require memorials/plugins
 //= require memorials/owl
 //= require jquery-ui
+//= require react
+//= require react_ujs
+//= require components

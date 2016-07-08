@@ -1,3 +1,61 @@
+#blog pagination
+
+<%= render 'shared/content_title', title: "Blog" %>
+
+<div id="obituaries-page" class="page obituaries-page page-container">
+	<div class="container">
+		<div class="row">
+			<div id="post-container" class="col-md-12 post-container" role="main">
+				<div id="posts">
+					<% cache @posts do %>
+						<%= render partial: 'posts/post', collection: @posts %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% cache 'blog-pagination' do %>
+	<nav style="text-align: center;">
+	  <ul class="pagination">
+	    <%= will_paginate @posts, class: 'digg_pagination' %>
+	  </ul>
+	</nav>
+<% end %>
+
+
+# Contact form
+<div class="col-md-8">
+<%= form_for Message.new, url: url_for(controller: 'pages', action: 'contact'), html: {class: "actionform"} do |f| %>
+    <div class="control-group column six">
+      <%= f.text_field :name, class: "form-control", placeholder: "Your Name", required: true %>
+    </div>
+    <div class="control-group column six">
+      <%= f.email_field :email, class: "form-control", placeholder: "Your Email", type: 'email', required: true %>
+    </div>
+    <div class="control-group column twelve">
+      <%= f.text_area :content, rows: 5, class: "form-control", placeholder: "Message", required: true %>
+    </div>
+    <div class="clearfix"></div>
+    <%= f.submit "Send Now", class: "submit-btn submit md-btn btn" %>
+    <div class="clearfix"></div>
+  <% end %>
+</div>
+
+
+
+<TextArea
+ uniqueName="content"
+ text="Message"
+ required={true}
+ minCharacters={30}
+ validate={this.commonValidate}
+ errorMessage="Message is invalid"
+ emptyMessage="Message is required" />
+<br /><br />
+
+
 ## Photos Upload
 
 <div class="col-md-3 col-sm-4 col-xs-6">
