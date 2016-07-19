@@ -1,17 +1,7 @@
 class SingleBlog extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      post: []
-    };
-
-  }
-
-  showPost(response) {
-    this.setState({
-      post: response
-    })
+  state = {
+    post: {},
+    picture: ''
   }
 
   getPost(URL) {
@@ -20,7 +10,8 @@ class SingleBlog extends React.Component {
       dataType: 'json',
       url: URL,
       success: (response) => {
-        this.showPost(response);
+        this.setState({ post: response, picture: response.picture.url });
+        console.log(this.state);
       }.bind(this)
     });
   }
@@ -29,13 +20,17 @@ class SingleBlog extends React.Component {
     this.getPost(`/api/v1/posts/${this.props.post_id}.json`);
   }
 
+  componentDidUpdate() {
+
+  }
+
   render () {
     return (
       <div className="col-md-12 post-container" role="main">
         <article className="post">
           <div className="post-thumbnail">
             <figure>
-            <img src={this.state.post.picture} />
+            <img src={this.state.picture} />
               <figcaption>
                 <h1 className="image-caption">
                   {this.state.post.title}
