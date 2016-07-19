@@ -73,6 +73,10 @@ class MemorialsController < ApplicationController
 
     def set_memorial
       @memorial = Memorial.find_by_slug(params[:id])
+
+      if @memorial == nil
+        redirect_to root_path
+      end
     end
 
     def require_creator

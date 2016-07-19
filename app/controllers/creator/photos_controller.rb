@@ -67,6 +67,7 @@ class Creator::PhotosController < CreatorController
       end
 
       format.js do
+        @memorial = Memorial.find_by_slug(params[:memorial_id])
         @photos = @memorial.photos
       end
     end

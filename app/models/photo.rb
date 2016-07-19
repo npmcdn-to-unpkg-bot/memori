@@ -14,7 +14,7 @@ class Photo < ActiveRecord::Base
   belongs_to :memorial, foreign_key: :memorial_id, touch: true
 
   has_many :comments, as: :commentable, dependent: :destroy
-  mount_uploader :picture, PictureUploader
+  mount_base64_uploader :picture, PictureUploader
 
   # model ranking
   ranks :row_order, with_same: :memorial_id

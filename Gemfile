@@ -11,7 +11,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'responders'
 gem 'react-rails'
 
-
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
@@ -20,6 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Gems for image uploading
 gem "figaro", ">= 1.0.0"
 gem 'carrierwave'
+gem 'carrierwave-base64'
 gem 'rmagick'
 gem 'fog'
 
@@ -34,7 +34,6 @@ gem 'puma'
 gem 'pg'
 # mailgun rails gem
 gem 'mailgun_rails'
-gem 'responders'
 # jquery file upload gem
 gem 'jquery-fileupload-rails'
 # in-place text editing

@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
 
   def home
-    # @memorials = Memorial.order('created_at DESC').limit(4).where(protect: false)
-    # @photos = Photo.joins(:memorial).where(memorials: {protect:false}).limit(6)
   end
 
   def show
@@ -18,6 +16,7 @@ class PagesController < ApplicationController
 
     if @message.valid?
       NotificationMailer.contact_admin(@message).deliver_now
+      flash[:notice] = "Your message was sent."
       redirect_to root_path
     else
       flash[:alert] = "An error occured while delivering this message."

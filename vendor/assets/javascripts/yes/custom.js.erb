@@ -22,7 +22,6 @@ if (!Array.prototype.indexOf) {
             imagesLoaded($('body'), function() {
             	wow.init();
                 $('.loaderOverlay').fadeOut('slow');
-                $('#gallery-wrapper').isotope('reLayout');
             });
         }
 
@@ -296,36 +295,6 @@ if (!Array.prototype.indexOf) {
                     }
                 }
             }
-        });
-
-        /* Isotope Portfolio
-        ==================================================================================== */
-        var $container = $('#gallery-wrapper');
-        $container.isotope({
-            itemSelector: '.block',
-            layoutMode: 'sloppyMasonry',
-            filter: '*',
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-            }
-        });
-
-        $('#gallery-filter a').click(function() {
-            $('#gallery-filter li.active').removeClass('active');
-            $(this).parent().addClass('active');
-
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
-                filter: selector,
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false
-                }
-            });
-            return false;
         });
 
 

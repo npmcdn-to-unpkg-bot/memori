@@ -3,56 +3,9 @@
 <section id="cremation-page" class="page cremation-page page-container">
 	<div class="container">
 		<div class="row">
-			<div id="react-post" class="col-md-12 post-container" role="main">
-			</div>
+			<%= react_component('SingleBlog', post_id: (params[:id]) ) %>
 		</div>
 </section>
-
-
-<script type="text/babel">
-	var Post = React.createClass({
-		getInitialState() {
-			return { post: [] }
-		},
-
-		componentDidMount() {
-			$.getJSON('/api/v1/posts/' + <%= params[:id] %> + '.json', (response) => {
-				this.setState({ post: response })
-			})
-		},
-
-		render: function() {
-			return (
-				<div className="Post">
-					<article className="post">
-						<div className="post-thumbnail">
-							<figure>
-							<img src={this.state.post.picture} />
-								<figcaption>
-									<h1 className="image-caption">
-										{this.state.post.title}
-									</h1>
-								</figcaption>
-							</figure>
-						</div>
-						<div className="post-content">
-							<div className="entry" dangerouslySetInnerHTML={{ __html: this.state.post.body}}>
-
-							</div>
-						</div>
-					</article>
-
-					<div id="disqus_thread"></div>
-				</div>
-			);
-		}
-	});
-
-		ReactDOM.render(
-			<Post />,
-			document.getElementById('react-post')
-		);
-</script>
 
 <script>
 	var disqus_config = function () {
@@ -62,7 +15,7 @@
 	(function() {
 		var d = document, s = d.createElement('script');
 		s.src = '//memoriapp.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
+		s.setAttribute('data-timestamp', + new Date());
 		(d.head || d.body).appendChild(s); })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

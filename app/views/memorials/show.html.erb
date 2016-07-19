@@ -1,338 +1,185 @@
-<!-- If the user has not choosen a hero image, a default image is shown -->
+<div id="fb-root"></div>
+
 <% if @memorial.picture.url %>
   <style>
     .hero { background-image: url(<%= @memorial.picture.url %>); }
   </style>
 <% end %>
 
-  <!-- Hero Section -->
-  <div id="logo"><%= @memorial.name %> <span></span></div>
-
-  <section id="top" class="hero" data-type="parallax">
-      <header id="main-menu">
-          <div class="container">
-              <div class="row">
-                  <div id="menu-logo"></div>
-                  <nav id="navigation" class="column twelve">
-                      <ul>
-                          <li class="submenu"><a href="#logo">Home</a></li>
-                          <li><a href="#story">Biography</a></li>
-                          <li><a href="#timeline">Timeline</a></li>
-                          <li><a href="#gallery">Gallery</a></li>
-                          <!-- <li><a href="#gift">Condolence Gift</a></li> -->
-                          <li><a href="#guestbook">GuestBook</a></li>
-                          <li><a href="#contact">Contact</a></li>
-                      </ul>
-                  </nav>
-                  <a href="#" id="menu-toggle-wrapper">
-                      <div id="menu-toggle"></div>
-                  </a>
-              </div>
-              <!-- close .ha-header-perspective -->
-          </div>
-          <!-- close grid container -->
-      </header>
-      <div class="overlay-dark"></div>
-      <div class="container">
-          <div class="hero-inner">
-              <div class="info">
-
-              </div>
-              <a href="#story" class="mouse scrollTo"><i class="fa fa-long-arrow-down"></i></a>
-          </div>
+<!-- Hero Section -->
+<div id="logo"><%= @memorial.name %> <span></span></div>
+<section id="top" class="hero" data-type="parallax">
+  <header id="main-menu">
+    <div class="container">
+      <div class="row">
+        <div id="menu-logo"></div>
+        <nav id="navigation" class="column twelve">
+          <ul>
+            <li class="submenu"><a href="#logo">Home</a></li>
+            <li><a href="#story">Biography</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <!-- <li><a href="#gift">Condolence Gift</a></li> -->
+            <li><a href="#guestbook">GuestBook</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="#" id="menu-toggle-wrapper">
+          <div id="menu-toggle"></div>
+        </a>
       </div>
-  </section>
-  <!-- #Hero Section Ends -->
+    </div>
+  </header>
+  <div class="overlay-dark"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <a href="#story" class="mouse scrollTo"><i class="fa fa-long-arrow-down"></i></a>
+    </div>
+  </div>
+</section>
+<!-- #Hero Section Ends -->
 
+<!-- #### Animated section -->
+<div class="loaderOverlay"><i class="fa fa-spinner animate-spin"></i></div>
 
-  <!-- #### Animated section -->
-  <div class="loaderOverlay"><i class="fa fa-spinner animate-spin"></i></div>
+<section id="home-content" class="top-menu">
 
-  <section id="home-content" class="top-menu">
-      <!-- Story Section -->
-      <section id="story" class="pattern">
-        <header class="section-header">
-            <h3 class="section-title">Biography</h3>
-        </header>
-          <div class="container timeline">
-              <span class="arrow-up"></span>
-              <span class="arrow-down"></span>
-              <div class="row">
-              </div>
-              <div class="row">
-                  <div class="twelve">
-                      <div class="box corner quote">
-                          <div class="corners-topleft"></div>
-                          <div class="corners-bottomleft"></div>
-                          <div class="corners-topright"></div>
-                          <div class="corners-bottomright"></div>
-                          <%= @memorial.biography.html_safe if @memorial.biography? %>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- #Story Section Ends -->
-
-      <!-- Timeline Section -->
-      <section id="timeline">
-          <header class="section-header">
-              <h3 class="section-title">TIMELINE</h3>
-              <p class="section-tagline">Here is a collection of the most cherished memories.</p>
-          </header>
-          <div class="container timeline">
-              <span class="arrow-up"></span>
-              <span class="arrow-down"></span>
-              <div class="row">
-                  <div class="timeline-year start"><span>EVENTS</span></div>
-                    <div id="ordered-events">
-                      <% cache @events do %>
-                        <%= render partial: 'events/event', collection: @events %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="clearfix"></div>
-                  <div class="timeline-button">
-                    <% unless @events.total_pages < 2 %>
-                      <%= link_to 'Load More', load_events_memorial_path(id: @memorial.slug, event_page: 2), class: "button", id: "events-load", remote: true %>
-                    <% end %>
-                    <br /><br />
-                    <a href="#suggest-event" rel="modal:open" class="button">Suggest Event</a>
-                  </div>
-                </div> <!-- row end -->
-            </div> <!-- container end -->
-      </section>
-      <!-- #Timeline Section Ends -->
-
-      <!-- Modal HTML embedded directly into document -->
-      <div id="suggest-event" style="display:none;">
-        <%= render 'memorials/event_form', object: @memorial  %>
+  <!-- Story Section -->
+  <section id="story" class="pattern">
+    <header class="section-header">
+      <h3 class="section-title">Biography</h3>
+    </header>
+    <div class="container timeline">
+      <span class="arrow-up"></span>
+      <span class="arrow-down"></span>
+      <div class="row">
       </div>
-
-      <!-- Small Gallery Section -->
-      <section id="gallery" class="pattern">
-          <header class="section-header" style="text-align: center">
-              <h3 class="section-title">Photo Gallery</h3>
-              <a href="#suggest-photo" rel="modal:open" class="button">Submit Photo</a>
-              <br />
-              <br />
-          </header>
-          <div id="gallery-wrapper">
-            <% cache @photos do %>
-              <%= render partial: 'photos/photo', collection: @photos %>
-            <% end %>
-          </div>
-      </section>
-      <!-- #Small Gallery Section Ends -->
-
-      <!-- Modal HTML embedded directly into document -->
-      <div id="suggest-photo" style="display:none;">
-        <%= render 'memorials/photo_form', object: @memorial  %>
-      </div>
-
-      <% if @memorial.address.present? %>
-      <!-- #Map Section -->
-      <section id="map-section">
-        <header class="section-header">
-            <h3 class="section-title">Burial Location</h3>
-            <p class="section-tagline">If you would like to visit the cemetery.</p>
-        </header>
-          <div id="map"></div>
-      </section>
-      <!-- #Map Section Ends -->
-      <% end %>
-
-      <!-- Gift Section
-      <section id="gift" class="pattern">
-          <header class="section-header">
-              <h3 class="section-title">Condolence Gift</h3>
-              <p class="section-tagline">Send a simple bereavement gift such as flowers or chocolates.</p>
-          </header>
-          <div class="container">
-              <ul class="small-box corner">
-                  <li>
-                      <a class="product" href="#"><img src="<%= asset_path 'yes/gifts/registry-amazon.png' %>" alt=""></a>
-                      <div class="corners-topleft"></div>
-                      <div class="corners-bottomleft"></div>
-                      <div class="corners-topright"></div>
-                      <div class="corners-bottomright"></div>
-                  </li>
-                  <li>
-                      <a class="product" href="#"><img src="<%= asset_path 'yes/gifts/registry-crate.png' %>" alt=""></a>
-                      <div class="corners-topleft"></div>
-                      <div class="corners-bottomleft"></div>
-                      <div class="corners-topright"></div>
-                      <div class="corners-bottomright"></div>
-                  </li>
-                  <li>
-                      <a class="product" href="#"><img src="<%= asset_path 'yes/gifts/registry-macys.png' %>" alt=""></a>
-                      <div class="corners-topleft"></div>
-                      <div class="corners-bottomleft"></div>
-                      <div class="corners-topright"></div>
-                      <div class="corners-bottomright"></div>
-                  </li>
-                  <li>
-                      <a class="product" href="#"><img src="<%= asset_path 'yes/gifts/registry-tiffany.png' %>" alt=""></a>
-                      <div class="corners-topleft"></div>
-                      <div class="corners-bottomleft"></div>
-                      <div class="corners-topright"></div>
-                      <div class="corners-bottomright"></div>
-                  </li>
-              </ul>
-          </div>
-      </section>
-      #Gift Section Ends -->
-
-      <!-- Guestbook Section -->
-      <% cache @guestbook do %>
-      <section id="guestbook">
-          <header class="section-header">
-              <h3 class="section-title">Guestbook</h3>
-              <p class="section-tagline">Please share any stories or memories of the deceased.</p>
-          </header>
-          <div class="container timeline">
-              <span class="arrow-up"></span>
-              <span class="arrow-down"></span>
-              <div class="row">
-                  <div class="timeline-year start"><span>ENTRIES</span></div>
-
-                  <!-- display guestbook comments -->
-                  <div id="guestbook-comments">
-                    <% cache @comments do %>
-                      <%= render partial: 'comments/comment', collection: @comments %>
-                    <% end %>
-                  </div>
-
-                  <div class="clearfix"></div>
-                  <div class="timeline-button">
-                    <% unless @comments.total_pages < 2 %>
-                      <%= link_to 'Load More', load_comments_memorial_path(id: @memorial.slug, guestbook_page: 2), class: "button", id: "guestbook-comments-load", remote: true %>
-                    <% end %>
-                  </div>
-              </div>
-          </div>
-          <div class="form color">
-              <header class="section-header">
-                  <h3>Write Something</h3>
-              </header>
-              <div class="container smaller">
-                <div class="row">
-                <!-- guestbook form / comment code -->
-                <%= form_for [@memorial, @guestbook, Comment.new], html: {class: "actionform"} do |f| %>
-                  <div class="control-group">
-                    <%= f.label :author, "Name" %>
-                    <%= f.text_field :author, required: true %>
-                  </div>
-                  <div class="control-group">
-                    <%= f.label :body, "Comment" %>
-                    <%= f.text_area :body, rows: 5, required: true %>
-                  </div>
-                  <div class="clearfix"></div>
-                  <%= f.submit "Leave Entry", class: "color" %>
-                  <div class="clearfix"></div>
-                <% end %>
-                </div>
-              </div>
-          </div>
-      </section>
-      <!-- #Guestbook Section Ends -->
-      <% end %>
-
-      <!-- Contact Section -->
-      <section id="contact" class="bgcolor">
-          <header class="section-header">
-            <h3 class="section-title">Contact the Memorial Creator</h3>
-          </header>
-          <div class="form">
-              <div class="container smaller">
-                <%= form_for [@memorial, @message], url: url_for(controller: 'memorials', action: 'contact'), html: {class: "actionform"} do |f| %>
-                  <div class="control-group column six">
-                    <%= f.label :name %>
-                    <%= f.text_field :name, required: true %>
-                  </div>
-                  <div class="control-group column six">
-                    <%= f.label :email %>
-                    <%= f.text_field :email, required: true %>
-                  </div>
-                  <div class="control-group column twelve">
-                    <%= f.label :content, "Message" %>
-                    <%= f.text_area :content, rows: 5, required: true %>
-                  </div>
-                  <div class="clearfix"></div>
-                  <%= f.submit "Send your message →" %>
-                  <div class="clearfix"></div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-      </section>
-      <!-- #Contact Section -->
-
-      <!-- Footer Section -->
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="column four copyright">Made at <a href="http://www.gomemori.com">Memori</a></div>
-            <div class="column four logo"><%= @memorial.name %></div>
-            <div class="column four info"></a></div>
+      <div class="row">
+        <div class="twelve">
+          <div class="box corner quote">
+            <div class="corners-topleft"></div>
+            <div class="corners-bottomleft"></div>
+            <div class="corners-topright"></div>
+            <div class="corners-bottomright"></div>
+            <%= @memorial.biography.html_safe if @memorial.biography? %>
           </div>
         </div>
-      </footer>
-      <!-- / Footer Section Ends -->
+      </div>
+    </div>
   </section>
 
+  <!-- Timeline Section -->
+  <%= react_component("EventBox", memorial_id: (params[:id]), url: (url_for([@memorial, Event.new])), page_number: 1, total_pages: (@events.count / 5) ) %>
 
-  <script>
+  <!-- Gallery Section -->
+  <%= react_component("PhotoGallery", memorial_id: (params[:id]), url: (url_for([@memorial, Photo.new]))) %>
 
-    function initMap() {
-      var myLatLng = {lat: <%= @memorial.latitude %>, lng: <%= @memorial.longitude %>};
+  <% if @memorial.address.present? %>
+  <!-- #Map Section -->
+  <section id="map-section">
+    <header class="section-header">
+      <h3 class="section-title">Burial Location</h3>
+      <p class="section-tagline">If you would like to visit the cemetery.</p>
+    </header>
+      <div id="map"></div>
+  </section>
+  <% end %>
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        scrollwheel: false,
-        zoom: 16,
-        center: myLatLng,
-        styles: [{
-            "featureType": "road",
-            "elementType": "labels",
-            "stylers": [{
-                "visibility": "simplified"
-            }, {
-                "lightness": 20
-            },{
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [{
-                    "hue": "#a1cdfc"
-                }, {
-                    "saturation": 30
-                }, {
-                    "lightness": 49
-                }]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry",
-                "stylers": [{
-                    "hue": "#f49935"
-                }]
-            }, {
-                "featureType": "road.arterial",
-                "elementType": "geometry",
-                "stylers": [{
-                    "hue": "#fad959"
-                }]
-            }]
-        }]
-      });
+  <!-- React Guestbook Section -->
+  <%= react_component("GuestbookBox", memorial_id: (params[:id]), url: (url_for([@memorial, @guestbook, Comment.new])), page_number: 1, total_pages: (@comments.count / 5) ) %>
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
+  <!-- Contact Section -->
+  <section id="contact" class="bgcolor">
+    <header class="section-header">
+      <h3 class="section-title">Contact the Memorial Creator</h3>
+    </header>
+    <div class="form">
+      <div class="container smaller">
+        <%= form_for [@memorial, @message], url: url_for(controller: 'memorials', action: 'contact'), html: {class: "actionform"} do |f| %>
+          <div class="control-group column six">
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true %>
+          </div>
+          <div class="control-group column six">
+            <%= f.label :email %>
+            <%= f.text_field :email, required: true %>
+          </div>
+          <div class="control-group column twelve">
+            <%= f.label :content, "Message" %>
+            <%= f.text_area :content, rows: 5, required: true %>
+          </div>
+          <div class="clearfix"></div>
+          <%= f.submit "Send your message →" %>
+          <div class="clearfix"></div>
+        <% end %>
+      </div>
+    </div>
+  </section>
 
-      google.maps.event.addListener(marker, 'click', function() {
-        window.location.href = 'http://maps.google.com/maps?q=<%= @memorial.latitude %>+<%= @memorial.longitude %>'
-      })
-    }
-  </script>
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="column four copyright">Made at <a href="http://www.gomemori.com">Memori</a></div>
+        <div class="column four logo"><%= @memorial.name %></div>
+        <div class="column four info"></a></div>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+
+<script>
+  function initMap() {
+    var myLatLng = {lat: <%= @memorial.latitude %>, lng: <%= @memorial.longitude %>};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      scrollwheel: false,
+      zoom: 16,
+      center: myLatLng,
+      styles: [{
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [{
+              "visibility": "simplified"
+          }, {
+              "lightness": 20
+          },{
+              "featureType": "water",
+              "elementType": "all",
+              "stylers": [{
+                  "hue": "#a1cdfc"
+              }, {
+                  "saturation": 30
+              }, {
+                  "lightness": 49
+              }]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [{
+                  "hue": "#f49935"
+              }]
+          }, {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [{
+                  "hue": "#fad959"
+              }]
+          }]
+      }]
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      window.location.href = 'http://maps.google.com/maps?q=<%= @memorial.latitude %>+<%= @memorial.longitude %>'
+    })
+  }
+</script>

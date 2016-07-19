@@ -21,58 +21,11 @@
   <div class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <div class="service-item">
-            <div class="hex">
-              <div class="hex-icon"><i class="fa fa-users"></i></div>
-            </div><!-- /.hex -->
-            <h3 class="service-title">Memorials</h3>
-            <p class="service-txt">
-              Easily setup the memorial page and include a biography about the person. Pour your heart out, there is no word limit.
-            </p>
-          </div><!-- /.service-item -->
-        </div><!-- /.col-md-3 -->
-
-        <div class="col-md-3 col-sm-6">
-          <div class="service-item">
-            <div class="hex">
-              <div class="hex-icon"><i class="fa fa-picture-o"></i></div>
-            </div><!-- /.hex -->
-            <h3 class="service-title">Photos</h3>
-            <p class="service-txt">
-              Scan in photos from albums and gather photos from various Internet sources. Visitors can even submit their own photos.
-            </p>
-          </div><!-- /.service-item -->
-        </div><!-- /.col-md-3 -->
-
-        <div class="col-md-3 col-sm-6">
-          <div class="service-item">
-            <div class="hex">
-              <div class="hex-icon"><i class="fa fa-calendar-o"></i></div>
-            </div><!-- /.hex -->
-            <h3 class="service-title">Events</h3>
-            <p class="service-txt">
-              Create a timeline of the most important events in your loved ones' life. Visitors can reminisce and submit their own events.
-            </p>
-          </div><!-- /.service-item -->
-        </div><!-- /.col-md-3 -->
-
-        <div class="col-md-3 col-sm-6">
-          <div class="service-item">
-            <div class="hex">
-              <div class="hex-icon"><i class="fa fa-pencil-square-o"></i></div>
-            </div><!-- /.hex -->
-            <h3 class="service-title">Guest Book</h3>
-            <p class="service-txt">
-              Have a guest book so any visitor can leave a personal message about the deceased.
-            </p>
-          </div><!-- /.service-item -->
-        </div><!-- /.col-md-3 -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-  </div><!-- /.section-padding -->
+				<%= react_component('ServiceBox') %>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Services End -->
 
 <!-- About Section -->
 <section id="about-us" class="about-us">
@@ -100,123 +53,27 @@
 </section>
 
 <!-- Articles -->
-<section id="" class="about-us">
+<section class="about-us">
 	<div class="section-padding">
 		<div class="container">
+			<h3 class="section-title">Blog Posts</h3>
 			<div class="row">
-				<div id="react-blog-posts">
-				</div>
-			</div><!-- /.row -->
-		</div><!-- /.container -->
-	</div><!-- /.section-padding -->
+				<%= react_component('PostsBox') %>
+			</div>
+		</div>
+	</div>
 </section>
-
-<script type="text/babel">
-	var BlogPosts = React.createClass({
-		getInitialState() {
-			return { posts: [] }
-		},
-
-		componentDidMount() {
-			$.getJSON('/api/v1/home_posts.json', (response) => {
-				this.setState({ posts: response })
-			})
-		},
-
-		render: function() {
-			var posts = this.state.posts.map((post) => {
-				return (
-					<div className="col-md-3 col-sm-6" key={post.id}>
-						<article className="post-content">
-							<div className="featured-img">
-								<img src={post.picture.url} alt="Image" className="blog-post-image" />
-							</div>
-							<div className="post-container">
-								<h3 className="post-title">
-									<a href={ `posts/${post.id}` }>{post.title}</a>
-								</h3>
-								<small>time place holder</small>
-								<p className="post-description">
-									{post.summary}
-								</p>
-							</div>
-						</article>
-					</div>
-				)
-			});
-
-			return (
-				<div className="BlogPosts">
-					<h3 className="section-title">Blog Posts</h3>
-					{posts}
-				</div>
-			);
-		}
-	});
-
-		ReactDOM.render(
-			<BlogPosts />,
-			document.getElementById('react-blog-posts')
-		);
-</script>
 
 <!-- Gallery -->
 <section id="gallery" class="gallery">
 	<div class="section-padding">
 		<div class="container">
 			<div class="row">
-				<div id="react-gallery-images">
-				</div>
-			</div><!-- /.row -->
-		</div><!--  /.container -->
-	</div><!-- /.section-padding -->
-</section><!-- /#gallery -->
-<!-- Gallery End -->
-
-<script type="text/babel">
-	var GalleryImages = React.createClass({
-		getInitialState() {
-			return { photos: [] }
-		},
-
-		componentDidMount() {
-			$.getJSON('/api/v1/home_photos.json', (response) => {
-				this.setState({ photos: response })
-			})
-		},
-
-		render: function() {
-			var photos = this.state.photos.map((photo) => {
-				return (
-					<div className="item col-md-4 col-sm-6" key={photo.id}>
-					  <div className="gallery-item">
-							<img src={photo.picture.url} alt="Image" className="blog-post-image" />
-					    <a href={photo.picture.url} title={photo.caption} className="gallery-item-link transition boxer">
-					      <div className="hex-container">
-					        <div className="hex">
-					          <div className="hex-icon"><i className="fa fa-plus"></i></div>
-					        </div>
-					      </div>
-					    </a>
-					  </div>
-					</div>
-				)
-			});
-
-			return (
-				<div className="GalleryImages">
-					<h3 className="section-title">Recent Photos</h3>
-					{photos}
-				</div>
-			);
-		}
-	});
-
-		ReactDOM.render(
-			<GalleryImages />,
-			document.getElementById('react-gallery-images')
-		);
-</script>
+				<%= react_component('PhotosBox') %>
+			</div>
+		</div>
+	</div>
+</section>
 
 <script>
 $(document).ready(function() {

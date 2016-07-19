@@ -8,7 +8,7 @@
     <%= check_box_tag 'published', event.id, event.published,
         data: {
           remote: true,
-          url: url_for(action: :toggle_event, event_id: event.id, id: @memorial.slug),
+          url: url_for(action: :toggle_event, controller: 'creator/memorials', event_id: event.id, id: @memorial.slug),
           method: "POST"
         }
     %>

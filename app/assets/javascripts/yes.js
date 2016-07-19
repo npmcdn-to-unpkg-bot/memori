@@ -12,14 +12,11 @@
 //
 //= require yes/jquery.min
 //= require jquery_ujs
-//= require jquery.purr
-//= require jgrowl
 //= require yes/boxaroo
 //= require yes/modernizr
 //= require yes/device
 //= require yes/imagesloaded
 //= require yes/smoothscroll
-//= require yes/isotope
 //= require yes/sloppy-masonry
 //= require yes/parallax
 //= require yes/scrollTo
@@ -29,6 +26,9 @@
 //= require yes/retina
 //= require yes/custom
 //= require yes/jquery.modal
+//= require react
+//= require react_ujs
+//= require components
 
 
 $(document).ready(function() {
