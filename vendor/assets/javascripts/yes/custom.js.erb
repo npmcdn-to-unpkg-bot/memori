@@ -189,12 +189,7 @@ if (!Array.prototype.indexOf) {
             }, 5000);
         });
 
-        /* Notification Messages
-        ==================================================================================== */
-        $(document).on('click', '.successmsg,.errormsg,.notice,.general', function() {
-            var $this = $(this);
-            $this.fadeOut();
-        });
+
 
         /* Portfolio Images
         ==================================================================================== */
@@ -294,30 +289,6 @@ if (!Array.prototype.indexOf) {
         });
 
 
-        /* Theme Tabs
-        ==================================================================================== */
-        $('.tabs').each(function() {
-            var $tabLis = $(this).find('li');
-            var $tabContent = $(this).next('.tab-content-wrap').find('.tab-content');
-            $tabContent.hide();
-            $tabLis.first().addClass('active').show();
-            $tabContent.first().show();
-        });
-
-        $('.tabs').on('click', 'li', function(e) {
-            var $this = $(this);
-            var parentUL = $this.parent();
-            var scrollparentURL = $this.parent();
-
-            var tabContent = scrollparentURL.next('.tab-content-wrap');
-            parentUL.children().removeClass('active');
-            $this.addClass('active');
-
-            tabContent.find('.tab-content').hide();
-            var showById = $($this.find('a').attr('href'));
-            tabContent.find(showById).fadeIn();
-            e.preventDefault();
-        });
 
         /* Theme Accordion
         ==================================================================================== */
@@ -343,16 +314,6 @@ if (!Array.prototype.indexOf) {
         $('.accordion .contents').hide();
         $('.accordion .active').next().slideDown('normal');
 
-
-        /* WOW plugin triggers animation.css on scroll
-        ================================================== */
-        var wow = new WOW(
-          {
-            boxClass:     'wow', // animated element css class (default is wow)
-            offset:       250,   // distance to the element when triggering the animation (default is 0)
-            mobile:       false  // trigger animations on mobile devices (true is default)
-          }
-        );
 
     });
 

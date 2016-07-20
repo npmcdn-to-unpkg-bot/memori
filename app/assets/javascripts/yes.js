@@ -15,14 +15,11 @@
 //= require yes/boxaroo
 //= require yes/modernizr
 //= require yes/device
-//= require yes/imagesloaded
 //= require yes/smoothscroll
-//= require yes/sloppy-masonry
 //= require yes/parallax
 //= require yes/scrollTo
 //= require yes/waypoints
 //= require yes/magnific-popup
-//= require yes/wow
 //= require yes/retina
 //= require yes/custom
 //= require yes/jquery.modal

@@ -69,10 +69,16 @@
   </section>
 
   <!-- Timeline Section -->
-  <%= react_component("EventBox", memorial_id: (params[:id]), url: (url_for([@memorial, Event.new])), page_number: 1, total_pages: (@events.count / 5) ) %>
+  <section id="timeline">
+    <%= react_component("EventBox", memorial_id: (params[:id]), url: (url_for([@memorial, Event.new])), page_number: 1, total_pages: (@events.count / 5) ) %>
+  </section>
+
 
   <!-- Gallery Section -->
-  <%= react_component("PhotoGallery", memorial_id: (params[:id]), url: (url_for([@memorial, Photo.new]))) %>
+  <section id="gallery">
+    <%= react_component("PhotoGallery", memorial_id: (params[:id]), url: (url_for([@memorial, Photo.new]))) %>
+  </section>
+
 
   <% if @memorial.address.present? %>
   <!-- #Map Section -->
@@ -86,7 +92,9 @@
   <% end %>
 
   <!-- React Guestbook Section -->
-  <%= react_component("GuestbookBox", memorial_id: (params[:id]), url: (url_for([@memorial, @guestbook, Comment.new])), page_number: 1, total_pages: (@comments.count / 5) ) %>
+  <section id="guestbook">
+    <%= react_component("GuestbookBox", memorial_id: (params[:id]), url: (url_for([@memorial, @guestbook, Comment.new])), page_number: 1, total_pages: (@comments.count / 5) ) %>
+  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="bgcolor">

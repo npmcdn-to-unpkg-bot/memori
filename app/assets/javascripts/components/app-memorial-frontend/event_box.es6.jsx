@@ -65,29 +65,27 @@ class EventBox extends React.Component {
   render () {
     return (
       <div className="EventBox">
-        <section id="timeline">
-          <header className="section-header">
-            <h3 className="section-title">TIMELINE</h3>
-            <p className="section-tagline">Here is a collection of the most cherished memories.</p>
-          </header>
-          <div className="container timeline">
-            <span className="arrow-up"></span>
-            <span className="arrow-down"></span>
-            <div className="row">
-              <div className="timeline-year start"><span>EVENTS</span></div>
-              {this.state.events.map(this.renderEvents)}
-            </div>
-            <div className="clearfix"></div>
-            <div className="timeline-button">
-              { this.state.page_number <= this.state.total_pages ? (
-                <EventPagination onPaginationSubmit={this.handlePagination} />
-              ) : '' }
-              <br /><br />
-            <a href="#event-form" rel="modal:open" className="button">Suggest Event</a>
-            <EventForm onEventSubmit={this.handleEventSubmit} />
-            </div>
+        <header className="section-header">
+          <h3 className="section-title">TIMELINE</h3>
+          <p className="section-tagline">Here is a collection of the most cherished memories.</p>
+        </header>
+        <div className="container timeline">
+          <span className="arrow-up"></span>
+          <span className="arrow-down"></span>
+          <div className="row">
+            <div className="timeline-year start"><span>EVENTS</span></div>
+            {this.state.events.map(this.renderEvents)}
           </div>
-        </section>
+          <div className="clearfix"></div>
+          <div className="timeline-button">
+            { this.state.page_number <= this.state.total_pages ? (
+              <EventPagination onPaginationSubmit={this.handlePagination} />
+            ) : '' }
+            <br /><br />
+          <a href="#event-form" rel="modal:open" className="button">Suggest Event</a>
+          <EventForm onEventSubmit={this.handleEventSubmit} />
+          </div>
+        </div>
       </div>
     );
   }

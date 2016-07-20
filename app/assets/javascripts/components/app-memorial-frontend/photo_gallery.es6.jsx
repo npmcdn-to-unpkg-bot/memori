@@ -61,19 +61,17 @@ class PhotoGallery extends React.Component {
 
   render () {
     return (
-      <div className="PhotoGallery">
-        <section id="gallery" className="pattern">
-          <header className="section-header" style={{textAlign:'center'}}>
-            <h3 className="section-title">Photo Gallery</h3>
-            <a href="#photo-form" rel="modal:open" className="button">Submit Photo</a>
-            <br />
-            <br />
-            <PhotoForm onPhotoSubmit={this.handlePhotoSubmit} />
-          </header>
-          <div id="gallery-wrapper">
-            {this.state.photos.map(this.renderPhotos)}
-          </div>
-        </section>
+      <div className="PhotoGallery pattern">
+        <header className="section-header" style={{textAlign:'center'}}>
+          <h3 className="section-title">Photo Gallery</h3>
+          <a href="#photo-form" rel="modal:open" className="button">Submit Photo</a>
+          <br />
+          <br />
+          <PhotoForm onPhotoSubmit={this.handlePhotoSubmit} />
+        </header>
+        <div id="gallery-wrapper">
+          {this.state.photos.map(this.renderPhotos)}
+        </div>
       </div>
     );
   }

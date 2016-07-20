@@ -52,28 +52,26 @@ class GuestbookBox extends React.Component {
   render () {
     return (
       <div className="GuestbookBox">
-        <section id="guestbook">
-          <header className="section-header">
-            <h3 className="section-title">Guestbook</h3>
-            <p className="section-tagline">Please share any stories or memories of the deceased.</p>
-          </header>
-          <div className="container timeline">
-            <span className="arrow-up"></span>
-            <span className="arrow-down"></span>
-            <div className="row">
-              <div className="timeline-year start"><span>ENTRIES</span></div>
-              <GuestbookListing comments={this.state.comments} />
-            </div>
-            <div className="clearfix"></div>
-            <div className="timeline-button">
-              { this.state.page_number <= this.state.total_pages ? (
-                <GuestbookPagination onPaginationSubmit={this.handlePagination.bind(this)} />
-              ) : '' }
-            </div>
+        <header className="section-header">
+          <h3 className="section-title">Guestbook</h3>
+          <p className="section-tagline">Please share any stories or memories of the deceased.</p>
+        </header>
+        <div className="container timeline">
+          <span className="arrow-up"></span>
+          <span className="arrow-down"></span>
+          <div className="row">
+            <div className="timeline-year start"><span>ENTRIES</span></div>
+            <GuestbookListing comments={this.state.comments} />
           </div>
-            <br /><br />
-            <GuestbookForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
-        </section>
+          <div className="clearfix"></div>
+          <div className="timeline-button">
+            { this.state.page_number <= this.state.total_pages ? (
+              <GuestbookPagination onPaginationSubmit={this.handlePagination.bind(this)} />
+            ) : '' }
+          </div>
+        </div>
+          <br /><br />
+          <GuestbookForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
       </div>
     );
   }
