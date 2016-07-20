@@ -18,12 +18,8 @@ if (!Array.prototype.indexOf) {
 
         /* Preloader - remove this and loaderOverlay div in html file, to disable loader.
         ==================================================================================== */
-        if (typeof imagesLoaded != 'undefined') {
-            imagesLoaded($('body'), function() {
-            	wow.init();
-                $('.loaderOverlay').fadeOut('slow');
-            });
-        }
+
+        $('.loaderOverlay').fadeOut('slow');
 
         /* Hero height for full and half screen
         ==================================================================================== */
